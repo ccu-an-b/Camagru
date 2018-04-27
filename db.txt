@@ -1,0 +1,22 @@
+USER
+	- id
+	- login
+	- mail
+	- mot de passe
+
+PICTURES
+	- id
+	- id_user
+	- img
+	- date
+
+STICKERS
+	- id
+	- img
+
+COMMENTS
+	- id
+	- id_pictures
+	- id_user
+	- text
+	- date
