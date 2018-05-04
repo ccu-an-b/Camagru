@@ -1,0 +1,12 @@
+header : #4B4453
+header text : #FCF8FF
+
+body background : #F1F1F1
+body text : #3D3D3E
+
+
+
+gris tendance : #E8E9F3
+rouge petant : #DA2C38
+queen pink : #ECCBD9
+light pink : #EF626C
