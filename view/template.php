@@ -15,23 +15,35 @@
 			 	<td style="width:70px">
 					<img style="width:60px; height: 60px" src="public/icons/logo.png"/>
 				</td>
-				<td style="width:140px">
-					<h1>| CAMAGRU</h1>
+				<td style="width:15px"><h1>|</h1>
+				</td>
+				<td style="width:110px">
+					<h1>CAMAGRU</h1>
 				</td>
 				<td style="width:60px">
-					<img style="width:33px; height: 33px; margin-top: 5px" src="public/icons/logout.png"/>
+				<?php
+					if ($_SESSION['login'] != NULL)
+					{
+						echo '<a href="./logout.php"><img style="width:33px; height: 33px; margin-top: 5px" src="public/icons/logout.png"/></a>';
+					}
+				?>
 				</td>
 				<td>
 				</td>
 				<td style="width:60px">
-					<img style="width:45px; height: 45px; margin-top: 2px" src="public/icons/notification.png"/>
+				<?php
+					if ($_SESSION['login'] != NULL)
+					{
+						echo '<img style="width:45px; height: 45px; margin-top: 2px" src="public/icons/notification.png"/>';
+					}
+				?>
 				</td>
 				<td style="width:50px">
 					<a href="index.php">
 					<img style="width:40px; height: 40px" src="public/icons/gallery.png"/></a>
 				</td>
 				<td style="width:50px">
-					<a href="connexion.php">
+					<a href="<?php if ($_SESSION['login'] != NULL) {echo "profile.php";} else {echo "connexion.php";}?>">
 					<img style="width:40px; height: 40px; margin-top: 2px" src="public/icons/account.png"/></a>
 				</td>
 			</tr></table>

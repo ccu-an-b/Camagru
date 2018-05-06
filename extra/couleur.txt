@@ -10,3 +10,6 @@ gris tendance : #E8E9F3
 rouge petant : #DA2C38
 queen pink : #ECCBD9
 light pink : #EF626C
+
+
+filter : grayscale(100);
