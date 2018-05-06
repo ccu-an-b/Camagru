@@ -275,9 +275,10 @@ p {
 
 #content {
 	padding-top: 15px;
-	width:68%;
+	width:66%;
 	font-size: 18px;
 	border-left: 1px solid #4B4453;
+	padding-left: 15px;
 }
 
 #content td {
