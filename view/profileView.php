@@ -13,7 +13,7 @@
 			<td style="width:20%"><b><?= $count_comment ?></b> Commentaires</td>
 		</tr>
 		<tr>
-			<td colspan="3"><?= $profile['bio'] ?></td>
+			<td colspan="3"><i><?= $profile['bio'] ?></i></td>
 		</tr>
 	</table>
 	<br/>

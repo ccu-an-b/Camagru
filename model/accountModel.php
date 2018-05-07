@@ -17,6 +17,12 @@ function db_connect()
 	}
 }
 
+
+function get_page()
+{
+	return " style='font-weight:bold' ";
+}
+
 function get_profile($login)
 {
 	$db = db_connect();

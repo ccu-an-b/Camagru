@@ -7,24 +7,19 @@
 	<div id="account">
 	<table id="category">
 		<tr>
-			<td id="col1"></td>
-			<td><a href="modify_profile.php">Modifier le profil</a></td>
+			<td><a <?= $page0 ?> href="modify_profile.php">Modifier le profil</a></td>
 		</tr>
 		<tr>
-			<td id="col1"></td>
-			<td><a href="modify_passwd.php">Changer le mot de passe</a></td>
+			<td><a <?= $page1 ?> href="modify_passwd.php">Changer le mot de passe</a></td>
 		</tr>
 		<tr>
-			<td id="col1"></td>
-			<td><a href="modify_notif.php">Notifications</a></td>
+			<td><a <?= $page2 ?> href="modify_notif.php">Notifications</a></td>
 		</tr>
 		<tr>
-			<td id="col1"></td>
-			<td><a href="modify_picture.php">Gerer les photos</a></td>
+			<td><a <?= $page3 ?> href="modify_picture.php">Gérer les photos</a></td>
 		</tr>
 		<tr>
-			<td id="col1"></td>
-			<td><a href="modify_delete.php">Supprimer le compte</a></td>
+			<td><a <?= $page4 ?> href="modify_delete.php">Supprimer le compte</a></td>
 		</tr>
 	</table>
 	

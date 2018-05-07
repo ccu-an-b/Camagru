@@ -7,6 +7,10 @@ require ('model/accountModel.php');
 $profile = get_profile($_SESSION['login']);
 $profile = $profile->fetch();
 
+
+$page0 = get_page();
+
+
 if ((empty($_POST['login']) || empty($_POST['mail'])) && isset($_POST['submit']))
 {
  	$_SESSION['field'] = "1";

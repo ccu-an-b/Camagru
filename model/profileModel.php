@@ -19,7 +19,7 @@ function db_connect()
 function get_picture($login)
 {
 	$db = db_connect();
-	$sql = "SELECT * FROM picture p INNER JOIN user u ON p.id_user = u.id WHERE u.login ='".$login."'";
+	$sql = "SELECT * FROM picture p INNER JOIN user u ON p.id_user = u.id WHERE u.login ='".$login."' ORDER BY UNIX_TIMESTAMP(date) DESC";
 	$req = $db->query($sql);
 
 	return $req;
