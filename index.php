@@ -12,6 +12,8 @@ $gallery = get_gallery($page, $limit);
 
 $page_count = get_page_number($limit);
 
+//$page_count = 200;
+
 require ('view/indexView.php');
 
 ?>

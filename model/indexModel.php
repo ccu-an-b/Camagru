@@ -52,4 +52,10 @@ function get_page_number($limit)
 
 }
 
+function page_style($i, $page)
+{
+	if ($i == $page)
+		echo " style='color: #EF626C; font-weight:bold; transform: scale(1.3)' ";
+}
+
 ?>
