@@ -6,7 +6,12 @@
 			<td class="login"><?= $profile['login'] ?></td>
 		</tr>
 		<tr>
-			<td><span style="color: #DA2C38"">modifier la photo de profil</span></td>
+			<td>
+				<form method="post" action="" >
+					<label for="img_file" >modifier la photo de profil</label>
+					<input style="display: none" type="file" id="img_file" name="img_file" accept="image/*"/>
+				</form>
+			</td>
 		</tr>
 		<tr><td><br/></td></tr>
 		<tr>

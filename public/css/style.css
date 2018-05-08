@@ -212,7 +212,7 @@ a {
 
 .modal #imgModal {
 	width: 50%;
-	min-width: 180px;
+	min-width: 200px;
 }
 
 @-webkit-keyframes fadeIn {
@@ -433,4 +433,14 @@ a {
 #content input[type="checkbox"]{
 	width: 15px;
 
+}
+
+#content label{
+	text-decoration: underline;
+	color: #DA2C38;
+	cursor: pointer;
+}
+
+#content label:hover{
+	font-weight: bold;
 }

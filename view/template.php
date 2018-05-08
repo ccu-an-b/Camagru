@@ -3,10 +3,14 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Camagru</title>
+
 		<link rel="stylesheet" href="public/css/style.css" />
+
 		<link href="https://fonts.googleapis.com/css?family=Advent+Pro|Amatic+SC|Lekton|Pompiere|Happy+Monkey" rel="stylesheet">
+
 		<link rel="icon" href="public/icons/favicon.ico" type="image/x-icon"/>
 		<link rel="shortcut icon" href="public/icons/favicon.ico" type="image/x-icon"/>
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	</head>

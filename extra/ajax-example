@@ -1,0 +1,61 @@
+<script>
+	
+	$(function()
+	{
+		$('#pseudo').keyup(function()
+		{
+			pseudo = $('#pseudo').val();
+			$.ajax(
+			{
+				type: "POST",
+				url: "inscrit.php",
+				data: 'pseudo=' + pseudo,
+				success:function(data)
+				{
+					if(data == 1)
+					{
+						$('#pseudo').next("#erreur").fadeIn().text('Ce pseudo existe deja');
+						$('#erreur').next('#ok').fadeOut();
+					}
+					else
+					{	
+						$('#erreur').next('#ok').fadeIn().text(OK);
+						$('#erreur').next('#erreur').fadeOut();
+					}
+				}
+			})
+		});
+	});
+
+<script/>
+
+
+
+<script>
+var modal = document.getElementById('myModal');
+
+var btn = document.getElementsByClassName("myBtn");
+
+var i;
+for(i = 0 ; i < btn.length ; i++)
+{
+	var modalImg = document.getElementById("imgModal");
+	var exit = document.getElementsByClassName("close")[0];
+
+	btn[i].onclick = function() {
+   		//modal.style.display = "block";
+   		//modalImg.src = this.title;
+	}
+
+	exit.onclick = function() {
+   	 modal.style.display = "none";
+	}
+
+	window.onclick = function(event) {
+    	if (event.target == modal) {
+       		modal.style.display = "none";
+    	}
+	}
+}
+
+</script>

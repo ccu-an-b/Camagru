@@ -16,4 +16,3 @@ $page_count = get_page_number($limit);
 
 require ('view/indexView.php');
 
-?>
