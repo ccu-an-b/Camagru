@@ -1,5 +1,6 @@
 
 <?php
+
 $q = intval($_GET['q']);
 
 include ('config/database.php');

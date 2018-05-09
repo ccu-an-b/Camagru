@@ -103,7 +103,7 @@ a {
 	flex-wrap: wrap;
 }
 
-#info
+#img #info
 { 
 	display: none;
     background-color: rgba(75,68,83,0.7);
@@ -113,7 +113,7 @@ a {
     position: absolute;
 }
 
-#info p {
+#img #info p {
 	font-size:24px;
 	margin-top: 100px;
 	color: #FCF8FF;
@@ -208,11 +208,61 @@ a {
 	margin:auto;
 	background-color: rgba(255,255,255,0.7);
 	padding:10px;
+	min-width: 240px;
 }
 
 .modal #imgModal {
 	width: 50%;
-	min-width: 200px;
+	min-width: 240px;
+	float-left;
+}
+
+#modal_info hr {
+	width: 100%;
+	height:1px;
+	background-color: #EF626C;
+	border: none;
+}
+
+.modal-body #modal_info {
+	padding-top: 15px;
+	font-size: 18px;
+	float:right;
+	max-width: 300px;
+}
+
+#modal_info #img_log{
+	object-fit: cover;
+	height: 70px;
+	width: 70px;
+	border-radius: 50%;
+	background-color: rgba(232,233,243, 0.7);
+}
+
+#modal_info #like_img img {
+	height:30px;
+}
+
+#modal_info #like {
+	font-size: 18px;
+	color: #EF626C;
+}
+
+#modal_info #date {
+	font-size: 15px;
+}
+#modal_info input[type="text"]{
+	border:none; 
+	height: 100%; 
+	width: 100%;
+	font-family: 'Pompiere', cursive;
+	font-size: 17px;
+	background-color: rgba(255,255,255,0.7);
+}
+
+#modal_info input[type="text"]:focus{
+
+	outline:none;
 }
 
 @-webkit-keyframes fadeIn {

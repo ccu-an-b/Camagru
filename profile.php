@@ -14,6 +14,7 @@ $count_like = get_count($_SESSION['login'], 'like');
 
 $count_comment = get_count($_SESSION['login'], 'comment');
 
+
 require('view/profileView.php');
 
 ?>

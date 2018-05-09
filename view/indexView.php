@@ -9,7 +9,7 @@
 	while ($data = $gallery->fetch()) {
 ?>
 
-    <div class="myBtn" id='img' title='<?= $data['id'] ?>'>
+    <div class="myBtn" id='img' title='<?= $data['id_img'] ?>'>
 		<div id='info'> <p> <?= $data['like'] ?> <img style="width:30px;height:30px" src="public/icons/like.png"/><?= $data['comment'] ?> <img style="width:38px;height:38px" src="public/icons/comment.png"/> </p> </div>
 			<img src='<?= $data['img'] ?>' />
 		</div>
@@ -113,10 +113,9 @@ function showImg(id) {
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById('div_imgModal').innerHTML = this.responseText;
+
             }
         };
-        console.log(this.responseText);
-      //  document.getElementById('div_imgModal').innerHTML = this.responseText;
 
         xmlhttp.open("GET","api.php?q="+id,true);
         xmlhttp.send();

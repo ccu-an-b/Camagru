@@ -35,6 +35,8 @@
 		<tr><td><br/></td></tr>
 </form>
 </table>
+
 <?php $form = ob_get_clean(); ?>
 
 <?php require('view/accountView.php'); ?>
+

@@ -53,4 +53,14 @@ function get_count($login, $elem)
 	}
 	return $count;
 }
+
+function get_modal($id)
+{
+	$db = db_connect();
+	$sql = "SELECT * FROM picture WHERE id_img ='".$id."'";
+	$req = $db->query($sql);
+	$db = NULL;
+	return $req;
+}
+
 ?>

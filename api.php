@@ -21,7 +21,7 @@ include ('config/database.php');
 function get_picture($id)
 {
   $db = db_connect();
-  $sql = "SELECT * FROM picture WHERE id ='".$id."'";
+  $sql = "SELECT * FROM picture WHERE id_img ='".$id."'";
   $req = $db->query($sql);
   $db = NULL;
   return $req;
