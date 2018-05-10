@@ -47,17 +47,9 @@
 			<td rowspan="2" class="login"><?= $profile['login'] ?></td>
       	</tr>
       	<tr><td></td></tr>
-		<tr>
+		<tr id="div_comment">
       		<td colspan="3"><hr></td>
       	</tr>
-      	<span id="comment">
-      		<tr>
-      			<td colspan="3"><b>login </b> commentaire</td>
-      		</tr>
-      		<tr>
-      			<td colspan="3"><b>login </b> commentaire</td>
-      		</tr>
-      	</span>
       	<tr><td></td></tr>
 		<tr>
       		<td colspan="3"><hr></td>
@@ -83,7 +75,7 @@
 <script>
 
 
-function callback(data, item, date)
+function callback(data, item)
 {
 	function date(date)
 	{
@@ -97,18 +89,35 @@ function callback(data, item, date)
 		return res;
 	}
 
-	var res = date(data.date)
-	document.getElementById('div_imgModal').innerHTML = "<img id='imgModal' src='"+data.img+"' />";
-	document.getElementById('like').innerHTML = data.like;
-	document.getElementById('date').innerHTML = res;
+	if (item == "img")
+	{
+		var res = date(data.date)
+		document.getElementById('div_imgModal').innerHTML = "<img id='imgModal' src='"+data.img+"' />";
+		document.getElementById('like').innerHTML = data.like;
+		document.getElementById('date').innerHTML = res;
+	}
+	else
+	{
+		console.log(data);
+		for (i = 0 ; i < data.length ; i++)
+		{
+			var insert = document.getElementById("div_comment");
+			var new_row = insert.parentNode.insertRow( insert.rowIndex + 1 );
+			var cell = new_row.insertCell(0);
+			cell.innerHTML = "<b>"+data[i].login+" </b> "+data[i].text;
+			cell.colSpan = 3 ;
+			//document.getElementById('div_comment').innerHTML ="<tr><td colspan='3'><b>"+data.login+" </b> "+data.text+"</td></tr>";
+		}
+	}
 }
 
-function showImg(id) {
-	var xmlhttp;
-			if (window.XMLHttpRequest) {
+function ajax_req(id, item) {
+
+		if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
+    	    xmlhttp = new XMLHttpRequest();
+        } 
+        else {
             // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
@@ -116,10 +125,10 @@ function showImg(id) {
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var data = JSON.parse(this.responseText);
-                callback(data, "img");
+                callback(data, item);
             }
         };
-        xmlhttp.open("GET","get_img.php?q="+id,true);
+        xmlhttp.open("GET","get_img.php?"+item+"="+id,true);
         xmlhttp.send();
     }
 
@@ -137,7 +146,8 @@ for(i = 0 ; i < btn.length ; i++)
    		modal.style.display = "block";
 
    		var id = this.title;
-		showImg(id);		
+		ajax_req(id, "img");	
+		ajax_req(id, "com");	
 	}
 
 	exit.onclick = function() {
