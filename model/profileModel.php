@@ -54,22 +54,4 @@ function get_count($login, $elem)
 	return $count;
 }
 
-function get_modal_img($id)
-{
-	$db = db_connect();
-	$sql = "SELECT * FROM picture WHERE id_img ='".$id."'";
-	$req = $db->query($sql);
-	$db = NULL;
-	return $req;
-}
-
-function get_modal_com($id)
-{
-	$db = db_connect();
-	$sql = "SELECT * FROM comments JOIN user WHERE comments.id_img ='".$id."' AND user.id =comments.id_user  ORDER BY comments.date DESC";
-	$req = $db->query($sql);
-	$db = NULL;
-	return $req;
-}
-
 ?>
