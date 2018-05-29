@@ -37,14 +37,14 @@
 
 <div id="myModal" class="modal">
 
-	<span class="close">&times;</span>
+  <span class="close">&times;</span>
   <div class="modal-content">
     <div class="modal-body">
     <span id="div_imgModal"></span>
 	<table id ="modal_info">
     	<tr>
-      		<td rowspan="2" colspan="2" style="width:20%"><img id="img_log" src='<?= $profile['profile'] ?>' /></td>
-			<td rowspan="2" class="login"><?= $profile['login'] ?></td>
+      		<td rowspan="2" colspan="2" style="width:20%"><img id="img_log" src=""/></td>
+			<td rowspan="2" class="login" id="name_log"></td>
       	</tr>
       	<tr><td></td></tr>
 		<tr id="div_comment">
@@ -57,7 +57,7 @@
       	<tr>
       		<td id="like" style="width:10px; text-align:center" ></td>
       		<td id="like_img" ><img src="./public/icons/like_on.png"></td>
-      		<td id="date">3 novembre 2017</td>
+      		<td id="date"></td>
       		
       	</tr>
 		<tr>

@@ -214,7 +214,7 @@ a {
 .modal #imgModal {
 	width: 50%;
 	min-width: 240px;
-	float-left;
+	float:left;
 }
 
 #modal_info hr {

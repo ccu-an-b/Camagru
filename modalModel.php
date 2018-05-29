@@ -19,7 +19,7 @@ function db_connect()
 function get_modal_img($id)
 {
 	$db = db_connect();
-	$sql = "SELECT * FROM picture WHERE id_img ='".$id."'";
+	$sql = "SELECT * FROM picture JOIN user WHERE picture.id_img ='".$id."' AND user.id = picture.id_user";
 	$req = $db->query($sql);
 	$db = NULL;
 	return $req;
@@ -37,7 +37,6 @@ function get_modal_com($id)
 if (isset($_GET['img'])){
   $data = get_modal_img($_GET['img']);
   $data = $data->fetch();
-
   echo json_encode($data);
 }
 
@@ -53,7 +52,5 @@ else if (isset($_GET['com'])){
   }
   echo json_encode($data);
 }
-
-
 
 ?>

@@ -11,13 +11,15 @@ function callback(data, item)
 		var res = day[0]+" "+month[date[1]]+" "+date[0];
 		return res;
 	}
-
 	if (item == "img")
 	{
 		var res = date(data.date)
 		document.getElementById('div_imgModal').innerHTML = "<img id='imgModal' src='"+data.img+"' />";
 		document.getElementById('like').innerHTML = data.like;
 		document.getElementById('date').innerHTML = res;
+		document.getElementById('img_log').src = data.profile;
+		document.getElementById('name_log').innerHTML = data.login;
+		console.log(res);
 	}
 	else
 	{
@@ -38,6 +40,8 @@ function callback(data, item)
 			var cell = new_row.insertCell(0);
 			cell.innerHTML = "<b>"+data[i].login+" </b> "+data[i].text;
 			cell.colSpan = 3 ;
+
+
 		}
 	}
 }
@@ -56,17 +60,16 @@ function ajax_req(id, item) {
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var data = JSON.parse(this.responseText);
-                callback(data, item);
+				callback(data, item);
             }
         };
         xmlhttp.open("GET","modalModel.php?"+item+"="+id,true);
         xmlhttp.send();
-    }
+}
 
 var modal = document.getElementById('myModal');
 
 var btn = document.getElementsByClassName("img");
-
 var i;
 for(i = 0 ; i < btn.length ; i++)
 {
@@ -75,14 +78,13 @@ for(i = 0 ; i < btn.length ; i++)
 
 	btn[i].onclick = function() {
    		modal.style.display = "block";
-
    		var id = this.title;
 		ajax_req(id, "img");	
 		ajax_req(id, "com");	
 	}
 
 	exit.onclick = function() {
-   	 modal.style.display = "none";
+		modal.style.display = "none";
 	}
 
 	window.onclick = function(event) {

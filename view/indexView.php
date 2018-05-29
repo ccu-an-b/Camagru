@@ -9,11 +9,10 @@
 	while ($data = $gallery->fetch()) {
 ?>
 
-    <div class="myBtn" id='img' title='<?= $data['id_img'] ?>'>
+	<div class="img" id= "img" title=<?= $data['id_img'] ?> >
 		<div id='info'> <p> <?= $data['like'] ?> <img style="width:30px;height:30px" src="public/icons/like.png"/><?= $data['comment'] ?> <img style="width:38px;height:38px" src="public/icons/comment.png"/> </p> </div>
-			<img src='<?= $data['img'] ?>' />
-		</div>
-
+		<img src='<?= $data['img'] ?>' />
+	</div>
 <?php
 	}
 ?>
@@ -85,73 +84,43 @@
 	</div>
 	<br/>
 
-<!-- Images Modal -->
 <div id="myModal" class="modal">
+	
 	<span class="close">&times;</span>
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-body">
-      <span id="div_imgModal"></span>
-      <p style="float: right">Test</p>
-      <p style="float: right">Test</p>
-    </div>
-  </div>
+	<div class="modal-content">
+	<div class="modal-body">
+		<span id="div_imgModal"></span>
+		<table id ="modal_info">
+			<tr>
+				<td rowspan="2" colspan="2" style="width:20%"><img id="img_log" src='<?= $profile['profile'] ?>' /></td>
+				<td rowspan="2" class="login" id="name_log"></td>
+			</tr>
+			<tr><td></td></tr>
+			<tr id="div_comment">
+				<td colspan="3"><hr></td>
+			</tr>
+			<tr><td></td></tr>
+			<tr>
+				<td colspan="3"><hr></td>
+			</tr>
+			<tr>
+				<td id="like" style="width:10px; text-align:center" ></td>
+				<td id="like_img" ><img src="./public/icons/like_on.png"></td>
+				<td id="date"></td>
+			</tr>
+			<tr>
+				<td colspan="3"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="3"><input type="text" placeholder="Ajouter un commentaire..."></td>
+			</tr>
+		</table>
+	</div>
+	</div>
 
 </div>
 
-<script>
-
-function showImg(id) {
-		if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById('div_imgModal').innerHTML = this.responseText;
-
-            }
-        };
-
-        xmlhttp.open("GET","api.php?q="+id,true);
-        xmlhttp.send();
-    }
-
-var modal = document.getElementById('myModal');
-
-var btn = document.getElementsByClassName("myBtn");
-
-var i;
-for(i = 0 ; i < btn.length ; i++)
-{
-	var modalImg = document.getElementById("imgModal");
-	var exit = document.getElementsByClassName("close")[0];
-
-	btn[i].onclick = function() {
-   		modal.style.display = "block";
-
-   		var id = this.title;
-   		showImg(id);
-   		
-	}
-
-	exit.onclick = function() {
-   	 modal.style.display = "none";
-	}
-
-	window.onclick = function(event) {
-    	if (event.target == modal) {
-       		modal.style.display = "none";
-    	}
-	}
-}
-
-
-</script>
+<script src="./public/js/modal.js"></script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/template.php'); ?>
