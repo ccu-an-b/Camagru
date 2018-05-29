@@ -63,9 +63,15 @@
 		<tr>
       		<td colspan="3"><hr></td>
       	</tr>
+		<form method="POST" action="">
+		<input type='hidden' name='id' id='id_com' value="0">
       	<tr>
-      		<td colspan="3"><input type="text" placeholder="Ajouter un commentaire..."></td>
-      	</tr>
+      		<td colspan="3"><input type="text" name="comment" placeholder="Ajouter un commentaire..."></td>
+		</tr>
+		<tr>
+		<td><input type="submit" name="submit" value="valider"></td>
+		</tr>
+		</form>
     </table>
     </div>
   </div>

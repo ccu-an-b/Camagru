@@ -19,6 +19,7 @@ function callback(data, item)
 		document.getElementById('date').innerHTML = res;
 		document.getElementById('img_log').src = data.profile;
 		document.getElementById('name_log').innerHTML = data.login;
+		document.getElementById('id_com').value = data.id_img;
 		console.log(res);
 	}
 	else

@@ -52,6 +52,28 @@ function get_page_number($limit)
 
 }
 
+function get_profile($login)
+{
+	$db = db_connect();
+	$sql = "SELECT * FROM user WHERE login ='".$login."'";
+	$req = $db->query($sql);
+
+	return $req;
+}
+
+function add_comment($login, $comment, $id)
+{
+	$db = db_connect();
+	$user = get_profile($login);
+	$data = $user->fetch();
+	$user_id = $data['id'];
+	$sql = $db->prepare("INSERT INTO comments (id_user, id_img, text) VALUES ('".$user_id."', '".$id."', :text)");
+	$sql->bindParam("text", $comment, PDO::PARAM_STR);
+	$sql->execute();
+	$sql = "UPDATE picture SET comment= comment + 1 WHERE id_img = '".$id."'";
+	$db->query($sql);
+}
+
 function page_style($i, $page)
 {
 	if ($i == $page)
