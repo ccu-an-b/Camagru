@@ -34,11 +34,16 @@ function ft_hash($login, $passwd)
  		$sql->bindParam("login", $login, PDO::PARAM_STR);
  		$sql->bindParam("passwd", $passwd, PDO::PARAM_STR);
 		$sql->execute();
-		$data = $sql->fetch(PDO::FETCH_OBJ);
+		$data = $sql->fetch();
 		if ($data == "")
 		{
 			$_SESSION['error'] = "Mauvais mot de passe ou identifiant";
 			return false;
+		}
+		else if ($data['active'] === '0')
+		{
+			$_SESSION['error'] = "Votre compte n&#39;est pas encore activ&eacute;";
+			return false; 
 		}
 		else	
 		{
@@ -106,8 +111,10 @@ function ft_user_new($login, $pass, $mail)
 {
 	$pass = ft_hash($login, $pass); 
 	$db = db_connect();
-	$sql = "INSERT INTO user (login, mail, pass, admin) VALUES ('".$login."', '".$mail."', '".$pass."', '0')";
+	$activation_key = md5(microtime(TRUE)*100000);
+	$sql = "INSERT INTO user (login, mail, pass, admin, activation_key) VALUES ('".$login."', '".$mail."', '".$pass."', '0', '".$activation_key."')";
 	$db->query($sql);
+	ft_activation_mail($login, $mail, $activation_key);
 }
 
 
@@ -118,6 +125,24 @@ function ft_user_del($login)
 	$db->query($sql);
 }
 
+function ft_activation_mail($login, $mail, $key)
+{
+	$header = 'MIME-Version: 1.0'."\n".'Content-type: text/html; charset=ISO-8859-1'."\n"."From: Camagru@contact.com"."\n";
+	$subjet = "Camagru : activez votre compte"."\n";
+	$message = "Bienvenue sur Camagru,"."\n\n";
+	$message .="Pour activer votre compte, veuillez cliquer sur le lien ci dessous."."\n\n";
+	$message .="http://127.0.0.1:8080/Camagru_git_o/subscription.php?log='.urlencode(".$login.").'&cle='.urlencode(".$key.")";
+	$message .="\n\n\n"."---------------"."\n";
+	$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
+	if ( mail($mail, $subjet, $message, $header)) 
+	{
+		echo 'Votre message a bien été envoyé ';
+	}
+	else 
+	{
+		echo "Votre message n'a pas pu être envoyé";
+	}
+}
 
 // function ft_login_exist($login)
 // {

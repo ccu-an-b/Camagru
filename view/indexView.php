@@ -105,7 +105,7 @@
 			</tr>
 			<tr>
 				<td id="like" style="width:10px; text-align:center" ></td>
-				<td id="like_img" ><img src="./public/icons/like_on.png"></td>
+				<td id="like_img" ><img src="./public/icons/like_on.png" onmouseover="this.src='./public/icons/like_on_2.png'" onmouseout="this.src='./public/icons/like_on.png'"></td>
 				<td id="date"></td>
 			</tr>
 			<tr>
@@ -118,7 +118,7 @@
       			<td colspan="3"><input type="text" name="comment" placeholder="Ajouter un commentaire..."></td>
 			</tr>
 			<tr>
-			<td><input type="submit" name="submit" value="valider"></td>
+			<td><input style="opacity:0" type="submit" name="submit" value="valider"></td>
 			</tr>
 			</form>
 		</table>

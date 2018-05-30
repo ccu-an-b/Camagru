@@ -5,7 +5,7 @@
 	<div id="connexion">
 		<div>
 			<br/>
-			<form action="" method="post"">
+			<form action="" method="post">
 				<table>
 					<tr>
 						<td><p>Inscrivez-vous pour partager et commenter vos photos avec vos amis</p></td>
@@ -26,7 +26,7 @@
 						<td><input type="password" name="passwd" placeholder="Mot de passe"></td>
 					</tr>
 					<tr>
-						<td><input type="password" name="passwd2" placeholder="Réentrez le mot de passe"></td>
+						<td><input type="password" name="passwd2" placeholder="Confirmation de mot de passe"></td>
 					</tr>
 					<tr>
 						<td><input type="submit" name="submit" value="S'inscrire"</td>
@@ -37,7 +37,7 @@
 		</div>
 		<br />
 		<div>
-			<p>Vous avez d&eacuteja un compte ? <a href="connexion.php">Connectez-vous</a></p>
+			<p>Vous avez d&eacute;j&agrave; un compte ? <a href="connexion.php">Connectez-vous</a></p>
 		</div>
 	</div>
 	<br />

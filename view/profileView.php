@@ -69,7 +69,7 @@
       		<td colspan="3"><input type="text" name="comment" placeholder="Ajouter un commentaire..."></td>
 		</tr>
 		<tr>
-		<td><input type="submit" name="submit" value="valider"></td>
+		<td><input style="opacity:0" type="submit" name="submit" value="valider"></td>
 		</tr>
 		</form>
     </table>

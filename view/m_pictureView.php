@@ -10,7 +10,7 @@
 	?>	
 		<td>
 			<img src='<?= $data['img'] ?>' />
-			<input type="checkbox" name="<?= $data['id'] ?>" value="yes"/>
+			<input type="checkbox" name="img" value="<?= $data['id'] ?>"/>
 		</td>
 	<?php
 		if (($i % 2) == 0 && $i !=0)

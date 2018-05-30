@@ -19,7 +19,7 @@
 		<header>
 			<table class="header"><tr>
 			 	<td style="width:70px">
-					<img style="width:60px; height: 60px" src="public/icons/logo.png"/>
+					<a href="camera.php"><img style="width:60px; height: 60px" src="public/icons/logo.png"/></a>
 				</td>
 				<td style="width:15px"><h1>|</h1>
 				</td>

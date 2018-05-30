@@ -274,6 +274,12 @@ a {
     from {opacity: 0} 
     to {opacity: 1}
 }
+
+@media only screen and (max-width: 725px) {
+	.modal #imgModal {float: initial; width: 90%; margin-right:auto; margin-left:auto}
+	.modal-body #modal_info {width: 90%;float: initial; margin-right: auto; margin-left:auto}
+
+}
 /*--------------Connexion.php--------------*/
 
 #connexion {
@@ -493,4 +499,37 @@ a {
 
 #content label:hover{
 	font-weight: bold;
+}
+
+/*--------------Camera-------------*/
+
+#camera {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 25px;
+}
+
+#camera canvas {
+	display: none;
+	width: 70%;
+}
+
+#camera video {
+	margin-right: auto;
+	margin-left: auto;
+	clear: both;
+	width: 70%;
+}
+
+#camera button {
+	clear: both;
+}
+
+#camera #photo {
+	width: 40%;
+}
+
+#camera #photo img {
+	object-fit: contain;
 }
