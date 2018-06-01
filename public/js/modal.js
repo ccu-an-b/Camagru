@@ -63,7 +63,7 @@ function ajax_req(id, item) {
 				callback(data, item);
             }
         };
-        xmlhttp.open("GET","modal.php?"+item+"="+id,true);
+        xmlhttp.open("GET","model/modalModel.php?"+item+"="+id,true);
         xmlhttp.send();
 }
 
