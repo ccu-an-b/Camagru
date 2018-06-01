@@ -2,11 +2,6 @@
 
 include ('CamagruModel.php');
 
-function ft_hash($login, $passwd)
-{
-	return hash('sha256', $login).hash('whirlpool', $passwd);
-}
-
  function ft_user_check($login, $passwd)
  {
  	$passwd = ft_hash($login, $passwd);

@@ -44,6 +44,6 @@ $error = ft_error();
 $field= ft_error_f();
 
 
-require('view/a_profileView.php');
+require('view/m_profileView.php');
 
 ?>

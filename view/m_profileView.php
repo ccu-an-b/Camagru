@@ -7,7 +7,7 @@
 		</tr>
 		<tr>
 			<td>
-				<form method="post" action="" >
+				<form method="post" action="" enctype="multipart/form-data">
 					<label for="img_file" >modifier la photo de profil</label>
 					<input style="display: none" type="file" id="img_file" name="img_file" accept="image/*"/>
 				</form>

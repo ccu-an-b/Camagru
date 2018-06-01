@@ -27,6 +27,11 @@ function get_profile($login)
 	return $sql; 
 }
 
+function ft_hash($login, $passwd)
+{
+	return hash('sha256', $login).hash('whirlpool', $passwd);
+}
+
 function ft_error()
 {
 	if(isset($_SESSION['error']))

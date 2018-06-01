@@ -28,4 +28,33 @@ function get_picture($login)
 	return $req;
 }
 
+function ft_pswd_check($login, $pass)
+{
+	$passwd = ft_hash($login, $passwd);
+	$db = db_connect();
+
+	$sql = $db->prepare ("SELECT * FROM user WHERE login=:login AND pass=:passwd");
+	$sql->bindParam("login", $login, PDO::PARAM_STR);
+	$sql->bindParam("passwd", $passwd, PDO::PARAM_STR);
+   $sql->execute();
+   $data = $sql->fetch();
+   if ($data == "")
+   {
+	   $_SESSION['error'] = "Mauvais mot de passe";
+	   return false;
+   }
+   return true;
+}
+
+function ft_error_f()
+{
+	if(isset($_SESSION['field']))
+	{
+		$_SESSION['field'] = NULL;
+		return "*";
+	}
+	else
+		return "";
+}
+
 ?>
