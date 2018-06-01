@@ -20,7 +20,7 @@
 		<tr><td><br/></td></tr>
 		<tr>
 			<td id="col1"></td>
-			<td><input type="submit" name="submit" value="Supprimer le compte"> </td>
+			<td><input type="submit" name="submit" value="Supprimer le compte"><span style="font-weight:bold; color: #DA2C38"><?= $field ?></span></td>
 		</tr>
 		<tr><td><br/></td></tr>
 </form>

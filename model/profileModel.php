@@ -1,34 +1,11 @@
 <?php
 
-include ('config/database.php');
-
-function db_connect()
-{
-	global $DB_DSN, $DB_USER, $DB_PASSWORD;
-
-	try {
-		$db = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		return $db;
-	}
-	catch (PDOException $e) {
-		echo 'Erreur de connection: ' . $e->getMessage();
-	}
-}
+include ('CamagruModel.php');
 
 function get_picture($login)
 {
 	$db = db_connect();
 	$sql = "SELECT * FROM picture p INNER JOIN user u ON p.id_user = u.id WHERE u.login ='".$login."' ORDER BY UNIX_TIMESTAMP(date) DESC";
-	$req = $db->query($sql);
-
-	return $req;
-}
-
-function get_profile($login)
-{
-	$db = db_connect();
-	$sql = "SELECT * FROM user WHERE login ='".$login."'";
 	$req = $db->query($sql);
 
 	return $req;
@@ -65,18 +42,6 @@ function add_comment($login, $comment, $id)
 	$sql->execute();
 	$sql = "UPDATE picture SET comment= comment + 1 WHERE id_img = '".$id."'";
 	$db->query($sql);
-}
-
-function ft_error()
-{
-	if($_SESSION['error'] != NULL)
-	{
-		$tmp = $_SESSION['error'];
-		$_SESSION['error'] = NULL;
-		return $tmp;
-	}
-	else
-		return "";
 }
 
 function ft_activate_account($login)

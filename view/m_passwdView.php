@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <table id ="content">
-<form action="" method="post"">
+<form action="" method="post">
 		<tr>
 			<td rowspan="2" id="col1"><img src='<?= $profile['profile'] ?>' /></td>
 			<td rowspan="2" class="login"><?= $profile['login'] ?></td>

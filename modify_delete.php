@@ -15,6 +15,8 @@ $page4 = get_page();
 
 $error = ft_error();
 
+$field= ft_error_f();
+
 require('view/m_deleteView.php');
 
 ?>

@@ -15,6 +15,8 @@ $page4 = "";
 
 $error = ft_error();
 
+$field= ft_error_f();
+
 
 require('view/m_passwdView.php');
 
