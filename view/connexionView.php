@@ -5,7 +5,7 @@
 	<div id="connexion">
 		<div>
 			<br/>
-			<form action="" method="post"">
+			<form action="" method="post">
 				<table>
 					<tr>
 						<td><p style="font-weight:bold; color: #DA2C38"><?= $error ?></p></td>
@@ -23,7 +23,7 @@
 						<td><br/><hr></td>				
 					</tr>
 					<tr>
-						<td><p><a href=##>Mot de passe oubli&eacute ?</a></p></td>
+						<td><p><a href=##>Mot de passe oubli&eacute; ?</a></p></td>
 					</tr>
 				</table>
 			</form>

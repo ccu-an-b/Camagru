@@ -18,6 +18,10 @@ function db_connect()
 
 function get_page()
 {
+	if (empty($_GET['page']))
+	{
+		$_GET['page'] = 1;
+	}
 	$page = intval($_GET['page']); 
 	if ($page <= 0) 
     	$page = 1;

@@ -9,7 +9,13 @@ $profile = $profile->fetch();
 
 $picture = get_picture($_SESSION['login']);
 
+$page0="";
+$page1 = "";
+$page2 ="";
 $page3 = get_page();
+$page4 = "";
+
+$error = ft_error();
 
 require('view/m_pictureView.php');
 

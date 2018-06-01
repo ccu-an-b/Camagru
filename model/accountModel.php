@@ -34,7 +34,7 @@ function get_profile($login)
 
 function ft_error()
 {
-	if($_SESSION['error'] != NULL)
+	if(isset($_SESSION['error']))
 	{
 		$tmp = $_SESSION['error'];
 		$_SESSION['error'] = NULL;
@@ -60,7 +60,7 @@ function ft_mod($old, $new)
 
 function ft_error_f()
 {
-	if($_SESSION['field'] != NULL)
+	if(isset($_SESSION['field']))
 	{
 		$_SESSION['field'] = NULL;
 		return "*";

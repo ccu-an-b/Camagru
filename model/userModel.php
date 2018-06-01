@@ -2,8 +2,6 @@
 
 include ('config/database.php');
 
-session_start();
-
 function db_connect()
 {
 	global $DB_DSN, $DB_USER, $DB_PASSWORD;
@@ -127,20 +125,20 @@ function ft_user_del($login)
 
 function ft_activation_mail($login, $mail, $key)
 {
-	$header = 'MIME-Version: 1.0'."\n".'Content-type: text/html; charset=ISO-8859-1'."\n"."From: Camagru@contact.com"."\n";
+	$header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
 	$subjet = "Camagru : activez votre compte"."\n";
+	$link = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+	$link = str_replace("subscription.php", "", $link);
+	$link .='activation.php?log='.urlencode($login).'&key='.urlencode($key);
+
 	$message = "Bienvenue sur Camagru,"."\n\n";
 	$message .="Pour activer votre compte, veuillez cliquer sur le lien ci dessous."."\n\n";
-	$message .="http://127.0.0.1:8080/Camagru_git_o/subscription.php?log='.urlencode(".$login.").'&cle='.urlencode(".$key.")";
-	$message .="\n\n\n"."---------------"."\n";
+	$message .= $link;
+	$message .="\n\n"."---------------"."\n";
 	$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
-	if ( mail($mail, $subjet, $message, $header)) 
+	if ( !mail($mail, $subjet, $message, $header)) 
 	{
-		echo 'Votre message a bien été envoyé ';
-	}
-	else 
-	{
-		echo "Votre message n'a pas pu être envoyé";
+		$_SESSION['error'] = "Une erreur s&#39;est produite lors de l&#39;envoi du mail de confirmation.<br/> Veuillez recommencer la proc&eacute;dure";
 	}
 }
 
@@ -215,7 +213,7 @@ function ft_activation_mail($login, $mail, $key)
 
 function ft_error()
 {
-	if($_SESSION['error'] != NULL)
+	if(isset($_SESSION['error']))
 	{
 		$tmp = $_SESSION['error'];
 		$_SESSION['error'] = NULL;

@@ -28,7 +28,7 @@
 				</td>
 				<td style="width:60px">
 				<?php
-					if ($_SESSION['login'] != NULL)
+					if (isset($_SESSION['login']) )
 					{
 						echo '<a href="./logout.php"><img style="width:33px; height: 33px; margin-top: 5px" src="public/icons/logout.png"/></a>';
 					}
@@ -38,7 +38,7 @@
 				</td>
 				<td style="width:60px">
 				<?php
-					if ($_SESSION['login'] != NULL)
+					if (isset($_SESSION['login']))
 					{
 						echo '<img style="width:45px; height: 45px; margin-top: 2px" src="public/icons/notification.png"/>';
 					}
@@ -49,7 +49,7 @@
 					<img style="width:40px; height: 40px" src="public/icons/gallery.png"/></a>
 				</td>
 				<td style="width:50px">
-					<a href="<?php if ($_SESSION['login'] != NULL) {echo "profile.php";} else {echo "connexion.php";}?>">
+					<a href="<?php if (isset($_SESSION['login'])) {echo "profile.php";} else {echo "connexion.php";}?>">
 					<img style="width:40px; height: 40px; margin-top: 2px" src="public/icons/account.png"/></a>
 				</td>
 			</tr></table>

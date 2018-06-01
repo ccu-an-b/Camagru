@@ -67,4 +67,24 @@ function add_comment($login, $comment, $id)
 	$db->query($sql);
 }
 
+function ft_error()
+{
+	if($_SESSION['error'] != NULL)
+	{
+		$tmp = $_SESSION['error'];
+		$_SESSION['error'] = NULL;
+		return $tmp;
+	}
+	else
+		return "";
+}
+
+function ft_activate_account($login)
+{
+	$db = db_connect();
+	$sql = $db->prepare("UPDATE user SET active = '1' WHERE login = :login ");
+	$sql->bindParam('login', $login, PDO::PARAM_STR);
+	$sql->execute();
+}
+
 ?>
