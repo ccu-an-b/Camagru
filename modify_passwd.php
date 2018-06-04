@@ -26,6 +26,7 @@ else if (isset($_POST['submit']))
     {
         if ($_POST['new_pass'] == $_POST['new_pass_2'])
         {
+            ft_mod_pass($_SESSION['login'], $_POST['new_pass']);
             $_SESSION['error'] = "Mot de passe modifi&eacute;";
         }
         else

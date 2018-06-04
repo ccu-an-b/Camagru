@@ -19,7 +19,6 @@ function get_page()
 function get_gallery($page, $limit)
 {
 	$db = db_connect();
-
 	$start = ($page - 1) * $limit;
 	$sql = 'SELECT * FROM picture ORDER BY UNIX_TIMESTAMP(date) DESC LIMIT :limite OFFSET :debut';
 	$sql = $db->prepare($sql);

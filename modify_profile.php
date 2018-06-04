@@ -7,6 +7,13 @@ require ('model/accountModel.php');
 $profile = get_profile($_SESSION['login']);
 $profile = $profile->fetch();
 
+$page0 = get_page();
+$page1 = "";
+$page2 ="";
+$page3 = "";
+$page4 = "";
+
+
 if ((empty($_POST['login']) || empty($_POST['mail'])) && isset($_POST['submit']))
 {
  	$_SESSION['field'] = "1";
@@ -31,12 +38,6 @@ if ((empty($_POST['login']) || empty($_POST['mail'])) && isset($_POST['submit'])
 // 			$_SESSION['error'] = "Adresse mail modifiée";
 // 	}
 // }
-
-$page0 = get_page();
-$page1 = "";
-$page2 ="";
-$page3 = "";
-$page4 = "";
 
 
 $error = ft_error();

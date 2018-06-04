@@ -40,8 +40,6 @@ function callback(data, item)
 			var cell = new_row.insertCell(0);
 			cell.innerHTML = "<b>"+data[i].login+" </b> "+data[i].text;
 			cell.colSpan = 3 ;
-
-
 		}
 	}
 }
@@ -56,9 +54,9 @@ function ajax_req(id, item) {
             // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
+				console.log(this.responseText);
                 var data = JSON.parse(this.responseText);
 				callback(data, item);
             }
