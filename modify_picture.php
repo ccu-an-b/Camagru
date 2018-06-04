@@ -17,6 +17,14 @@ $page4 = "";
 
 $error = ft_error();
 
+if (isset($_POST['submit']) && isset($_POST['img']))
+{
+    foreach($_POST['img'] as $key)
+    {
+       echo $key ;
+    }
+}
+
 require('view/m_pictureView.php');
 
 ?>

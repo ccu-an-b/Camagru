@@ -401,6 +401,7 @@ a {
 	width:30%;
 	font-size:20px;
 	padding: 0;
+	border-right: 1px solid #4B4453;
 }
 
 #category td {
@@ -436,7 +437,6 @@ a {
 	padding-top: 15px;
 	width:66%;
 	font-size: 18px;
-	border-left: 1px solid #4B4453;
 	padding-left: 15px;
 }
 
