@@ -15,12 +15,12 @@
 		<tr><td><br/></td></tr>
 		<tr>
 			<td id="col1">Entrez votre mot de passe</td>
-			<td><input type="password" name="passwd"></td>
+			<td><input type="password" name="pass"><span style="margin-left:10px;font-weight:bold; color: #DA2C38"><?= $field ?></span></td>
 		</tr>
 		<tr><td><br/></td></tr>
 		<tr>
 			<td id="col1"></td>
-			<td><input type="submit" name="submit" value="Supprimer le compte"><span style="font-weight:bold; color: #DA2C38"><?= $field ?></span></td>
+			<td><input type="submit" name="submit" value="Supprimer le compte"></td>
 		</tr>
 		<tr><td><br/></td></tr>
 </form>

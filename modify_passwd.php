@@ -22,7 +22,7 @@ if (isset($_POST['submit']) && (empty($_POST['old_pass']) || empty($_POST['new_p
 
 else if (isset($_POST['submit']))
 {
-    if (ft_pswd_check($_SESSION['login'], $_POST['old_pass']))
+    if (ft_user_check($_SESSION['login'], $_POST['old_pass']))
     {
         if ($_POST['new_pass'] == $_POST['new_pass_2'])
         {

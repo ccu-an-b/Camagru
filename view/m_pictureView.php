@@ -23,19 +23,14 @@
 	{
 		echo "<p style='color:red'>Vous n&#39;avez pas encore pris de photos</p>";
 	}
+	else 
+	{
+		echo "<tr><td colspan = '3'><input type='submit' name='submit' value='Supprimer'></td></tr>";
+	}
 	$picture->closeCursor();
 ?>
-	<tr>
-		<td colspan = "3"><input type="submit" name="submit" value="Supprimer"></td>
-	</tr>
 </form>
 </table>
-<?php
-if ($i != 0)
-	{
-		echo "<p style='color:red'>S&eacute;lectionnez les photos &agrave; supprimer.</p>";
-	}
-?>
 <?php $form = ob_get_clean(); ?>
 
 <?php require('view/accountView.php'); ?>
