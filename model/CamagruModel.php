@@ -27,6 +27,16 @@ function get_profile($login)
 	return $sql; 
 }
 
+function get_count($id, $item, $table)
+{
+	$db = db_connect();
+	$sql= "SELECT COUNT(*) FROM ".$table." WHERE ".$item." = '".$id."'";
+	$req = $db->query($sql);
+	$req = $req->fetch();
+
+	return ($req[0]);
+}
+
 function ft_hash($login, $passwd)
 {
 	return hash('sha256', $login).hash('whirlpool', $passwd);

@@ -61,6 +61,14 @@ function ft_mod_notif($login, $profile, $notif, $form)
 	}
 }
 
+function ft_del_img($id_img)
+{
+	$db = db_connect();
+	$sql = "DELETE FROM comments WHERE id_img ='".$id_img."'";
+	$db->query($sql);
+	echo "OK";
+}
+
 function ft_error_f()
 {
 	if(isset($_SESSION['field']))

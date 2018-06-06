@@ -17,11 +17,15 @@ $page4 = "";
 
 $error = ft_error();
 
+$count = get_count($profile['id'],"id_user", "comments");
+echo $count[0];
+
 if (isset($_POST['submit']) && isset($_POST['img']))
 {
     foreach($_POST['img'] as $key)
     {
        echo $key ;
+       ft_del_img($key);
     }
 }
 

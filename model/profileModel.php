@@ -20,17 +20,6 @@ function count_picture($login)
 	return $count;
 }
 
-function get_count($login, $elem)
-{
-	$req = get_picture($login);
-	$count = 0;
-	while ($data = $req->fetch())
-	{
-		$count += $data[$elem];
-	}
-	return $count;
-}
-
 function add_comment($login, $comment, $id)
 {
 	$db = db_connect();
@@ -42,6 +31,16 @@ function add_comment($login, $comment, $id)
 	$sql->execute();
 	$sql = "UPDATE picture SET comment= comment + 1 WHERE id_img = '".$id."'";
 	$db->query($sql);
+}
+
+function get_count_user($id_user, $table)
+{
+	$db = db_connect();
+	$sql = "SELECT COUNT(*) FROM ".$table." JOIN picture ON ".$table.".id_img = picture.id_img WHERE picture.id_user = '".$id_user."'";
+	$req = $db->query($sql);
+	$req = $req->fetch();
+
+	return ($req[0]);
 }
 
 function ft_activate_account($login)

@@ -10,7 +10,7 @@
 ?>
 
 	<div class="img" id= "img" title=<?= $data['id_img'] ?> >
-		<div id='info'> <p> <?= $data['like'] ?> <img style="width:30px;height:30px" src="public/icons/like.png"/><?= $data['comment'] ?> <img style="width:38px;height:38px" src="public/icons/comment.png"/> </p> </div>
+		<div id='info'> <p> <?= get_count($data['id_img'],"id_img", 'likes') ?> <img style="width:30px;height:30px" src="public/icons/like.png"/><?= get_count($data['id_img'],"id_img", 'comments') ?> <img style="width:38px;height:38px" src="public/icons/comment.png"/> </p> </div>
 		<img src='<?= $data['img'] ?>' />
 	</div>
 <?php
