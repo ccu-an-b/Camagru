@@ -78,6 +78,28 @@ function add_comment($login, $comment, $id)
 	$sql = $db->prepare("INSERT INTO comments (id_user, id_img, text) VALUES ('".$user_id."', '".$id."', :text)");
 	$sql->bindParam("text", $comment, PDO::PARAM_STR);
 	$sql->execute();
+	ft_comment_mail($id, $login, $comment);
+}
+
+function ft_comment_mail($id_img, $user, $comment)
+{
+	$db = db_connect();
+	$sql = "SELECT mail, notif_cmt FROM picture Join user WHERE picture.id_user = user.id AND picture.id_img = '".$id_img."'";
+	$profile = $db->query($sql);
+	$profile = $profile->fetch();
+
+	if ($profile['notif_cmt'] == '1')
+	{
+		$header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
+		$subjet = "Camagru : Nouveau commentaire"."\n";
+
+		$message = "Vous avez un nouveau commentaire de ".$user.":\n\n";
+		$message .= '"'.$comment.'"';
+		$message .="\n"."---------------"."\n";
+		$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
+
+		mail($profile['mail'], $subjet, $message, $header);
+	}
 }
 
 function ft_error()
