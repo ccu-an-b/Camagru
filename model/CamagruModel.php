@@ -102,6 +102,37 @@ function ft_comment_mail($id_img, $user, $comment)
 	}
 }
 
+function add_like($login, $id)
+{
+	$db = db_connect();
+	$user = get_profile($login);
+	$data = $user->fetch();
+	$user_id = $data['id'];
+	$sql = "INSERT INTO likes (id_user, id_img) VALUES ('".$user_id."', '".$id."')";
+	$req = $db->query($sql);
+	ft_like_mail($id, $login);
+}
+
+function ft_like_mail($id_img, $user)
+{
+	$db = db_connect();
+	$sql = "SELECT mail, notif_cmt FROM picture Join user WHERE picture.id_user = user.id AND picture.id_img = '".$id_img."'";
+	$profile = $db->query($sql);
+	$profile = $profile->fetch();
+
+	if ($profile['notif_like'] == '1')
+	{
+		$header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
+		$subjet = "Camagru : Nouveau like"."\n";
+
+		$message = "Vous avez un nouveau like de ".$user.":\n\n";
+		$message .="\n"."---------------"."\n";
+		$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
+
+		mail($profile['mail'], $subjet, $message, $header);
+	}
+}
+
 function ft_error()
 {
 	if(isset($_SESSION['error']))

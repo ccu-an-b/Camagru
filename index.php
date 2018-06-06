@@ -19,5 +19,11 @@ if(isset($_POST['comment']) && $_POST['submit'] === 'valider')
     header("Location: index.php");  
 }
 
+else if (isset($_GET['like']))
+{
+    add_like($_SESSION['login'], $_GET['id']);
+    header("Location: index.php"); 
+}
+
 require ('view/indexView.php');
 

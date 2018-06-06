@@ -20,6 +20,7 @@ function callback(data, item)
 		document.getElementById('img_log').src = data.profile;
 		document.getElementById('name_log').innerHTML = data.login;
 		document.getElementById('id_com').value = data.id_img;
+		document.getElementById('id_like').value = data.id_img;
 	}
 	else
 	{
