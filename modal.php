@@ -1,6 +1,15 @@
 <?php 
 
-include ('/model/CamagruModel.php');
+include ("model/CamagruModel.php");
+
+function get_count_like($id_img)
+{
+	$db = db_connect();
+	$sql= "SELECT COUNT(*) FROM likes WHERE id_img = '".$id_img."'";
+	$req = $db->query($sql);
+	$req = $req->fetch();
+	return $req;
+}
 
 function get_modal_img($id)
 {
@@ -20,23 +29,20 @@ function get_modal_com($id)
 	return $req;
 }
 
-if (isset($_GET['img'])){
-  $data = get_modal_img($_GET['img']);
-  $data = $data->fetch();
-  echo json_encode($data);
-}
+$data = get_modal_img($_GET['img']);
+$res[0] = $data->fetch();
 
-else if (isset($_GET['com'])){
-  $array = get_modal_com($_GET['com']);
-  
-  $i = 0;
-  $data = array();
-  while ($res = $array->fetch())
-  {
-  	$data[$i] = array('login' => $res['login'], 'text' => $res['text'], 'id_user' => $res['id_user'] );
-  	$i++;
-  }
-  echo json_encode($data);
-}
+$res[1] = get_count_like($_GET['img']);
 
+$array = get_modal_com($_GET['img']);  
+$i = 0;
+$data = array();
+while ($req = $array->fetch())
+{
+  	$data[$i] = array('login' => $req['login'], 'text' => $req['text'], 'id_user' => $req['id_user'] );
+ 	$i++;
+}  
+$res[2] = $data;
+
+echo json_encode($res);
 ?>

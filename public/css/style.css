@@ -243,14 +243,6 @@ a {
 	height:30px;
 }
 
-#modal_info #like_img input {
-	position:absolute;
-	width:30px; 
-	padding:10px; 
-	opacity: 0; 
-	height: 30px ;
-}
-
 #modal_info #like {
 	font-size: 18px;
 	color: #EF626C;

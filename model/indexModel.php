@@ -2,7 +2,6 @@
 
 include ('CamagruModel.php');
 
-
 function get_page()
 {
 	if (empty($_GET['page']))

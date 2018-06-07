@@ -107,7 +107,7 @@
 			<tr>
 				<input type='hidden' name='id' id='id_like' value="0">
 				<td id="like"></td>
-				<td id="like_img" ><input type="submit" name="like"><img  src="./public/icons/like_on.png" onmouseover="this.src='./public/icons/like_on_2.png'" onmouseout="this.src='./public/icons/like_on.png'"></td>
+				<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" type="submit" name="like"><img  src="./public/icons/like_on.png" ></td>
 				<td id="date"></td>
 			</tr>
 			</form>
