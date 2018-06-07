@@ -54,12 +54,14 @@
 		<tr>
       		<td colspan="3"><hr></td>
       	</tr>
+		<form method="GET" action="">
       	<tr>
-      		<td id="like" style="width:10px; text-align:center" ></td>
-      		<td id="like_img" ><img src="./public/icons/like_on.png"></td>
+		  	<input type='hidden' name='id' id='id_like' value="0">
+      		<td id="like"></td>
+      		<td id="like_img" ><input type="submit" name="like"><img src="./public/icons/like_on.png"></td>
       		<td id="date"></td>
-      		
       	</tr>
+		</form>
 		<tr>
       		<td colspan="3"><hr></td>
       	</tr>

@@ -106,8 +106,8 @@
 			<form method="GET" action="">
 			<tr>
 				<input type='hidden' name='id' id='id_like' value="0">
-				<td id="like" style="width:10px; text-align:center" ></td>
-				<td id="like_img" ><input type="submit" name="like" style="position:absolute;width:30px; "><img  src="./public/icons/like_on.png" onmouseover="this.src='./public/icons/like_on_2.png'" onmouseout="this.src='./public/icons/like_on.png'"></td>
+				<td id="like"></td>
+				<td id="like_img" ><input type="submit" name="like"><img  src="./public/icons/like_on.png" onmouseover="this.src='./public/icons/like_on_2.png'" onmouseout="this.src='./public/icons/like_on.png'"></td>
 				<td id="date"></td>
 			</tr>
 			</form>

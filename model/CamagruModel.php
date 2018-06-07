@@ -116,7 +116,7 @@ function add_like($login, $id)
 function ft_like_mail($id_img, $user)
 {
 	$db = db_connect();
-	$sql = "SELECT mail, notif_cmt FROM picture Join user WHERE picture.id_user = user.id AND picture.id_img = '".$id_img."'";
+	$sql = "SELECT mail, notif_like FROM picture Join user WHERE picture.id_user = user.id AND picture.id_img = '".$id_img."'";
 	$profile = $db->query($sql);
 	$profile = $profile->fetch();
 
