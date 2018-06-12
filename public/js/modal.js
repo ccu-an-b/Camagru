@@ -24,6 +24,11 @@ function callback(data)
 	{
 		document.getElementById('like_img_2').src ="./public/icons/like_on_2.png";
 	}
+	else
+	{
+		document.getElementById('like_img_2').src ="./public/icons/like_on.png";
+	}
+
 
 	var insert = document.getElementById("div_comment");
 	var remove = document.getElementsByClassName("comment");
@@ -89,4 +94,12 @@ for(i = 0 ; i < btn.length ; i++)
        		modal.style.display = "none";
     	}
 	}
+}
+
+function dropdown()
+{
+	var menu = document.getElementById("dropdown-content");if (menu.style.display == "block")						
+		menu.style.display="none";
+	else 
+		menu.style.display="block";
 }

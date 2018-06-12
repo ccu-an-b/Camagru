@@ -157,6 +157,51 @@ a {
 	color: #EF626C; 
 }
 
+/*--------------Notifications--------------*/
+td a .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+td.dropdown {
+	display: inline-block;
+	width:50px;
+}
+
+#dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+#dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+#dropdown-content a:hover {background-color: #f1f1f1}
+
+.notify-bubble {
+	position: absolute;
+	padding: 5px 8px 5px 7px;
+	margin-top: 9px;
+    background-color: #EF626C;
+    color: white;
+    font-size: 12px;
+	border-radius: 50%;
+	font-family: 'Happy Monkey', cursive;
+	
+  }
+
 /*--------------Modal--------------*/
 .modal {
     display: none; 

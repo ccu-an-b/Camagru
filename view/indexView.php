@@ -136,7 +136,7 @@
 
 </div>
 
-<script src="./public/js/modal.js"></script>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/template.php'); ?>

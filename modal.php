@@ -46,12 +46,13 @@ while ($req = $array->fetch())
 }  
 $res[2] = $data;
 
-$user = get_profile($_SESSION['login']);
+if (isset($_SESSION['login']))
+{$user = get_profile($_SESSION['login']);
 
 if (!check_like($user['id'], $_GET['img']))
 	$res[3] = "0";
 else
 	$res[3] = "1";
-
+}
 echo json_encode($res);
 ?>

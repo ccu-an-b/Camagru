@@ -34,15 +34,16 @@
 					}
 				?>
 				</td>
-				<td>
+				<td style="width: 80%">
 				</td>
-				<td style="width:60px">
-				<?php
-					if (isset($_SESSION['login']))
-					{
-						echo '<img style="width:45px; height: 45px; margin-top: 2px" src="public/icons/notification.png"/>';
-					}
-				?>
+				<td class="dropdown">
+				<span class="notify-bubble">11</span>
+				<a href="javascript:void(0)" class="dropbtn"><img onclick="dropdown()" style="width:45px; height: 45px; margin-top: 9px; margin-left:5px;" src="public/icons/notification.png"/></a>
+   				<div id="dropdown-content">
+      				<a href="#">Link 1</a>
+      				<a href="#">Link 2</a>
+      				<a href="#">Link 3</a>
+    			</div>
 				</td>
 				<td style="width:50px">
 					<a href="index.php">
@@ -62,3 +63,4 @@
 		</footer>
 	</body>
 </html>
+<script src="./public/js/modal.js"></script>
