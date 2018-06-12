@@ -7,8 +7,6 @@ require('model/profileModel.php');
 
 <?php
 $profile = get_profile($_GET['log']);
-$profile = $profile->fetch();
-
 
 if ($profile == "" || $profile['activation_key']!= $_GET['key'])
 {

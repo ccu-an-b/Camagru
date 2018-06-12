@@ -10,7 +10,14 @@
 ?>
 
 	<div class="img" id= "img" title=<?= $data['id_img'] ?> >
-		<div id='info'> <p> <?= get_count($data['id_img'],"id_img", 'likes') ?> <img style="width:30px;height:30px" src="public/icons/like.png"/><?= get_count($data['id_img'],"id_img", 'comments') ?> <img style="width:38px;height:38px" src="public/icons/comment.png"/> </p> </div>
+		<div id='info'> <p> <?= get_count($data['id_img'],"id_img", 'likes') ?> <img style="width:30px;height:30px" src="
+		<?php 
+			if (empty($_SESSION['login']) || !check_like($profile['id'], $data['id_img']))
+				echo "public/icons/like.png";
+			else
+				echo "public/icons/like_2.png";
+		?>"	/>
+		<?= get_count($data['id_img'],"id_img", 'comments') ?> <img style="width:38px;height:38px" src="public/icons/comment.png"/> </p> </div>
 		<img src='<?= $data['img'] ?>' />
 	</div>
 <?php
@@ -107,7 +114,7 @@
 			<tr>
 				<input type='hidden' name='id' id='id_like' value="0">
 				<td id="like"></td>
-				<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" type="submit" name="like"><img  src="./public/icons/like_on.png" ></td>
+				<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" type="submit" name="like"><img id="like_img_2"  src="./public/icons/like_on.png" ></td>
 				<td id="date"></td>
 			</tr>
 			</form>

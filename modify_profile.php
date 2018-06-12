@@ -5,7 +5,6 @@ session_start();
 require ('model/accountModel.php');
 
 $profile = get_profile($_SESSION['login']);
-$profile = $profile->fetch();
 
 $page0 = get_page();
 $page1 = "";
@@ -28,7 +27,6 @@ if ((empty($_POST['login']) || empty($_POST['mail'])) && isset($_POST['submit'])
 // 		$_SESSION['error'] = "Nom d'utilisateur modifié";
 // 		$_SESSION['login'] = $_POST['login'];
 // 		$profile = get_profile($_SESSION['login']);
-// 		$profile = $profile->fetch();
 // 	}
 // 	if ($_POST['mail'] != $profile['mail'])
 // 	{

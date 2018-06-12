@@ -1,6 +1,7 @@
 <?php
 
 include ('config/database.php');
+include ('model/modalModel.php');
 
 function db_connect()
 {
@@ -23,8 +24,8 @@ function get_profile($login)
 	$sql = $db->prepare("SELECT * FROM user WHERE login = :login");
     $sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->execute();
-
-	return $sql; 
+	$res = $sql->fetch();
+	return $res; 
 }
 
 function get_count($id, $item, $table)
@@ -67,56 +68,6 @@ function ft_user_check($login, $passwd)
 	   $_SESSION['login'] = $login;
 	   return true;
    }
-}
-
-function add_comment($login, $comment, $id)
-{
-	$db = db_connect();
-	$user = get_profile($login);
-	$data = $user->fetch();
-	$user_id = $data['id'];
-	$sql = $db->prepare("INSERT INTO comments (id_user, id_img, text) VALUES ('".$user_id."', '".$id."', :text)");
-	$sql->bindParam("text", $comment, PDO::PARAM_STR);
-	$sql->execute();
-	ft_notif_mail($id, $login, $comment, "commentaire");
-}
-
-function add_like($login, $id)
-{
-	$db = db_connect();
-	$user = get_profile($login);
-	$data = $user->fetch();
-	$user_id = $data['id'];
-	$sql = "INSERT INTO likes (id_user, id_img) VALUES ('".$user_id."', '".$id."')";
-	$req = $db->query($sql);
-	ft_notif_mail($id, $login, "", "like");
-}
-
-function ft_notif_mail($id_img, $user, $comment, $item)
-{
-	$db = db_connect();
-	if ($item == "commentaire")
-		$index = 'notif_cmt';
-	else
-		$index = 'notif_like';
-
-	$sql = "SELECT mail, ".$index." ,login FROM picture Join user WHERE picture.id_user = user.id AND picture.id_img = '".$id_img."'";
-	$profile = $db->query($sql);
-	$profile = $profile->fetch();
-
-	if ($profile[$index] == '1' && ($profile['login'] != $user) )
-	{
-		$header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
-		$subjet = "Camagru : Nouveau ".$item."\n";
-
-		$message = "Vous avez un nouveau ".$item." de ".$user.":\n\n";
-		if ($item == "commentaire")
-			$message .= '"'.$comment.'"';
-		$message .="\n"."---------------"."\n";
-		$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
-
-		mail($profile['mail'], $subjet, $message, $header);
-	}
 }
 
 function ft_error()

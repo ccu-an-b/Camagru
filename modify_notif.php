@@ -5,7 +5,6 @@ session_start();
 require ('model/accountModel.php');
 
 $profile = get_profile($_SESSION['login']);
-$profile = $profile->fetch();
 
 $page0="";
 $page1 ="";
