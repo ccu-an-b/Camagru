@@ -1,29 +1,44 @@
 <?php
-function add_comment($login, $comment, $id)
+
+function get_profile_img($id_img)
 {
 	$db = db_connect();
-	$data = get_profile($login);
+	$sql = "SELECT id FROM picture Join user WHERE picture.id_user = user.id AND picture.id_img = '".$id_img."'";
+	$profile_id = $db->query($sql);
+	$profile_id = $profile_id->fetch();
 
-	$user_id = $data['id'];
-	$sql = $db->prepare("INSERT INTO comments (id_user, id_img, text) VALUES ('".$user_id."', '".$id."', :text)");
-	$sql->bindParam("text", $comment, PDO::PARAM_STR);
-	$sql->execute();
-	ft_notif_mail($id, $login, $comment, "commentaire");
+	return $profile_id;
+
 }
 
-function add_like($login, $id)
+function add_comment($login, $comment, $id_img)
+{
+	$db = db_connect();
+	$data = get_profile($login);
+	$user_id = $data['id'];
+
+	$profile_id = get_profile_img($id_img);
+
+	$sql = $db->prepare("INSERT INTO comments (id_user, id_profile, id_img, text) VALUES ('".$user_id."', '".$profile_id['id']."','".$id_img."', :text)");
+	$sql->bindParam("text", $comment, PDO::PARAM_STR);
+	$sql->execute();
+	ft_notification($id_img, $login, $comment, "commentaire");
+}
+
+function add_like($login, $id_img)
 {
 	$db = db_connect();
 	$data = get_profile($login);
 
 	$user_id = $data['id'];
-	if (!check_like($user_id, $id))
+	if (!check_like($user_id, $id_img))
 	{
-		$sql = "INSERT INTO likes (id_user, id_img) VALUES ('".$user_id."', '".$id."')";
-		ft_notif_mail($id, $login, "", "like");
+		$profile_id = get_profile_img($id_img);
+		$sql = "INSERT INTO likes (id_user, id_profile, id_img) VALUES ('".$user_id."', '".$profile_id['id']."', '".$id_img."')";
+		ft_notification($id, $login, "", "like");
 	}
 	else
-		$sql = "DELETE FROM likes WHERE id_user ='".$user_id."' AND id_img = '".$id."'";
+		$sql = "DELETE FROM likes WHERE id_user ='".$user_id."' AND id_img = '".$id_img."'";
 	$db->query($sql);
 }
 
@@ -39,7 +54,7 @@ function check_like($id_user, $id_img)
 		return true;
 }
 
-function ft_notif_mail($id_img, $user, $comment, $item)
+function ft_notification($id_img, $user, $comment, $item)
 {
 	$db = db_connect();
 	if ($item == "commentaire")

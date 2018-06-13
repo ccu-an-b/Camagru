@@ -78,6 +78,20 @@ a {
 
 }
 
+/*--------Scrollbar-------*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.7);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.7);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #4B4453;
+}
+
 /*--------------Index.php--------------*/
 #img {
 	align-items: center;
@@ -174,10 +188,30 @@ td.dropdown {
 #dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    width: 250px;
+    background-color:#FAF4F5 ;
+    width: 350px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+#dropdown-content #notif-logo {
+	object-fit: cover;
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+	background-color: rgba(232,233,243, 0.7);
+	float: left;
+	margin-right: 10px;
+}
+
+#dropdown-content #notif-img {
+	object-fit: cover;
+	height: 40px;
+	width: 40px;
+	float: right;
+	margin-left: 10px;
 }
 
 #dropdown-content a {
@@ -185,12 +219,27 @@ td.dropdown {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    text-align: left;
+	text-align: left;
+	background-color: rgba(255,255,255,0.7);
+	height: 40px; 
 }
 
-#dropdown-content a:hover {background-color: #f1f1f1}
+#dropdown-content a p {
+	height: 40px;
+	font-size: 20px;
+	margin: 0;
+	display: inline-block;
+	top: 0;
+}
 
-.notify-bubble {
+#dropdown-content p #notif-date {
+	color: grey;
+	font-size: 12px;
+}
+
+#dropdown-content a:hover {background-color:  rgba(232,233,243, 0.7)}
+
+#notify-bubble {
 	position: absolute;
 	padding: 5px 8px 5px 7px;
 	margin-top: 9px;

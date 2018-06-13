@@ -37,12 +37,14 @@
 				<td style="width: 80%">
 				</td>
 				<td class="dropdown">
-				<span class="notify-bubble">11</span>
+				<span id="notify-bubble">11</span>
 				<a href="javascript:void(0)" class="dropbtn"><img onclick="dropdown()" style="width:45px; height: 45px; margin-top: 9px; margin-left:5px;" src="public/icons/notification.png"/></a>
    				<div id="dropdown-content">
-      				<a href="#">Link 1</a>
-      				<a href="#">Link 2</a>
-      				<a href="#">Link 3</a>
+					<a href="#"><img id="notif-logo" src="./public/icons/profile.png"><p>Chloe a commenté votre photo</br><span id="notif-date">07 Mai 2018</span></p><img id="notif-img" src="https://images.unsplash.com/photo-1485921198582-a55119c97421?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c6d9cabdc7f046b490c67663caa3754e&auto=format&fit=crop&w=1000&q=80"></a>
+					<a href="#"><img id="notif-logo" src="./public/icons/profile.png"><p>Chloe a commenté votre photo</br><span id="notif-date">07 Mai 2018</span></p><img id="notif-img" src="https://images.unsplash.com/photo-1485921198582-a55119c97421?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c6d9cabdc7f046b490c67663caa3754e&auto=format&fit=crop&w=1000&q=80"></a>
+					<a href="#"><img id="notif-logo" src="./public/icons/profile.png"><p>Chloe a commenté votre photo</br><span id="notif-date">07 Mai 2018</span></p><img id="notif-img" src="https://images.unsplash.com/photo-1485921198582-a55119c97421?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c6d9cabdc7f046b490c67663caa3754e&auto=format&fit=crop&w=1000&q=80"></a>
+					<a href="#"><img id="notif-logo" src="./public/icons/profile.png"><p>Chloe a commenté votre photo</br><span id="notif-date">07 Mai 2018</span></p><img id="notif-img" src="https://images.unsplash.com/photo-1485921198582-a55119c97421?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c6d9cabdc7f046b490c67663caa3754e&auto=format&fit=crop&w=1000&q=80"></a>
+					<a href="#"><img id="notif-logo" src="./public/icons/profile.png"><p>Chloe a commenté votre photo</br><span id="notif-date">07 Mai 2018</span></p><img id="notif-img" src="https://images.unsplash.com/photo-1485921198582-a55119c97421?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c6d9cabdc7f046b490c67663caa3754e&auto=format&fit=crop&w=1000&q=80"></a>
     			</div>
 				</td>
 				<td style="width:50px">
@@ -63,4 +65,4 @@
 		</footer>
 	</body>
 </html>
-<script src="./public/js/modal.js"></script>
+<script src="./public/js/notification.js"></script>

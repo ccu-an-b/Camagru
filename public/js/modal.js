@@ -1,16 +1,16 @@
+function date(date)
+{
+	date = date.split("-");
+
+	var day = date[2].split(" ");
+
+	var month = {"01": 'Janvier', "02": 'Fevrier', "03": 'Mars', "04": 'Avril', "05": 'Mai', "06": 'Juin', "07": 'Juillet', "08": 'Août', "09": 'Septembre', "10": 'Octobre', "11": 'Novembre', "12": 'Decembre'};
+	var res = day[0]+" "+month[date[1]]+" "+date[0];
+	return res;
+}
+
 function callback(data)
 {
-	function date(date)
-	{
-		date = date.split("-");
-
-		var day = date[2].split(" ");
-
-		var month = {"01": 'Janvier', "02": 'Fevrier', "03": 'Mars', "04": 'Avril', "05": 'Mai', "06": 'Juin', "07": 'Juillet', "08": 'Août', "09": 'Septembre', "10": 'Octobre', "11": 'Novembre', "12": 'Decembre'};
-		var res = day[0]+" "+month[date[1]]+" "+date[0];
-		return res;
-	}
-
 	var res = date(data[0].date)
 	document.getElementById('div_imgModal').innerHTML = "<img id='imgModal' src='"+data[0].img+"' />";
 	document.getElementById('like').innerHTML = data[1][0];
@@ -50,12 +50,12 @@ function callback(data)
 	}
 }
 
-function ajax_req(id) {
+function ajax_modal(id) {
 
 	if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
-    } 
+    }  
     else {
     // code for IE6, IE5
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -82,7 +82,7 @@ for(i = 0 ; i < btn.length ; i++)
 	btn[i].onclick = function() {
    		modal.style.display = "block";
    		var id = this.title;
-		ajax_req(id);		
+		ajax_modal(id);		
 	}
 
 	exit.onclick = function() {
@@ -96,10 +96,5 @@ for(i = 0 ; i < btn.length ; i++)
 	}
 }
 
-function dropdown()
-{
-	var menu = document.getElementById("dropdown-content");if (menu.style.display == "block")						
-		menu.style.display="none";
-	else 
-		menu.style.display="block";
-}
+
+
