@@ -11,20 +11,35 @@ function dropdown()
         bubble.style.display="none";
     }
 }
-
+ 
 function callback_notif(data){
 
     var i;
-    console.log(data.length);
-    for(i = 0 ; i < data.length ; i++)
+
+    if (data[0].length == '0')
     {
-        console.log(i);
-        var notif = document.createElement("a");
-        notif.innerHTML ="<img id='notif-logo' src='./public/icons/profile.png'><p>Chloe a test votre photo</br><span id='notif-date'></span></p><img id='notif-img' src='https://images.unsplash.com/photo-1485921198582-a55119c97421?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c6d9cabdc7f046b490c67663caa3754e&auto=format&fit=crop&w=1000&q=80'>";
+        var notif = document.createElement("p");
+        notif.innerHTML ="<p style='font-size:18px;color: grey;font-style: italic;text-align:center;width:100%'>Vous n'avez pas de notifications</p>";
         var element = document.getElementById("dropdown-content");
         element.appendChild(notif);
+
     }
-    console.log(data);
+    else 
+    {
+        for(i = 0 ; i < data[0].length ; i++)
+        {
+            var notif = document.createElement("a");
+            if(data[0][i].text == null)
+                var item = 'lik&eacute';
+            else
+                var item = 'comment&eacute';
+        
+        notif.innerHTML ="<img id='notif-logo' src='"+data[0][i].profile+"'><p>"+data[0][i].login+" a "+item+" votre photo</br><span id='notif-date'>"+date(data[0][i].date)+"</span></p><img id='notif-img' src='"+data[0][i].img+"'>";
+        var element = document.getElementById("dropdown-content");
+        element.appendChild(notif);
+        }
+        document.getElementById('notify-bubble').innerHTML = data[1];
+    }
 }
 
 function ajax_notification() {
@@ -40,7 +55,11 @@ function ajax_notification() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
-            callback_notif(data);
+            if (data != null)
+            {
+                callback_notif(data);
+            }
+            console.log(data);
         }
     };
     xmlhttp.open("GET","notification.php?",true);
