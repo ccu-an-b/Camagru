@@ -158,10 +158,15 @@ a {
 #dropdown img {
 	width:45px; 
 	height: 45px; 
-	margin-top: 0px; 
+	margin-top: 9px; 
 	margin-left:5px;
 }
 
+#profile_menu img{
+	width:40px; 
+	height: 40px; 
+	margin-top: 2px;
+}
 /*--------------Index.php--------------*/
 #img {
 	align-items: center;

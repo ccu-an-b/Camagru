@@ -57,7 +57,7 @@ function ajax_modal(id) {
 			callback(data);
         }
     };
-    xmlhttp.open("GET","modal.php?img="+id,true);
+    xmlhttp.open("GET","model/getmodal.php?img="+id,true);
     xmlhttp.send();
 }
 

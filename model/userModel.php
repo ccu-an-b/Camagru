@@ -1,6 +1,7 @@
 <?PHP
 
 include ('CamagruModel.php');
+include ('config/database.php');
 
 function ft_login_exist($login)
 {

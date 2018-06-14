@@ -1,7 +1,6 @@
 <?php
 
-include ('config/database.php');
-include ('model/modalModel.php');
+include ('modalModel.php');
 
 function db_connect()
 {

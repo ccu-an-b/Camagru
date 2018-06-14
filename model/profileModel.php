@@ -1,6 +1,7 @@
 <?php
 
 include ('CamagruModel.php');
+include ('config/database.php');
 
 function get_picture($login)
 {

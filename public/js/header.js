@@ -24,6 +24,11 @@ function date(date)
 	return res; 
 }
 
+function logout()
+{
+    ajax_header('logout');
+}
+
 function callback_notif(data){
 
     var i;
@@ -32,6 +37,10 @@ function callback_notif(data){
     if (data[0] == 0)
     {   
         profile_menu.href = 'connexion.php';
+    }
+    else if (data[0] == 3)
+    {
+        document.location.href="index.php";
     }
     else if (data[0] == 1)
     {
@@ -87,11 +96,11 @@ function ajax_header(item) {
             console.log(data);
         }
     };
-    xmlhttp.open("GET","header.php?id="+item,true);
+    xmlhttp.open("GET","model/getheader.php?action="+item,true);
     xmlhttp.send();
 }
 
-ajax_header('h');
+ajax_header('header');
 
 
 

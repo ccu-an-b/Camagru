@@ -35,7 +35,10 @@ function add_like($login, $id_img)
 	if (!check_like($user_id, $id_img))
 	{
 		$profile_id = get_profile_img($id_img);
-		$sql = "INSERT INTO likes (id_user, id_profile, id_img) VALUES ('".$user_id."', '".$profile_id['id']."', '".$id_img."')";
+		$active = '1';
+		if ($profile_id['id'] == $user_id)
+			$active = '0';
+		$sql = "INSERT INTO likes (id_user, id_profile, id_img, active) VALUES ('".$user_id."', '".$profile_id['id']."', '".$id_img."','".$active."')";
 		ft_notification($id, $login, "", "like");
 	}
 	else
