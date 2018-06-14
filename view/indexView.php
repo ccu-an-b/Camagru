@@ -10,7 +10,7 @@
 ?>
 
 	<div class="img" id= "img" title=<?= $data['id_img'] ?> >
-		<div id='info'> <p> <?= get_count($data['id_img'],"id_img", 'likes') ?> <img style="width:30px;height:30px" src="
+		<div id='info'> <p> <?= get_count($data['id_img'],"id_img", 'likes') ?> <img id="test" style="width:30px;height:30px" src="
 		<?php 
 			if (empty($_SESSION['login']) || !check_like($profile['id'], $data['id_img']))
 				echo "public/icons/like.png";

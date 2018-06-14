@@ -10,6 +10,7 @@ function ft_login_exist($login)
 	$sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->execute();
 	$data = $sql->fetch(PDO::FETCH_OBJ);
+	$db = null;
 	if ($data == "")
 		return true;
 	else
@@ -26,6 +27,7 @@ function ft_mail_exist($mail)
 	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
 	$sql->execute();
 	$data = $sql->fetch(PDO::FETCH_OBJ);
+	$db = null;
 	if ($data == "")
 		return true;
 	else
@@ -45,6 +47,7 @@ function ft_user_new($login, $pass, $mail)
 	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
 	$sql->bindParam("pass", $pass, PDO::PARAM_STR);
 	$sql->execute();
+	$db = null;
 	ft_activation_mail($login, $mail, $activation_key);
 }
 
@@ -54,6 +57,7 @@ function ft_user_del($login)
 	$db = db_connect();
 	$sql = "DELETE FROM user WHERE user.login='".$login."'";
 	$db->query($sql);
+	$db = null;
 }
 
 function ft_activation_mail($login, $mail, $key)

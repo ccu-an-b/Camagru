@@ -6,7 +6,7 @@ function get_profile_img($id_img)
 	$sql = "SELECT id FROM picture Join user WHERE picture.id_user = user.id AND picture.id_img = '".$id_img."'";
 	$profile_id = $db->query($sql);
 	$profile_id = $profile_id->fetch();
-
+	$db = null;
 	return $profile_id;
 
 }
@@ -22,6 +22,7 @@ function add_comment($login, $comment, $id_img)
 	$sql = $db->prepare("INSERT INTO comments (id_user, id_profile, id_img, text) VALUES ('".$user_id."', '".$profile_id['id']."','".$id_img."', :text)");
 	$sql->bindParam("text", $comment, PDO::PARAM_STR);
 	$sql->execute();
+	$db = null;
 	ft_notification($id_img, $login, $comment, "commentaire");
 }
 
@@ -40,6 +41,7 @@ function add_like($login, $id_img)
 	else
 		$sql = "DELETE FROM likes WHERE id_user ='".$user_id."' AND id_img = '".$id_img."'";
 	$db->query($sql);
+	$db = null;
 }
 
 function check_like($id_user, $id_img)
@@ -48,6 +50,7 @@ function check_like($id_user, $id_img)
 	$sql = "SELECT * FROM likes WHERE id_user ='".$id_user."' AND id_img = '".$id_img."'";
 	$req = $db->query($sql);
 	$req = $req->fetch() ;
+	$db = null;
 	if ($req == "")
 		return false;
 	else
@@ -79,6 +82,7 @@ function ft_notification($id_img, $user, $comment, $item)
 
 		mail($profile['mail'], $subjet, $message, $header);
 	}
+	$db = null;
 }
 
 ?>

@@ -25,6 +25,7 @@ function get_profile($login)
     $sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->execute();
 	$res = $sql->fetch();
+	$db = null;
 	return $res; 
 }
 
@@ -34,7 +35,7 @@ function get_count($id, $item, $table)
 	$sql= "SELECT COUNT(*) FROM ".$table." WHERE ".$item." = '".$id."'";
 	$req = $db->query($sql);
 	$req = $req->fetch();
-
+	$db = null;
 	return ($req[0]);
 }
 
@@ -56,16 +57,19 @@ function ft_user_check($login, $passwd)
    if ($data == "")
    {
 	   $_SESSION['error'] = "Mauvais mot de passe ou identifiant";
+	   $db = null;
 	   return false;
    }
    else if ($data['active'] === '0')
    {
 	   $_SESSION['error'] = "Votre compte n&#39;est pas encore activ&eacute;";
+	   $db = null;
 	   return false; 	
    }
    else	
    {
 	   $_SESSION['login'] = $login;
+	   $db = null;
 	   return true;
    }
 }

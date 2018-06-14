@@ -12,7 +12,7 @@
 		<link rel="shortcut icon" href="public/icons/favicon.ico" type="image/x-icon"/>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+		<script src="./public/js/header.js"></script>
 	</head>
 
 	<body>
@@ -26,17 +26,12 @@
 				<td style="width:110px">
 					<h1>CAMAGRU</h1>
 				</td>
-				<td style="width:60px">
-				<?php
-					if (isset($_SESSION['login']) )
-					{
-						echo '<a href="./logout.php"><img style="width:33px; height: 33px; margin-top: 5px" src="public/icons/logout.png"/></a>';
-					}
-				?>
+				<td id='logout'>
+					<a href="./logout.php"><img style="width:33px; height: 33px; margin-top: 5px" src="public/icons/logout.png"/></a>
 				</td>
 				<td style="width: 80%">
 				</td>
-				<td class="dropdown">
+				<td id="dropdown">
 				<span id="notify-bubble"></span>
 				<a href="javascript:void(0)" class="dropbtn"><img onclick="dropdown()" style="width:45px; height: 45px; margin-top: 9px; margin-left:5px;" src="public/icons/notification.png"/></a>
    				<div id="dropdown-content">
@@ -47,7 +42,7 @@
 					<img style="width:40px; height: 40px" src="public/icons/gallery.png"/></a>
 				</td>
 				<td style="width:50px">
-					<a href="<?php if (isset($_SESSION['login'])) {echo "profile.php";} else {echo "connexion.php";}?>">
+					<a id="profile_menu" href="">
 					<img style="width:40px; height: 40px; margin-top: 2px" src="public/icons/account.png"/></a>
 				</td>
 			</tr></table>
@@ -60,4 +55,3 @@
 		</footer>
 	</body>
 </html>
-<script src="./public/js/notification.js"></script>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require ('model/indexModel.php');
+require_once ('model/indexModel.php');
 
 $page = get_page();
 

@@ -24,7 +24,7 @@ function get_gallery($page, $limit)
 	$sql->bindValue('debut', $start, PDO::PARAM_INT);
 	$sql->bindValue('limite', $limit, PDO::PARAM_INT);
 	$sql->execute();
-
+	$db = null;
 	return $sql;
 }
 
@@ -37,6 +37,7 @@ function get_page_number($limit)
 
 	$row = $sql->rowCount();
 	$count = ceil($row / $limit);
+	$db = null;
 	return $count;
 
 }

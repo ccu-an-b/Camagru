@@ -1,13 +1,4 @@
-function date(date)
-{
-	date = date.split("-");
 
-	var day = date[2].split(" ");
-
-	var month = {"01": 'Janvier', "02": 'Fevrier', "03": 'Mars', "04": 'Avril', "05": 'Mai', "06": 'Juin', "07": 'Juillet', "08": 'Août', "09": 'Septembre', "10": 'Octobre', "11": 'Novembre', "12": 'Decembre'};
-	var res = day[0]+" "+month[date[1]]+" "+date[0];
-	return res; 
-}
 
 function callback(data)
 {
@@ -81,7 +72,7 @@ for(i = 0 ; i < btn.length ; i++)
 
 	btn[i].onclick = function() {
    		modal.style.display = "block";
-   		var id = this.title;
+		   var id = this.title;
 		ajax_modal(id);		
 	}
 

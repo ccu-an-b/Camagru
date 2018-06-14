@@ -24,6 +24,7 @@ function ft_mod_pass($login, $new_pass)
 	$sql->bindParam(":new", $passwd, PDO::PARAM_STR);
 	$sql->bindParam(":login", $login, PDO::PARAM_STR);
 	$sql->execute();
+	$db = null;
 	return true;
 }
 
@@ -40,6 +41,7 @@ function ft_mod_notif($login, $profile, $notif, $form)
 			$_SESSION['error'] = "Changement pris en compte";
 		else
 			$_SESSION['error'] = "Changements pris en compte";
+		$db = null;
 	}
 }
 
@@ -48,6 +50,7 @@ function ft_del($id, $table, $item)
 	$db = db_connect();
 	$sql = "DELETE  FROM ".$table."  WHERE ".$table.".".$item." = '".$id."'";
 	$db->query($sql);
+	$db = null;
 }
 
 function ft_del_img($id_img)
