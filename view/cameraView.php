@@ -10,14 +10,20 @@
             <?php
             while ($sticker = $data->fetch())
             {
-                echo "<img src=".$sticker['img_stickers'].">";
+                echo "<img src='".$sticker['img_stickers']."' alt='".$sticker['id_stickers']."'>";
             }
-            echo "<img src=".$day['img_stickers'].">";
+            echo "<img src='".$day['img_stickers']."' alt='".$sticker['id_stickers']."'>";
             ?>
         </div>
         </br>
         <button id="startbutton"></button>
-        <button id="uploadbutton">Upload une photo</button>
+        <form action="#" method="POST" enctype="multipart/form-data" id="picture"> 
+            <input type="file" name="uploadPic" id="uploadPic">
+					<input type="text" name="webcam" value="" id="webcam" style="display: none;">
+					<input type="text" name="layer_id" value="" id="layer_id" style="display: none">
+					<input type="submit" value="Upload" id="uploadbutton" name="submit" disabled>
+        <input type="text" name="sticker_id" value="" id="sticker_id" style="display: none">
+        </form>
         </br>
         <canvas id="canvas"></canvas>
         <div id='camera_gallery'>

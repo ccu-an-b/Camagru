@@ -6,7 +6,7 @@
       canvas       = document.querySelector('#canvas'),
       photo        = document.querySelector('#photo'),
       startbutton  = document.querySelector('#startbutton');
-
+      uploadbutton  = document.querySelector('#uploadbutton');
 
 
   navigator.mediaDevices.getUserMedia({ audio:false, video: {width: 320, height: 240}   }).then(stream => {
@@ -36,6 +36,25 @@
       takepicture();
     ev.preventDefault();
   }, false);
+
+  var layersCont = document.getElementById('div_stickers').getElementsByTagName('img')
+  Array.prototype.forEach.call(layersCont, function (e) {
+    e.addEventListener('click', function () {
+      var layer_id = document.getElementById('layer_id')
+      layer_id.value = e.alt
+      Array.prototype.forEach.call(layersCont, function (el) {
+        el.style.border = 'none'
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+      })
+      var width = 320 ; 
+      var height=  240;
+      canvas.getContext('2d').drawImage(e, 0, 0, width, height)
+      e.style.border = 'solid 1px #EF626C'
+      startbutton.disabled = false
+      uploadbutton.disabled = false
+    })
+  })
+
 
 })();
 

@@ -112,3 +112,38 @@ Array.prototype.forEach.call(layersCont, function (e) {
 		uploadButton.disabled = false
 	})
 })
+
+
+
+<div class="container">
+		<div class="assembly">
+			<div class="main">
+				<video id="video"></video>
+				<button id="pic">Take a pic</button>
+				<canvas id="canvas"></canvas>
+				<canvas id="apercu" style="display: none"></canvas>
+				<form action="#" method="POST" enctype="multipart/form-data" id="picture">
+					Choisir une image:
+					<input type="file" name="uploadPic" id="uploadPic">
+					<input type="text" name="webcam" value="" id="webcam" style="display: none;">
+					<input type="text" name="token" value="<?= $_SESSION['token'] ?>" style="display: none">
+					<input type="text" name="layer_id" value="" id="layer_id" style="display: none">
+					<input type="submit" value="Upload" id="uploadButton" name="submit" disabled>
+				</form>
+				<div class="res" id="res"></div>
+				<div class="layouts" id="layouts">
+					<?php $layers = $layers->getLayers();
+					for ($i = 0; $i < count($layers); $i++)
+					{
+						echo "<img src=\"" . $layers[$i]['path'] . "\" alt=\"" . $layers[$i]['id'] . "\" width=\"255px\" height=\"200px\">";
+					}
+					?>
+				</div>
+			</div>
+			<br><br>
+			<div class="side">
+				<h3>Previous pics</h3>
+				<div id="previousPic"></div>
+			</div>
+		</div>
+	</div>
