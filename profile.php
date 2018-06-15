@@ -18,15 +18,14 @@ $count_cmnt = get_count_user($profile['id'], 'comments');
 if(isset($_POST['comment']) && $_POST['submit'] === 'valider')
 {
     add_comment($_SESSION['login'], $_POST['comment'], $_POST['id']);
-    header("Location: profile.php");  
+    $_POST['comment']=""; 
 }
 
 else if (isset($_GET['like']))
 {
     add_like($_SESSION['login'], $_GET['id']);
-    header("Location: profile.php"); 
+    header('Location:profile.php');
 }
-
 
 require('view/profileView.php');
 

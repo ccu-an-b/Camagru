@@ -72,7 +72,7 @@
 		<tr>
       		<td colspan="3"><hr></td>
       	</tr>
-		<form method="POST" action="">
+		<form method="POST">
 		<input type='hidden' name='id' id='id_com' value="0">
       	<tr>
       		<td colspan="3"><input type="text" name="comment" placeholder="Ajouter un commentaire..."></td>

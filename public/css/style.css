@@ -109,13 +109,13 @@ a {
 
 /*--------Scrollbar-------*/
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 ::-webkit-scrollbar-track {
     background: rgba(255,255,255,0.7);
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.7);
+    background: rgba(232,233,243, 0.5);
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #4B4453;
@@ -153,12 +153,13 @@ a {
 
 #dropdown {
 	display: none;
+	margin-top: 7px;
 }
 
 #dropdown img {
 	width:45px; 
 	height: 45px; 
-	margin-top: 9px; 
+	margin-top: 2px; 
 	margin-left:5px;
 }
 
@@ -272,7 +273,7 @@ td.dropdown {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
 	max-height: 200px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 #dropdown-content #notif-logo {
@@ -561,6 +562,7 @@ td.dropdown {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
+	
 }
 
 #category {
@@ -568,7 +570,6 @@ td.dropdown {
 	width:30%;
 	font-size:20px;
 	padding: 0;
-	border-right: 1px solid #4B4453;
 }
 
 #category td {
@@ -605,6 +606,7 @@ td.dropdown {
 	width:66%;
 	font-size: 18px;
 	padding-left: 15px;
+	border-left: 1px solid #4B4453;
 }
 
 #content td {
@@ -675,26 +677,72 @@ td.dropdown {
 	margin-right: auto;
 	margin-left: auto;
 	padding-bottom: 25px;
+	text-align:middle;
 }
 
 #camera canvas {
 	display: none;
+}
+
+#camera #div_video {
+	margin-top: 30px;
+	margin-bottom: 15px;
+	background-color: rgba(232,233,243, 0.7);
+	padding: 10px;
 	width: 70%;
+	float:left;
 }
 
-#camera video {
-	margin-right: auto;
-	margin-left: auto;
-	clear: both;
-	width: 70%;
+#camera #div_stickers{
+	background-color: rgba(232,233,243, 0.7);
+	width: 25%;
+	height: 444px;
+	margin-top: 30px;
+	margin-bottom: 15px;
+	float: right;
+	overflow-y: auto;
 }
 
-#camera button {
-	clear: both;
+#camera #div_stickers img{
+	width: 50%;
+	margin-left: 10px;
+	margin-top: 5px;
 }
 
-#camera #photo {
-	width: 40%;
+#camera #div_video #video {
+	width: 100%;
+}
+
+#camera #startbutton {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color:  rgba(232,233,243, 0.7);
+	border: 3px solid #EF626C;
+	margin-right: 37%;
+	margin-left: 37%;
+}
+
+#camera #startbutton:hover {
+	background-color: #EF626C;
+}
+
+#camera #camera_gallery {
+	margin-top: 20px;
+	padding: 10px 10px 0px 10px;
+	border: 3px solid rgba(232,233,243, 0.7);
+	overflow-y:hidden;
+	overflow-x:auto;
+	width: 97%;
+	white-space: nowrap;
+	height: 150px;
+}
+
+
+
+#camera #camera_gallery #photo {
+	width: 20%;
+	padding: 2px;	
 }
 
 #camera #photo img {

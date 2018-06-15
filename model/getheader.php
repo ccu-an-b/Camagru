@@ -14,8 +14,11 @@ function get_notification($id_profile)
     $i = 0;
     while ($req = $res->fetch())
     {
+        if ($req['id_user'] != $id_profile)
+        {
           $data[$i] = array('id_user' => $req['id_user'], 'id_img' => $req['id_img'], 'text' => $req['text'],'date' => $req['date'], 'active' => $req['active'], 'login' => $req['login'], 'profile' => $req['profile'],'img' => $req['img']);
          $i++;
+        }
     }  
     $db = null;
     return ($data);

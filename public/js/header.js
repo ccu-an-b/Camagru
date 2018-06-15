@@ -62,8 +62,7 @@ function callback_notif(data){
                     var item = 'lik&eacute';
                 else
                     var item = 'comment&eacute';
-        
-                notif.innerHTML ="<img id='notif-logo' src='"+data[1][i].profile+"'><p>"+data[1][i].login+" a "+item+" votre photo</br><span id='notif-date'>"+date(data[1][i].date)+"</span></p><img id='notif-img' src='"+data[1][i].img+"'>";
+                notif.innerHTML ="<img id='notif-logo' src='"+data[1][i].profile+"'><p><b>"+data[1][i].login+"</b> a "+item+" votre photo</br><span id='notif-date'>"+date(data[1][i].date)+"</span></p><img id='notif-img' src='"+data[1][i].img+"'>";
                 notif_menu.appendChild(notif);
             }
             if (data[2] != '0')
@@ -93,7 +92,6 @@ function ajax_header(item) {
             {
                 callback_notif(data);
             }
-            console.log(data);
         }
     };
     xmlhttp.open("GET","model/getheader.php?action="+item,true);
