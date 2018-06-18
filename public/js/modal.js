@@ -6,6 +6,7 @@ function callback(data)
 	document.getElementById('div_imgModal').innerHTML = "<img id='imgModal' src='"+data[0].img+"' />";
 	document.getElementById('like').innerHTML = data[1][0];
 	document.getElementById('date').innerHTML = res;
+	document.getElementById('link_log').href = "profile.php?user="+data[0].login;
 	document.getElementById('img_log').src = data[0].profile;
 	document.getElementById('name_log').innerHTML = data[0].login;
 	document.getElementById('id_com').value = data[0].id_img;

@@ -5,7 +5,7 @@
 		<tr>
 			<td rowspan="3" style="width:40%"><img src='<?= $profile['profile'] ?>' /></td>
 			<td colspan="2" class="login"><?= $profile['login'] ?></td>
-			<td><input onclick="window.location.href='./modify_profile.php'" type="button" value="Modifier le profil"></td>
+			<td><input id="modify_profile" onclick="window.location.href='./modify_profile.php'" type="button" value="Modifier le profil"></td>
 		</tr>
 		<tr>
 			<td style="width:20%" ><b><?= $count_picture ?></b> Publications</td>
@@ -27,7 +27,7 @@
 		<div class="img" id= "img" title=<?= $data['id_img'] ?> >
 			<div id='info'> <p> <?= get_count($data['id_img'],"id_img", 'likes') ?> <img style="width:30px;height:30px"src="
 			<?php 
-				if (empty($_SESSION['login']) || !check_like($profile['id'], $data['id_img']))
+				if (empty($_SESSION['login']) || !check_like($profile_session['id'], $data['id_img']))
 					echo "public/icons/like.png";
 				else
 					echo "public/icons/like_2.png";
@@ -50,7 +50,7 @@
     <span id="div_imgModal"></span>
 	<table id ="modal_info">
     	<tr>
-      		<td rowspan="2" colspan="2" style="width:20%"><img id="img_log" src=""/></td>
+      		<td rowspan="2" colspan="2" style="width:20%"><a href="#" id="link_log" ><img id="img_log" src=""/></a></td>
 			<td rowspan="2" class="login" id="name_log"></td>
       	</tr>
       	<tr><td></td></tr>
@@ -61,33 +61,34 @@
 		<tr>
       		<td colspan="3"><hr></td>
       	</tr>
-		<form method="GET" action="">
-      	<tr>
+		<tr>
 		  	<input type='hidden' name='id' id='id_like' value="0">
       		<td id="like"></td>
-      		<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" type="submit" name="like"><img id="like_img_2" src="./public/icons/like_on.png"></td>
+      		<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" onclick="like()" type="submit" name="like"><img id="like_img_2" src="./public/icons/like_on.png"></td>
       		<td id="date"></td>
       	</tr>
-		</form>
 		<tr>
       		<td colspan="3"><hr></td>
       	</tr>
-		<form method="POST">
 		<input type='hidden' name='id' id='id_com' value="0">
       	<tr>
-      		<td colspan="3"><input type="text" name="comment" placeholder="Ajouter un commentaire..."></td>
+      		<td colspan="3"><input type="text" id="new_com" name="comment" placeholder="Ajouter un commentaire..."></td>
 		</tr>
 		<tr>
-		<td><input style="opacity:0" type="submit" name="submit" value="valider"></td>
+		<td><input style="opacity:0" type="submit" name="submit" id="submit" onclick="comment()" value="valider"></td>
 		</tr>
-		</form>
     </table>
     </div>
   </div>
 
 </div>
 
+<script>
+	var get  = '<?php if (isset($_GET['user']) && $_GET['user'] != $_SESSION['login']) echo 1; else echo 0 ?>';
+</script>
+
 <script src="./public/js/modal.js"></script>
+<script src="./public/js/addModal.js"></script>
 
 <?php $content = ob_get_clean(); ?>
 

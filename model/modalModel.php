@@ -41,7 +41,7 @@ function add_like($login, $id_img)
 		if ($profile_id['id'] == $user_id)
 			$active = '0';
 		$sql = "INSERT INTO likes (id_user, id_profile, id_img, active) VALUES ('".$user_id."', '".$profile_id['id']."', '".$id_img."','".$active."')";
-		ft_notification($id, $login, "", "like");
+		ft_notification($id_img, $login, "", "like");
 	}
 	else
 		$sql = "DELETE FROM likes WHERE id_user ='".$user_id."' AND id_img = '".$id_img."'";

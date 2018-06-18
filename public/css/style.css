@@ -398,8 +398,6 @@ td.dropdown {
 	width: 50%;
 	min-width: 240px;
 	float:left;
-	-webkit-animation : 1.5s ease-out 0s 1 fadeIn;
-    animation: 0.5s ease-out 0s 1 fadeIn;
 }
 
 #modal_info hr {
@@ -525,6 +523,10 @@ td.dropdown {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
+}
+
+#profile #modify_profile {
+	visibility: hidden;
 }
 
 #profile td {

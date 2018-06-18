@@ -4,28 +4,26 @@ session_start();
 
 require ('model/profileModel.php');
 
-$profile = get_profile($_SESSION['login']);
+$login = $_SESSION['login'];
 
-$picture = get_picture($_SESSION['login']);
+if (isset($_GET['user']))
+{
+    $login = $_GET['user'];
+    $url = "?user=".$_GET['user'];
+    echo $url;
+}
+    
+$profile = get_profile($login);
+$profile_session = get_profile($_SESSION['login']);
 
-$count_picture = count_picture($_SESSION['login']);
+$picture = get_picture($login);
+
+$count_picture = count_picture($login);
 
 $count_like = get_count_user($profile['id'], 'likes');
 
 $count_cmnt = get_count_user($profile['id'], 'comments');
 
-
-if(isset($_POST['comment']) && $_POST['submit'] === 'valider')
-{
-    add_comment($_SESSION['login'], $_POST['comment'], $_POST['id']);
-    $_POST['comment']=""; 
-}
-
-else if (isset($_GET['like']))
-{
-    add_like($_SESSION['login'], $_GET['id']);
-    header('Location:profile.php');
-}
 
 require('view/profileView.php');
 

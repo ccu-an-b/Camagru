@@ -1,19 +1,20 @@
 <?php ob_start(); ?>
 <table id ="content">
-<form action="" method="post">
 		<tr>
 			<td rowspan="2" id="col1"><img src='<?= $profile['profile'] ?>' /></td>
 			<td class="login"><?= $profile['login'] ?></td>
 		</tr>
 		<tr>
 			<td>
-				<form method="post" action="" enctype="multipart/form-data">
-					<label for="img_file" >modifier la photo de profil</label>
-					<input style="display: none" type="file" id="img_file" name="img_file" accept="image/*"/>
-				</form>
+			<form action="upload.php" method="post" enctype="multipart/form-data">
+			<label for="fileToUpload" >modifier la photo de profil</label>
+    		<input style="display: none" type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+    		<input type="submit" value="Upload Image" name="Modfier">
+			</form>	
 			</td>
 		</tr>
 		<tr><td><br/></td></tr>
+		<form action="" method="post">
 		<tr>
 			<td id="col1">Bio</td>
 			<td><textarea style="height:80px;" type="text" name="bio"><?= $profile['bio']?></textarea></td>

@@ -98,8 +98,8 @@
 	<div class="modal-body">
 		<span id="div_imgModal"></span>
 		<table id ="modal_info">
-			<tr>
-				<td rowspan="2" colspan="2" style="width:20%"><img id="img_log" src='<?= $profile['profile'] ?>' /></td>
+			<!-- <tr>
+				<td rowspan="2" colspan="2" style="width:20%"><a href="#" id="link_log" ><img id="img_log" src='' /></a></td>
 				<td rowspan="2" class="login" id="name_log"></td>
 			</tr>
 			<tr><td></td></tr>
@@ -129,7 +129,35 @@
 			<tr>
 			<td><input style="opacity:0" type="submit" name="submit" value="valider"></td>
 			</tr>
-			</form>
+			</form> -->
+			<tr>
+      		<td rowspan="2" colspan="2" style="width:20%"><a href="#" id="link_log" ><img id="img_log" src=""/></a></td>
+			<td rowspan="2" class="login" id="name_log"></td>
+      	</tr>
+      	<tr><td></td></tr>
+		<tr id="div_comment">
+      		<td colspan="3"><hr></td>
+      	</tr>
+      	<tr><td></td></tr>
+		<tr>
+      		<td colspan="3"><hr></td>
+      	</tr>
+		<tr>
+		  	<input type='hidden' name='id' id='id_like' value="0">
+      		<td id="like"></td>
+      		<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" onclick="like()" type="submit" name="like"><img id="like_img_2" src="./public/icons/like_on.png"></td>
+      		<td id="date"></td>
+      	</tr>
+		<tr>
+      		<td colspan="3"><hr></td>
+      	</tr>
+		<input type='hidden' name='id' id='id_com' value="0">
+      	<tr>
+      		<td colspan="3"><input type="text" id="new_com" name="comment" placeholder="Ajouter un commentaire..."></td>
+		</tr>
+		<tr>
+		<td><input style="opacity:0" type="submit" name="submit" id="submit" onclick="comment()" value="valider"></td>
+		</tr>
 		</table>
 	</div>
 	</div>
@@ -137,7 +165,7 @@
 </div>
 
 <script src="./public/js/modal.js"></script>
-
+<script src="./public/js/addModal.js"></script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/template.php'); ?>

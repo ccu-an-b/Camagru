@@ -13,11 +13,11 @@ $page3 = "";
 $page4 = "";
 
 
-if ((empty($_POST['login']) || empty($_POST['mail'])) && isset($_POST['submit']))
-{
- 	$_SESSION['field'] = "1";
- 	$_SESSION['error'] = "* Champs obligatoires";
-}
+//if ((empty($_POST['login']) || empty($_POST['mail'])) && isset($_POST['submit']))
+//{
+// 	$_SESSION['field'] = "1";
+//	$_SESSION['error'] = "* Champs obligatoires";
+//}
 
 // else 
 // {
