@@ -1,8 +1,5 @@
 <?php
 
-include ('CamagruModel.php');
-include ('config/database.php');
-
 function get_page()
 {
 	if (empty($_GET['page']))

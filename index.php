@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-require_once ('model/indexModel.php');
+include ('model/indexModel.php');
+include ("model/CamagruModel.php");
+include ("config/database.php");
 
 $page = get_page();
 

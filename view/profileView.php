@@ -1,6 +1,5 @@
 <?php ob_start(); ?>
 
-
 	<table id="profile">
 		<tr>
 			<td rowspan="3" style="width:40%"><img src='<?= $profile['profile'] ?>' /></td>
@@ -20,25 +19,6 @@
 	<hr id="hr_title"/>
 	<br/>
 	<div id="gallery">
-	<?php
-	while ($data = $picture->fetch())
-	{
-	?>
-		<div class="img" id= "img" title=<?= $data['id_img'] ?> >
-			<div id='info'> <p> <?= get_count($data['id_img'],"id_img", 'likes') ?> <img style="width:30px;height:30px"src="
-			<?php 
-				if (empty($_SESSION['login']) || !check_like($profile_session['id'], $data['id_img']))
-					echo "public/icons/like.png";
-				else
-					echo "public/icons/like_2.png";
-			?>"	/>
-			<?= get_count($data['id_img'],"id_img", 'comments') ?> <img style="width:38px;height:38px" src="public/icons/comment.png"/> </p> </div>
-			<img src='<?= $data['img'] ?>' />
-		</div>
-	<?php
-	}
-	$picture->closeCursor();
-	?>
 	</div>
 
 
@@ -62,31 +42,33 @@
       		<td colspan="3"><hr></td>
       	</tr>
 		<tr>
-		  	<input type='hidden' name='id' id='id_like' value="0">
+		  	<input type='hidden' name='id' id='id_img' value="0">
       		<td id="like"></td>
-      		<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" onclick="like()" type="submit" name="like"><img id="like_img_2" src="./public/icons/like_on.png"></td>
+      		<td id="like_img" ><img onclick="<?php if (isset($_SESSION['login'])) echo "like()"; else echo "notLog()";?>" id="like_img_2" src="./public/icons/like_on.png"></td>
       		<td id="date"></td>
       	</tr>
 		<tr>
       		<td colspan="3"><hr></td>
       	</tr>
-		<input type='hidden' name='id' id='id_com' value="0">
       	<tr>
       		<td colspan="3"><input type="text" id="new_com" name="comment" placeholder="Ajouter un commentaire..."></td>
 		</tr>
 		<tr>
-		<td><input style="opacity:0" type="submit" name="submit" id="submit" onclick="comment()" value="valider"></td>
+		<td><input style="opacity:0" type="submit" name="submit" id="submit" onclick="<?php if (isset($_SESSION['login'])) echo "comment()"; else echo "notLog()";?>" value="valider"></td>
 		</tr>
     </table>
     </div>
   </div>
 
 </div>
-
+<script src="./public/js/gallery.js"></script>
 <script>
 	var get  = '<?php if (isset($_GET['user']) && $_GET['user'] != $_SESSION['login']) echo 1; else echo 0 ?>';
+	if (get == 0)
+		document.getElementById('modify_profile').style.visibility = "visible";
+	ajax("model/getGallery.php?user="+"<?php echo $login;?>", "gallery"); 
+	show_modal("<?php if(isset($_POST['img'])) echo $_POST['img']; else echo "none"?>");
 </script>
-
 <script src="./public/js/modal.js"></script>
 <script src="./public/js/addModal.js"></script>
 

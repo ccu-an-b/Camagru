@@ -3,27 +3,7 @@
 	<hr id="hr_title"/>
 	<br/>
 	<div id="gallery">
-
-<!-- Photo Gallery -->	
-<?php
-	while ($data = $gallery->fetch()) {
-?>
-
-	<div class="img" id= "img" title=<?= $data['id_img'] ?> >
-		<div id='info'> <p> <?= get_count($data['id_img'],"id_img", 'likes') ?> <img id="test" style="width:30px;height:30px" src="
-		<?php 
-			if (empty($_SESSION['login']) || !check_like($profile['id'], $data['id_img']))
-				echo "public/icons/like.png";
-			else
-				echo "public/icons/like_2.png";
-		?>"	/>
-		<?= get_count($data['id_img'],"id_img", 'comments') ?> <img style="width:38px;height:38px" src="public/icons/comment.png"/> </p> </div>
-		<img src='<?= $data['img'] ?>' />
-	</div>
-<?php
-	}
-?>
-
+		<!-- Photo Gallery -->	
 	</div>
 	<br />
 
@@ -98,38 +78,6 @@
 	<div class="modal-body">
 		<span id="div_imgModal"></span>
 		<table id ="modal_info">
-			<!-- <tr>
-				<td rowspan="2" colspan="2" style="width:20%"><a href="#" id="link_log" ><img id="img_log" src='' /></a></td>
-				<td rowspan="2" class="login" id="name_log"></td>
-			</tr>
-			<tr><td></td></tr>
-			<tr id="div_comment">
-				<td colspan="3"><hr></td>
-			</tr>
-			<tr><td></td></tr>
-			<tr>
-				<td colspan="3"><hr></td>
-			</tr>
-			<form method="GET" action="">
-			<tr>
-				<input type='hidden' name='id' id='id_like' value="0">
-				<td id="like"></td>
-				<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" type="submit" name="like"><img id="like_img_2"  src="./public/icons/like_on.png" ></td>
-				<td id="date"></td>
-			</tr>
-			</form>
-			<tr>
-				<td colspan="3"><hr></td>
-			</tr>
-			<form method="POST" action="">
-			<input type='hidden' name='id' id='id_com' value="0">
-      		<tr>
-      			<td colspan="3"><input type="text" name="comment" placeholder="Ajouter un commentaire..."></td>
-			</tr>
-			<tr>
-			<td><input style="opacity:0" type="submit" name="submit" value="valider"></td>
-			</tr>
-			</form> -->
 			<tr>
       		<td rowspan="2" colspan="2" style="width:20%"><a href="#" id="link_log" ><img id="img_log" src=""/></a></td>
 			<td rowspan="2" class="login" id="name_log"></td>
@@ -143,29 +91,32 @@
       		<td colspan="3"><hr></td>
       	</tr>
 		<tr>
-		  	<input type='hidden' name='id' id='id_like' value="0">
+		  	<input type='hidden' name='id' id='id_img' value="0">
       		<td id="like"></td>
-      		<td id="like_img" ><input style="position:absolute; width:30px; padding:10px; opacity: 0; height: 30px" onclick="like()" type="submit" name="like"><img id="like_img_2" src="./public/icons/like_on.png"></td>
+      		<td id="like_img" ><img onclick="<?php if (isset($_SESSION['login'])) echo "like()"; else echo "notLog()";?>" id="like_img_2" src="./public/icons/like_on.png"></td>
       		<td id="date"></td>
       	</tr>
 		<tr>
       		<td colspan="3"><hr></td>
       	</tr>
-		<input type='hidden' name='id' id='id_com' value="0">
       	<tr>
       		<td colspan="3"><input type="text" id="new_com" name="comment" placeholder="Ajouter un commentaire..."></td>
 		</tr>
 		<tr>
-		<td><input style="opacity:0" type="submit" name="submit" id="submit" onclick="comment()" value="valider"></td>
+		<td><input style="opacity:0" type="submit" name="submit" id="submit" onclick="<?php if (isset($_SESSION['login'])) echo "comment()"; else echo "notLog()";?>" value="valider"></td>
 		</tr>
 		</table>
 	</div>
 	</div>
 
 </div>
-
+<script>
+	ajax("model/getGallery.php?page="+"<?php echo $page;?>", "gallery");
+</script>
+<script src="./public/js/gallery.js"></script>
 <script src="./public/js/modal.js"></script>
 <script src="./public/js/addModal.js"></script>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/template.php'); ?>

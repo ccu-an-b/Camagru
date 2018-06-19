@@ -8,7 +8,7 @@ function dropdown()
     else 
     {
         menu.style.display="block";
-        ajax_header("notif");
+        ajax('model/getheader.php?action=notif', 'header');
         bubble.style.display="none";
     }
 }
@@ -26,10 +26,10 @@ function date(date)
 
 function logout()
 {
-    ajax_header('logout');
+    ajax('model/getheader.php?action=logout', 'header');
 }
 
-function callback_notif(data){
+function callback_header(data){
 
     var i;
     var notif_menu = document.getElementById("dropdown-content");
@@ -62,7 +62,7 @@ function callback_notif(data){
                     var item = 'lik&eacute';
                 else
                     var item = 'comment&eacute';
-                notif.innerHTML ="<img id='notif-logo' src='"+data[1][i].profile+"'><p><b>"+data[1][i].login+"</b> a "+item+" votre photo</br><span id='notif-date'>"+date(data[1][i].date)+"</span></p><img id='notif-img' src='"+data[1][i].img+"'>";
+                notif.innerHTML ="<img id='notif-logo' src='"+data[1][i].profile+"'><p><b>"+data[1][i].login+"</b> a "+item+" votre photo</br><span id='notif-date'>"+date(data[1][i].date)+"</span></p><img id='notif-img' src='"+data[1][i].img+"'>"; 
                 notif_menu.appendChild(notif);
             }
             if (data[2] != '0')
@@ -75,30 +75,7 @@ function callback_notif(data){
     }
 }
 
-function ajax_header(item) {
-    
-    if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    }  
-    else {
-    // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
-            if (data != null)
-            {
-                callback_notif(data);
-            }
-        }
-    };
-    xmlhttp.open("GET","model/getheader.php?action="+item,true);
-    xmlhttp.send();
-}
-
-ajax_header('header');
+ajax('model/getheader.php?action=header', 'header');
 
 
 

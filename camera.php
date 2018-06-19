@@ -5,6 +5,9 @@ session_start();
 require ('model/CamagruModel.php');
 include ("config/database.php");
 
+if(empty($_SESSION['login']))
+    header('Location: index.php');
+
 date_default_timezone_set('Europe/Paris');
 $jd = cal_to_jd(CAL_GREGORIAN,date("m"),date("d"),date("Y"));
 $today = jddayofweek($jd,1);

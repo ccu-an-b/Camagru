@@ -12,7 +12,7 @@
 		<link rel="shortcut icon" href="public/icons/favicon.ico" type="image/x-icon"/>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+		<script src="./public/js/ajax.js"></script>
 	</head>
 
 	<body>

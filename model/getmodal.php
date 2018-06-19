@@ -19,7 +19,7 @@ function get_modal_img($id)
 	$db = db_connect();
 	$sql = "SELECT * FROM picture JOIN user WHERE picture.id_img ='".$id."' AND user.id = picture.id_user";
 	$req = $db->query($sql);
-	$db = NULL;
+	$db = NULL; 
 	return $req;
 }
 

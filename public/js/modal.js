@@ -1,6 +1,4 @@
-
-
-function callback(data)
+function callback_modal(data)
 {
 	var res = date(data[0].date)
 	document.getElementById('div_imgModal').innerHTML = "<img id='imgModal' src='"+data[0].img+"' />";
@@ -9,8 +7,7 @@ function callback(data)
 	document.getElementById('link_log').href = "profile.php?user="+data[0].login;
 	document.getElementById('img_log').src = data[0].profile;
 	document.getElementById('name_log').innerHTML = data[0].login;
-	document.getElementById('id_com').value = data[0].id_img;
-	document.getElementById('id_like').value = data[0].id_img;
+	document.getElementById('id_img').value = data[0].id_img;
 
 	if (data[3] == '1')
 	{
@@ -42,51 +39,7 @@ function callback(data)
 	}
 }
 
-function ajax_modal(id) {
 
-	if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    }  
-    else {
-    // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function() {
-    	if (this.readyState == 4 && this.status == 200) {
-			var data = JSON.parse(this.responseText);
-			callback(data);
-        }
-    };
-    xmlhttp.open("GET","model/getmodal.php?img="+id,true);
-    xmlhttp.send();
-}
-
-var modal = document.getElementById('myModal');
-
-var btn = document.getElementsByClassName("img");
-var i;
-for(i = 0 ; i < btn.length ; i++)
-{
-	var modalImg = document.getElementById("imgModal");
-	var exit = document.getElementsByClassName("close")[0];
-
-	btn[i].onclick = function() {
-   		modal.style.display = "block";
-		   var id = this.title;
-		ajax_modal(id);		
-	}
-
-	exit.onclick = function() {
-		modal.style.display = "none";
-	}
-
-	window.onclick = function(event) {
-    	if (event.target == modal) {
-       		modal.style.display = "none";
-    	}
-	}
-}
 
 
 

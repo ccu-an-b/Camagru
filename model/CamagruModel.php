@@ -2,7 +2,7 @@
 
 include ('modalModel.php');
 
-function db_connect()
+function db_connect() 
 {
 	global $DB_DSN, $DB_USER, $DB_PASSWORD;
 
