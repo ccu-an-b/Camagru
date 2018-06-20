@@ -10,6 +10,13 @@ if (isset($_GET['user']))
 {
     $data[0] = 'profile';
     $picture = get_picture($_GET['user']);
+    $profile = get_profile($_GET['user']);
+
+    $count_like = get_count_user($profile['id'], 'likes');
+    $count_com = get_count_user($profile['id'], 'comments');
+    $count_picture = count_picture($profile['login']);
+
+    $data[2] = array('login' => $profile['login'], 'profile'=> $profile['profile'], 'bio'=> $profile['bio'], 'like' => $count_like, 'comment' => $count_com, 'picture'=> $count_picture);
 }
 
 else {

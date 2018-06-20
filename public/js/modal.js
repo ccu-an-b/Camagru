@@ -18,7 +18,6 @@ function callback_modal(data)
 		document.getElementById('like_img_2').src ="./public/icons/like_on.png";
 	}
 
-
 	var insert = document.getElementById("div_comment");
 	var remove = document.getElementsByClassName("comment");
 	if (remove.length != 0)

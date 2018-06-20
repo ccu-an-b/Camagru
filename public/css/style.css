@@ -124,7 +124,25 @@ input:active {
     outline: none;
 }
 
+a:link {
+    color: #3D3D3E ;
+}
+
+a:visited {
+    color: #3D3D3E ;
+}
+
+a:hover {
+	color: #3D3D3E ;
+	text-decoration: underline;
+}
+
+a:active {
+    color: #3D3D3E ;
+}
+
 a {
+	color: #3D3D3E ;
 	cursor : pointer;
 }
 /*--------Scrollbar-------*/
@@ -433,6 +451,7 @@ td.dropdown {
 
 #modal_info #like_img img {
 	height:30px;
+	cursor:pointer;
 }
 
 #modal_info #like {

@@ -16,7 +16,9 @@
 	</head>
 
 	<body>
+		
 		<header>
+		<!-- Navigation Header -->				
 			<table class="header"><tr>
 			 	<td style="width:70px">
 					<a href="camera.php"><img style="width:60px; height: 60px" src="public/icons/logo.png"/></a>
@@ -50,7 +52,8 @@
 		<div id="main">
 
 		<?= $content ?>
-		
+
+		<!-- Picture Modal -->	
 			<div id="myModal" class="modal">
 				<span class="close">&times;</span>
 				<div class="modal-content">
@@ -72,7 +75,7 @@
 							<tr>
 		  						<input type='hidden' name='id' id='id_img' value="0">
       							<td id="like"></td>
-      							<td id="like_img" ><img onclick="<?php if (isset($_SESSION['login'])) echo "like()"; else echo "notLog()";?>" id="like_img_2" src="./public/icons/like_on.png"></td>
+      							<td id="like_img" onclick="<?php if (isset($_SESSION['login'])) echo "like()"; else echo "notLog()";?>" ><img id="like_img_2" src="./public/icons/like_on.png"></td>
       							<td id="date"></td>
       						</tr>
 							<tr>

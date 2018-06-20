@@ -21,6 +21,9 @@ function ajax(url, callback) {
                 case "header":
                     callback_header(data);
                     break;
+                case "add":
+                    callback_add(data);
+                    break;
             }
         }
         else
