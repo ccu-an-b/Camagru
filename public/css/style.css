@@ -89,6 +89,13 @@ a {
 	text-decoration: none;
 }
 
+input[type="submit"]{
+	cursor: pointer;
+}
+
+input[type="button"] {
+	cursor : pointer;
+}
 #main {
 	max-width: 1000px;
 	background-color: rgba(255,255,255,0.7);
@@ -117,6 +124,9 @@ input:active {
     outline: none;
 }
 
+a {
+	cursor : pointer;
+}
 /*--------Scrollbar-------*/
 ::-webkit-scrollbar {
     width: 8px;
@@ -180,6 +190,7 @@ input:active {
 }
 /*--------------Index.php--------------*/
 #img {
+	cursor : pointer;
 	align-items: center;
 	text-align:center;
 	margin: 20px;
@@ -189,17 +200,15 @@ input:active {
 	vertical-align: middle;
 	padding-top: 10px;
 	float: left;
-	-webkit-animation : 1.5s ease-out 0s 1 fadeIn;
-    animation: 1.5s ease-out 0s 1 fadeIn;
+	-webkit-animation : 0.5s ease-out 0s 1 fadeIn;
+    animation: 0.5s ease-out 0s 1 fadeIn;
 }
 
 #img img {
 	height: 250px;
 	width:  250px;
 	object-fit: cover;
-
 }
-
 
 #gallery {
 	display: flex;

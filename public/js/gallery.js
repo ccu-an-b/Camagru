@@ -32,19 +32,10 @@ var modal = document.getElementById('myModal');
 
 exit.onclick = function() {
     modal.style.display = "none";
-    exit();
 }
 
 window.onclick = function(event) {
     if (event.target == modal) {
            modal.style.display = "none";
-    }
-}
-
-function show_modal(id_img) {
-    if(id_img != "none")
-    {
-        modal.style.display = "block";
-        ajax("model/getmodal.php?img="+id_img, 'modal');
     }
 }

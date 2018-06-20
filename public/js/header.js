@@ -4,7 +4,7 @@ function dropdown()
     var bubble = document.getElementById("notify-bubble");
     
 	if (menu.style.display == "block")						
-		menu.style.display="none";
+        menu.style.display="none";
     else 
     {
         menu.style.display="block";
@@ -58,6 +58,8 @@ function callback_header(data){
             for(i = 0 ; i < data[1].length ; i++)
             {
                 var notif = document.createElement("a");
+                notif.setAttribute("class", "notification");
+                notif.setAttribute("title", data[1][i].id_img);
                 if(data[1][i].text == null)
                     var item = 'lik&eacute';
                 else
@@ -71,11 +73,21 @@ function callback_header(data){
                 bubble.innerHTML = data[2];
                 bubble.style.display = 'block';
             }
+            var notif_link = document.getElementsByClassName("notification");
+            
+                var i;
+                for(i = 0 ; i < notif_link.length ; i++)
+                {
+                    var modalImg = document.getElementById("imgModal");
+                
+                        notif_link[i].onclick = function() {
+                        modal.style.display = "block";
+                        var id = this.title;
+                        ajax("model/getmodal.php?img="+id, 'modal');		
+                    }
+                }
         }
     }
 }
 
 ajax('model/getheader.php?action=header', 'header');
-
-
-

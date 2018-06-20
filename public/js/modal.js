@@ -34,7 +34,7 @@ function callback_modal(data)
 		var new_row = insert.parentNode.insertRow( insert.rowIndex + 1 );
 		new_row.setAttribute("class", "comment");
 		var cell = new_row.insertCell(0);
-		cell.innerHTML = "<b>"+data[2][i].login+" </b> "+data[2][i].text;
+		cell.innerHTML = "<a style='font-family:\'Happy Monkey\', cursive;' href='profile.php?user="+data[2][i].login+"'><b>"+data[2][i].login+" </b></a> "+data[2][i].text;
 		cell.colSpan = 3 ;
 	}
 }
