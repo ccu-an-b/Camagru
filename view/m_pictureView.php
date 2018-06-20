@@ -1,5 +1,4 @@
 <?php ob_start(); ?>
-<table id="content">
 <form action="" method="post">
 <?php
 	$i = 0;
@@ -30,7 +29,6 @@
 	$picture->closeCursor();
 ?>
 </form>
-</table>
 <?php $form = ob_get_clean(); ?>
 
 <?php require('view/accountView.php'); ?>

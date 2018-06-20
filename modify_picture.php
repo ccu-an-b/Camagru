@@ -25,6 +25,22 @@ if (isset($_POST['submit']) && isset($_POST['img']))
     header("Location: modify_picture.php");
 }
 
-require('view/m_pictureView.php');
+switch ($_GET['page']) {
+    case 1:
+        require('view/m_profileView.php');
+        break;
+    case 2:
+        require('view/m_passwdView.php');
+        break;
+    case 3:
+        require('view/m_notifView.php');
+        break;
+    case 4:
+        require('view/m_pictureView.php');
+        break;
+    case 5:
+        require('view/m_deleteView.php');
+        break;
+}
 
 ?>

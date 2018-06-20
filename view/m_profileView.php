@@ -1,5 +1,4 @@
 <?php ob_start(); ?>
-<table id ="content">
 		<tr>
 			<td rowspan="2" id="col1"><img src='<?= $profile['profile'] ?>' /></td>
 			<td class="login"><?= $profile['login'] ?></td>
@@ -14,7 +13,7 @@
 			</td>
 		</tr>
 		<tr><td><br/></td></tr>
-		<form action="" method="post">
+	<form action="" method="post">
 		<tr>
 			<td id="col1">Bio</td>
 			<td><textarea style="height:80px;" type="text" name="bio"><?= $profile['bio']?></textarea></td>

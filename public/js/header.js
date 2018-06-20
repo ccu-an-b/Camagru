@@ -59,7 +59,7 @@ function callback_header(data){
             {
                 var notif = document.createElement("a");
                 notif.setAttribute("class", "notification");
-                notif.setAttribute("title", data[1][i].id_img);
+                notif.setAttribute("alt", data[1][i].id_img);
                 if(data[1][i].text == null)
                     var item = 'lik&eacute';
                 else
@@ -81,8 +81,9 @@ function callback_header(data){
                     var modalImg = document.getElementById("imgModal");
                 
                         notif_link[i].onclick = function() {
+                        
                         modal.style.display = "block";
-                        var id = this.title;
+                        var id = this.getAttribute('alt');
                         ajax("model/getmodal.php?img="+id, 'modal');		
                     }
                 }

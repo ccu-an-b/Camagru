@@ -24,6 +24,9 @@ function ajax(url, callback) {
                 case "add":
                     callback_add(data);
                     break;
+                case "account":
+                    callback_account(data);
+                    break;
             }
         }
         else

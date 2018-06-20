@@ -1,8 +1,5 @@
 <?PHP
 
-include ('CamagruModel.php');
-include ('config/database.php');
-
 function get_page()
 {
 	return " style='font-weight:bold' ";

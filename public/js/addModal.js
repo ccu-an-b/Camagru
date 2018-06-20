@@ -27,8 +27,12 @@ input.addEventListener("keyup", function(event) {
 function callback_add(data) {
 
 	var update = document.querySelector('[title="'+data[0].id_img+'"]');
-	update.innerHTML = "<div id='info'> <p>"+data[0].count_like+" <img style='width:30px;height:30px' src='"+data[0].like_src+"'/> "+data[0].count_com+" <img style='width:38px;height:38px' src='public/icons/comment.png'/> </p> </div><img src='"+data[0].img+"' /> ";
 
+	if (update)
+	{
+		update.innerHTML = "<div id='info'> <p>"+data[0].count_like+" <img style='width:30px;height:30px' src='"+data[0].like_src+"'/> "+data[0].count_com+" <img style='width:38px;height:38px' src='public/icons/comment.png'/> </p> </div><img src='"+data[0].img+"' /> ";
+	}
+	
 	var count_like = document.getElementById("count_like");
 	var count_com = document.getElementById("count_com");
 
