@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<form action="" method="post">
+	<table >
 		<tr>
 			<td rowspan="2" id="col1"><img src='<?= $profile['profile'] ?>' /></td>
 			<td rowspan="2" class="login"><?= $profile['login'] ?></td>
@@ -19,10 +19,9 @@
 		<tr><td><br/></td></tr>
 		<tr>
 			<td id="col1"></td>
-			<td><input type="submit" name="submit" value="Supprimer le compte"></td>
+			<td><input onclick="modify_delete()" type="submit" name="submit" value="Supprimer le compte"></td>
 		</tr>
-		<tr><td><br/></td></tr>
-</form>
+	</table>
 <?php $form = ob_get_clean(); ?>
 
 <?php require('view/accountView.php'); ?>

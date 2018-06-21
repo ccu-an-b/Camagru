@@ -114,9 +114,18 @@ input[type="button"] {
 
 }
 
+input:focus {
+	outline: none;
+}
+
+
 button:active {
     border: none;
     outline: none;
+}
+
+button:focus {
+	outline: none;
 }
 
 input:active {
@@ -609,17 +618,19 @@ td.dropdown {
 	float : left;
 	width:30%;
 	font-size:20px;
-	padding: 0;
+	border-collapse: collapse;	
 }
 
 #category td {
 	height: 50px;
+	padding-left:5px;
 }
 
-#category td:hover{
+#category tr:hover{
 	background-color: #4B4453;
 	color: #FCF8FF ;
 	font-weight: bold;
+	cursor:pointer;
 }
 
 #category a:link {
@@ -640,16 +651,14 @@ td.dropdown {
 	color: #FCF8FF  ;
 }
 
-
-#content {
+#content table {
 	padding-top: 15px;
-	width:66%;
+	width:100%;
 	font-size: 18px;
 	padding-left: 15px;
-	border-left: 1px solid #4B4453;
 }
 
-#content td {
+#content table td {
 	height: 30px;
 }
 
@@ -697,7 +706,6 @@ td.dropdown {
 
 #content input[type="checkbox"]{
 	width: 15px;
-
 }
 
 #content label{
@@ -708,6 +716,23 @@ td.dropdown {
 
 #content label:hover{
 	font-weight: bold;
+}
+#content {
+	padding-top: 15px;
+	width:68%;
+	font-size: 18px;
+	padding-left: 15px;
+	border-left: 1px solid #4B4453;
+	padding-bottom: 30px;
+}
+
+#content input[type="image"] {
+	object-fit: cover;
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+	margin:15px 0px 15px 35px;
+	border: 3px solid rgba(255, 255, 255, 0);
 }
 
 /*--------------Camera-------------*/

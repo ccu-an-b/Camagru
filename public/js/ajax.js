@@ -35,3 +35,27 @@ function ajax(url, callback) {
     xmlhttp.open("GET",url,true);
     xmlhttp.send();
 }
+
+function ajax_file(callback, form) {
+    
+        if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }  
+        else {
+        // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                switch (callback) {
+                    case "account":
+                        callback_account(data);
+                        break;
+                }
+            }
+        };
+        xmlhttp.open("POST","model/upload.php?page=account",true);
+        xmlhttp.send(form);
+    }

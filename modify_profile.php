@@ -6,14 +6,11 @@ include ("model/CamagruModel.php");
 include ("config/database.php");
 require ('model/accountModel.php');
 
+if(empty($_SESSION['login']))
+    header('Location: index.php');
+
 $profile = get_profile($_SESSION['login']);
-
-$page0 = get_page();
-$page1 = "";
-$page2 ="";
-$page3 = "";
-$page4 = "";
-
+$picture = get_picture($_SESSION['login']);
 
 //if ((empty($_POST['login']) || empty($_POST['mail'])) && isset($_POST['submit']))
 //{

@@ -55,7 +55,7 @@ function ft_user_check($login, $passwd)
    $data = $sql->fetch();
    if ($data == "")
    {
-	   $_SESSION['error'] = "Mauvais mot de passe ou identifiant";
+	   $_SESSION['error'] = "Mauvais mot de passe";
 	   $db = null;
 	   return false;
    }

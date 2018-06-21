@@ -6,30 +6,37 @@
 	<p style="font-weight:bold; color: #DA2C38; text-align:center"><?= $error ?></p>
 	<div id="account">
 	<table id="category">
-		<tr>
-			<td><a <?= $page0 ?> href="modify_profile.php">Modifier le profil</a></td>
+		<tr onclick="callback_account(1)">
+			<td class="page"></td>
+			<a><td>Modifier le profil</td></a>
 		</tr>
-		<tr>
-			<td><a <?= $page1 ?> href="modify_profile.php?page=2">Changer le mot de passe</a></td>
+		<tr onclick="callback_account(2)">
+			<td class="page"></td>
+			<a><td >Changer le mot de passe</td></a>
 		</tr>
-		<tr>
-			<td><a <?= $page2 ?> href="modify_profile.php?page=3">Notifications</a></td>
+		<tr onclick="callback_account(3)">
+			<td class="page"></td>
+			<a><td >Notifications</td></a>
 		</tr>
-		<tr>
-			<td><a <?= $page3 ?> href="modify_picture.php">Gérer les photos</a></td>
+		<tr onclick="callback_account(4)">
+			<td class="page"></td>
+			<a><td >Gérer les photos</td></a>
 		</tr>
-		<tr>
-			<td><a <?= $page4 ?> href="modify_delete.php">Supprimer le compte</a></td>
+		<tr onclick="callback_account(5)">
+			<td class="page"></td>
+			<a><td >Supprimer le compte</td></a>
 		</tr>
 	</table>
-	
-	<table id="content">
+	<div id="content">
 	<?= $form ?>
-	</table>
-	
 	</div>
 	<br/>
 <script src="./public/js/account.js"></script>
+<script>
+	var page = <?= $_GET['page']?>;
+	var page_link = document.getElementsByClassName("page");
+	page_link[page - 1].style.backgroundColor= "#4B4453";
+</script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/template.php'); ?>

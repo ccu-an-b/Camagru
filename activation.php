@@ -3,9 +3,9 @@
 session_start();
 
 require('model/profileModel.php');
-?>
+include ("model/CamagruModel.php");
+include ("config/database.php");
 
-<?php
 $profile = get_profile($_GET['log']);
 
 if ($profile == "" || $profile['activation_key']!= $_GET['key'])

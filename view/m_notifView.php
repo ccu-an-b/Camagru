@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+	<table>
 		<tr>
 			<td rowspan="2" id="col1"><img src='<?= $profile['profile'] ?>' /></td>
 			<td rowspan="2" class="login"><?= $profile['login'] ?></td>
@@ -27,8 +28,7 @@
 			<td id="col1"></td>
 			<td><input type="submit" name="submit" value="Valider" onclick="modify_notification()"> </td>
 		</tr>
-		<tr><td><br/></td></tr>
-
+	</table>
 <script>
 	var notif_cmt = <?php echo $profile['notif_cmt']; ?>;
 	if (notif_cmt == 1)

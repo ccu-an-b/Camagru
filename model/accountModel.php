@@ -14,6 +14,14 @@ function get_picture($login)
 	return $req;
 }
 
+function ft_mod_profile($login, $src)
+{
+	$db = db_connect();
+	$sql = "UPDATE user SET profile='".$src."' WHERE login='".$login."'";
+	$db->query($sql);
+	$db = null;
+}
+
 function ft_mod_pass($login, $new_pass)
 {
 	$db = db_connect();
@@ -23,6 +31,7 @@ function ft_mod_pass($login, $new_pass)
 	$sql->bindParam(":login", $login, PDO::PARAM_STR);
 	$sql->execute();
 	$db = null;
+	$_SESSION['error'] = "Mot de passe modifi&eacute;";
 	return true;
 }
 

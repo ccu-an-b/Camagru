@@ -5,7 +5,7 @@
 		<tr>
 			<td rowspan="3" style="width:40%"><img id="profile_src" src='<?php echo $profile['profile'];?>'/></td>
 			<td colspan="2" id="profile_login" class="login"></td>
-			<td><input id="modify_profile" onclick="window.location.href='./modify_profile.php'" type="button" value="Modifier le profil"></td>
+			<td><input id="modify_profile" onclick="window.location.href='./modify_profile.php?page=1'" type="button" value="Modifier le profil"></td>
 		</tr>
 		<tr>
 			<td id="count_picture" style="width:20%" ></td>

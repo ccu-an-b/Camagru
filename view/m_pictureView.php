@@ -1,21 +1,16 @@
 <?php ob_start(); ?>
-<form action="" method="post">
 <?php
 	$i = 0;
+	
 	while ($data = $picture->fetch())
 	{
-		if ( $i == 0 || ($i % 3) == 0)
-			echo "<tr id = ".$i.">";
 	?>	
 		<td>
-			<img src='<?= $data['img'] ?>' />
-			<input type="checkbox" name="img[]" value="<?= $data['id_img'] ?>"/>
+
+			<input class="del_img" type="image" name="img[]" src='<?= $data['img'] ?>' alt="<?= $data['id_img'] ?>" value="0"/>
 		</td>
 	<?php
-		if (($i % 2) == 0 && $i !=0)
-			echo "</tr>";
-		if ($i == 3)
-			$i = 0;
+
 		$i++;
 	}
 	if ($i == 0)
@@ -24,11 +19,32 @@
 	}
 	else 
 	{
-		echo "<tr><td colspan = '3'><input type='submit' name='submit' value='Supprimer'></td></tr>";
+		echo "</br><input onclick='modify_picture()' style='margin-left:60px; width:150px;' type='submit' name='submit' value='Supprimer'>";
 	}
 	$picture->closeCursor();
 ?>
-</form>
+
+<script>
+	var img = document.getElementsByClassName("del_img");
+
+    var i;
+    for(i = 0 ; i < img.length ; i++)
+    {    
+        img[i].onclick = function() {
+			if (this.value == 1)
+			{
+				this.value = 0 ;
+				this.style.borderColor = "rgba(255, 255, 255, 0)"
+			}
+			else
+			{
+				this.value = 1 ;
+				this.style.borderColor = "#EF626C"
+			}		
+        }
+    }
+</script>
+
 <?php $form = ob_get_clean(); ?>
 
 <?php require('view/accountView.php'); ?>
