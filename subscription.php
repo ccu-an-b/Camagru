@@ -2,7 +2,8 @@
 
 session_start();
 
-require('model/userModel.php');
+require('model/CamagruModel.php');
+include ("config/database.php");
 
 if ((empty($_POST['login']) || empty($_POST['passwd']) || empty($_POST['mail']) || empty($_POST['mail'])) && isset($_POST['submit']))
 	$_SESSION['error'] = "Champs incomplets";

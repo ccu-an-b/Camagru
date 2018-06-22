@@ -758,6 +758,14 @@ td.dropdown {
 	float:left;
 }
 
+#camera #overlay {
+	margin-top: 30px;
+	margin-bottom: 15px;
+	padding: 10px;
+	position:absolute;
+	width:50%;
+}
+
 #camera #div_stickers{
 	background-color: rgba(232,233,243, 0.7);
 	width: 25%;
@@ -775,6 +783,7 @@ td.dropdown {
 
 #camera #div_video #video {
 	width: 100%;
+	z-index:0;
 }
 
 #camera #startbutton {

@@ -36,5 +36,4 @@ function ft_activate_account($login)
 	$sql->execute();
 	$db = null;
 }
-
 ?>

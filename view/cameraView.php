@@ -6,9 +6,12 @@
         <div id='div_video'>
             <video id='video'></video>
         </div>
+        <div id='overlay'>
+        <img id='id_sticker' style="width:100%;" src="" />
+        </div>
         <div id='div_stickers'>
             <?php
-            while ($sticker = $data->fetch())
+            while ($sticker = $stickers->fetch())
             {
                 echo "<img src='".$sticker['img_stickers']."' alt='".$sticker['id_stickers']."'>";
             }

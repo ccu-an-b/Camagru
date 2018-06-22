@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-include ('model/indexModel.php');
 include ("model/CamagruModel.php");
 include ("config/database.php");
+include ("model/indexModel.php");
 
 $page = get_page();
 

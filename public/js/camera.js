@@ -8,13 +8,12 @@
       startbutton  = document.querySelector('#startbutton');
       uploadbutton  = document.querySelector('#uploadbutton');
 
-
   navigator.mediaDevices.getUserMedia({ audio:false, video: {width: 320, height: 240}   }).then(stream => {
       var vendorURL = window.URL || window.webkitURL
       video.src = vendorURL.createObjectURL(stream)
       video.play()
     }).catch(err => {
-    console.log("An error occured! " + err);
+    console.log("Erreur: " + err);
   }) 
                         
 
@@ -37,11 +36,13 @@
     ev.preventDefault();
   }, false);
 
-  var layersCont = document.getElementById('div_stickers').getElementsByTagName('img')
+  var layersCont = document.getElementById('div_stickers').getElementsByTagName('img');
   Array.prototype.forEach.call(layersCont, function (e) {
     e.addEventListener('click', function () {
-      var layer_id = document.getElementById('layer_id')
-      layer_id.value = e.alt
+      var layer_id = document.getElementById('id_sticker')
+      var tmp = e.src.split(".png");
+      layer_id.src = tmp[0]+"_1.png";
+      console.log(e.src)
       Array.prototype.forEach.call(layersCont, function (el) {
         el.style.border = 'none'
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)

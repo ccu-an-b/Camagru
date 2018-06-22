@@ -8,7 +8,6 @@ function get_profile_img($id_img)
 	$profile_id = $profile_id->fetch();
 	$db = null;
 	return $profile_id;
-
 }
  
 function add_comment($login, $comment, $id_img)

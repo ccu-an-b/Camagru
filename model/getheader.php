@@ -1,8 +1,9 @@
 <?php
 
 session_start();
-include ("../config/database.php");
+
 include ("CamagruModel.php");
+include ("../config/database.php");
 
 function get_notification($id_profile)
 {
