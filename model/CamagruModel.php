@@ -1,6 +1,7 @@
 <?php
 
 include ('modalModel.php');
+include ('userModel.php');
 
 function db_connect() 
 {

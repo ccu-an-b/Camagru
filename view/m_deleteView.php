@@ -14,12 +14,12 @@
 		<tr><td><br/></td></tr>
 		<tr>
 			<td id="col1">Entrez votre mot de passe</td>
-			<td><input type="password" name="pass"><span style="margin-left:10px;font-weight:bold; color: #DA2C38"><?= $field ?></span></td>
+			<td><input class="input" type="password" name="pass"><span style="margin-left:10px;font-weight:bold; color: #DA2C38"><?= $field ?></span></td>
 		</tr>
 		<tr><td><br/></td></tr>
 		<tr>
 			<td id="col1"></td>
-			<td><input onclick="modify_delete()" type="submit" name="submit" value="Supprimer le compte"></td>
+			<td><input onclick="modify_delete()" type="submit" name="submit" id="submit_form" value="Supprimer le compte"></td>
 		</tr>
 	</table>
 <?php $form = ob_get_clean(); ?>

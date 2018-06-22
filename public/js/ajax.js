@@ -36,7 +36,7 @@ function ajax(url, callback) {
     xmlhttp.send();
 }
 
-function ajax_file(callback, form) {
+function ajax_file(callback, form, url) {
     
         if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -56,6 +56,6 @@ function ajax_file(callback, form) {
                 }
             }
         };
-        xmlhttp.open("POST","model/upload.php?page=account",true);
+        xmlhttp.open("POST",url,true);
         xmlhttp.send(form);
     }

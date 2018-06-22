@@ -11,7 +11,7 @@
 			<td><b>Nouveau commentaire</b></textarea></td>
 		</tr>
 		<tr>
-			<td id="col1"><input type="checkbox" name="notif_cmt" value="1" id="notif_cmt"></td>
+			<td id="col1"><input class="input" type="checkbox" name="notif_cmt" value="1" id="notif_cmt"></td>
 			<td>Recevoir une notification par mail</textarea></td>
 		</tr>
 		<tr><td><br/></td></tr>
@@ -20,13 +20,13 @@
 			<td><b>Nouveau like</b></textarea></td>
 		</tr>
 		<tr>
-			<td id="col1"><input type="checkbox" name="notif_like" value="1" id="notif_like"></td>
+			<td id="col1"><input class="input" type="checkbox" name="notif_like" value="1" id="notif_like"></td>
 			<td>Recevoir une notification par mail</textarea></td>
 		</tr>
 		<tr><td><br/></td></tr>
 		<tr>
 			<td id="col1"></td>
-			<td><input type="submit" name="submit" value="Valider" onclick="modify_notification()"> </td>
+			<td><input type="submit" name="submit" id="submit_form" value="Valider" onclick="modify_notification()"> </td>
 		</tr>
 	</table>
 <script>

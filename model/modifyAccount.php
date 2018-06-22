@@ -10,7 +10,45 @@ $profile = get_profile($_SESSION['login']);
 
 if ($_GET['page'] == '1')
 {
-    
+    $error = '0';
+
+    if (empty($_GET['mail']) || empty($_GET['login']))
+    {
+     	$_SESSION['field'] = "1";
+    	$_SESSION['error'] = "* Champs obligatoires";
+    }
+
+    else 
+    {   
+        if (isset($_GET['bio']))
+        {
+            ft_mod_profile($profile['login'], $_GET['bio'], 'bio');
+        }
+     	if ($_GET['login'] != $profile['login'])
+     	{
+            if (!ft_login_exist($_GET['login']))
+                $error = '1';
+            else 
+            {
+                ft_mod_profile($profile['login'], $_GET['login'], 'login');
+     	    	$_SESSION['error'] = "Nom d'utilisateur modifié.";
+                $_SESSION['login'] = $_GET['login'];
+                $profile = get_profile($_SESSION['login']);
+            } 
+     	}
+     	if ($_GET['mail'] != $profile['mail'] && $error == '0')
+     	{
+            if (ft_mail_exist($_GET['mail']))
+            {
+                ft_mod_profile($profile['login'], $_GET['mail'], 'mail');
+     		    if (isset($_SESSION['error']))
+     			    $_SESSION['error'] = "Nom d'utilisateur et adresse mail modifiés.";
+     		    else
+                     $_SESSION['error'] = "Adresse mail modifiée.";
+            }
+     	}
+    }
+    $data = 1;
 }
 
 if ($_GET['page'] == '2')
@@ -26,7 +64,7 @@ if ($_GET['page'] == '2')
         if ($_GET['new_pass'] == $_GET['new_pass_2'])
             ft_mod_pass($_SESSION['login'], $_GET['new_pass']);
         else
-            $_SESSION['error'] = "Confirmation de mot de passe non identique";
+            $_SESSION['error'] = "Confirmation de mot de passe non identique.";
     }
     $data = 2;
 }

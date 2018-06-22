@@ -7,7 +7,7 @@
 	?>	
 		<td>
 
-			<input class="del_img" type="image" name="img[]" src='<?= $data['img'] ?>' alt="<?= $data['id_img'] ?>" value="0"/>
+			<input class="input" class="del_img" type="image" name="img[]" src='<?= $data['img'] ?>' alt="<?= $data['id_img'] ?>" value="0"/>
 		</td>
 	<?php
 
@@ -19,7 +19,7 @@
 	}
 	else 
 	{
-		echo "</br><input onclick='modify_picture()' style='margin-left:60px; width:150px;' type='submit' name='submit' value='Supprimer'>";
+		echo "</br><input onclick='modify_picture()' style='margin-left:60px; width:150px;' type='submit' name='submit' id='submit_form' value='Supprimer'>";
 	}
 	$picture->closeCursor();
 ?>

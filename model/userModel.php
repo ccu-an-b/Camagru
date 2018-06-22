@@ -1,8 +1,5 @@
 <?PHP
 
-include ('CamagruModel.php');
-include ('config/database.php');
-
 function ft_login_exist($login)
 {
 	$db = db_connect();
@@ -16,7 +13,7 @@ function ft_login_exist($login)
 		return true;
 	else
 	{
-		$_SESSION['error'] = "Ce nom d'utilisateur existe déja";
+		$_SESSION['error'] = "Ce nom d'utilisateur existe d&eacute;&agrave;.";
 		return false;
 	}
 }
@@ -33,7 +30,7 @@ function ft_mail_exist($mail)
 		return true;
 	else
 	{
-		$_SESSION['error'] = "Cette adresse mail est déjà utilisée";
+		$_SESSION['error'] = "Cette adresse mail existe d&eacute;&agrave;.";
 		return false;
 	}
 }

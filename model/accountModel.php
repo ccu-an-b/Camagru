@@ -14,12 +14,15 @@ function get_picture($login)
 	return $req;
 }
 
-function ft_mod_profile($login, $src)
+function ft_mod_profile($login,$new_item,$item)
 {
 	$db = db_connect();
-	$sql = "UPDATE user SET profile='".$src."' WHERE login='".$login."'";
-	$db->query($sql);
+	$sql = $db->prepare("UPDATE user SET ".$item."=:new_item WHERE login=:login");
+	$sql->bindParam("login", $login, PDO::PARAM_STR);
+	$sql->bindParam("new_item", $new_item, PDO::PARAM_STR);
+	$sql->execute();
 	$db = null;
+	return true;
 }
 
 function ft_mod_pass($login, $new_pass)
