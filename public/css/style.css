@@ -756,14 +756,17 @@ td.dropdown {
 	padding: 10px;
 	width: 70%;
 	float:left;
+	position : relative;
 }
 
 #camera #overlay {
-	margin-top: 30px;
-	margin-bottom: 15px;
-	padding: 10px;
 	position:absolute;
-	width:50%;
+	width:96%;
+	height: 95%;
+}
+
+#camera #overlay img {
+	width: 100%;
 }
 
 #camera #div_stickers{

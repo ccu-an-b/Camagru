@@ -4,10 +4,10 @@
 
     <div id="camera">
         <div id='div_video'>
+            <div id='overlay'>
+                <img id='id_sticker' style="width:100%;" src="" />
+            </div>
             <video id='video'></video>
-        </div>
-        <div id='overlay'>
-        <img id='id_sticker' style="width:100%;" src="" />
         </div>
         <div id='div_stickers'>
             <?php
@@ -32,19 +32,14 @@
         <div id='camera_gallery'>
             <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
             <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
         </div>
     </div>
 
 
 <script src="./public/js/camera.js"></script>
 
+<script>
+</script>
 <?php $content = ob_get_clean(); ?>
 <?php require('view/template.php'); ?>
 
