@@ -19,19 +19,22 @@
             ?>
         </div>
         </br>
-        <button id="startbutton"></button>
-        <form action="#" method="POST" enctype="multipart/form-data" id="picture"> 
-            <input type="file" name="uploadPic" id="uploadPic">
-					<input type="text" name="webcam" value="" id="webcam" style="display: none;">
-					<input type="text" name="layer_id" value="" id="layer_id" style="display: none">
-					<input type="submit" value="Upload" id="uploadbutton" name="submit" disabled>
-        <input type="text" name="sticker_id" value="" id="sticker_id" style="display: none">
+        <form method="POST" enctype="multipart/form-data" id="picture_take"> 
+            <input type="text" name="sticker" value="" id="sticker_id" style="display: none">
+            <input type="text" name="src" value="" style="display: none;">
+            <input type="submit" id="take_btn" value="">
+        </form>
+        <form method="POST" enctype="multipart/form-data" id="picture_up" style="display:none">
+            <input type="file" name="webcam_upload" >
+			<input type="text" name="webcam" value="" >
+            <input type="text" name="sticker_id" value="" id="sticker_id">
+            <input type="submit" value="Upload" id="uploadbutton" name="submit" disabled>
         </form>
         </br>
         <canvas id="canvas"></canvas>
         <div id='camera_gallery'>
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-            <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+            <img style="display:none" src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+
         </div>
     </div>
 

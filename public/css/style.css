@@ -782,6 +782,7 @@ td.dropdown {
 	width: 50%;
 	margin-left: 10px;
 	margin-top: 5px;
+	cursor: pointer;
 }
 
 #camera #div_video #video {
@@ -789,7 +790,7 @@ td.dropdown {
 	z-index:0;
 }
 
-#camera #startbutton {
+#camera #take_btn {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
@@ -797,6 +798,7 @@ td.dropdown {
 	border: 3px solid #EF626C;
 	margin-right: 35%;
 	margin-left: 37%;
+	margin-top: 0px;
 }
 
 #camera #startbutton:hover {

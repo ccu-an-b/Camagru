@@ -7,7 +7,7 @@
 	?>	
 		<td>
 
-			<input class="input" class="del_img" type="image" name="img[]" src='<?= $data['img'] ?>' alt="<?= $data['id_img'] ?>" value="0"/>
+			<input class="del_img" type="image" name="img[]" src='<?= $data['img'] ?>' alt="<?= $data['id_img'] ?>" value="0"/>
 		</td>
 	<?php
 

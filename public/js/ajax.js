@@ -27,6 +27,9 @@ function ajax(url, callback) {
                 case "account":
                     callback_account(data);
                     break;
+                case "webcam":
+                    callback_account(webcam);
+                    break;
             }
         }
         else
@@ -52,6 +55,9 @@ function ajax_file(callback, form, url) {
                 switch (callback) {
                     case "account":
                         callback_account(data);
+                        break;
+                    case "webcam":
+                        callback_webcam(data);
                         break;
                 }
             }
