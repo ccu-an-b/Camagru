@@ -3,6 +3,7 @@
 session_start();
 
 require("model/CamagruModel.php");
+include("model/profileModel.php");
 include("config/database.php");
 
 $profile = get_profile($_GET['log']);

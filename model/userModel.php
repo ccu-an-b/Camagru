@@ -39,7 +39,8 @@ function ft_user_new($login, $pass, $mail)
 {
 	$pass = ft_hash($login, $pass); 
 	$db = db_connect();
-
+	
+	$activation_key = md5(microtime(TRUE)*100000);
 	$sql = $db->prepare("INSERT INTO user (login, mail, pass, admin, activation_key) VALUES (:login, :mail, :pass, '0', '".$activation_key."')");
 	$sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
