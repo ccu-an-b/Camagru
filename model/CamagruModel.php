@@ -86,4 +86,28 @@ function ft_error()
 		return "";
 }
 
+function password_secure($password)
+{
+
+	if( strlen($password) < 8 ) 
+		$_SESSION['error'] .= " trop court ";
+		
+	if( !preg_match("#[0-9]+#", $password) )
+		$_SESSION['error'] .= "ne contenant pas de chiffre ";
+		
+	if( !preg_match("#[a-z]+#", $password) ) 
+		$_SESSION['error'] .= "sans minuscule ";
+		
+	if( !preg_match("#[A-Z]+#", $password) ) 
+		$_SESSION['error'] .= "sans majuscule ";
+	
+	if (!empty($_SESSION['error']))
+	{
+		$_SESSION['error'] = "Mot de passe ".$_SESSION['error'];
+		return false;
+	}
+
+	else
+		return true;
+}
 ?>

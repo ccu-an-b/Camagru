@@ -64,7 +64,7 @@ if ($_GET['page'] == '2')
         if ($_GET['new_pass'] == $_GET['new_pass_2'])
             ft_mod_pass($_SESSION['login'], $_GET['new_pass']);
         else
-            $_SESSION['error'] = "Confirmation de mot de passe non identique.";
+            $_SESSION['error'] = "Les mots de passe ne sont pas identiques";
     }
     $data = 2;
 }

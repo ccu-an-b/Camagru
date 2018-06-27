@@ -15,10 +15,13 @@ else if (isset($_POST['login']) && isset($_POST['passwd']) && isset($_POST['pass
 			$_SESSION['error'] = "Adresse e-mail non valide";
 		else if ($_POST['passwd'] != $_POST['passwd2'])
 			$_SESSION['error'] = "Les mots de passe ne sont pas identiques";
-		else
+		else 
 		 {
-		 	ft_user_new($_POST['login'], $_POST['passwd'], $_POST['mail']);
-		 	$_SESSION['error'] = "Un mail de confirmation vient d'&ecirc;tre envoy&eacute;";
+			if (password_secure($_POST['passwd']))
+		 	{
+				 ft_user_new($_POST['login'], $_POST['passwd'], $_POST['mail']);
+				 $_SESSION['error'] = "Un mail de confirmation vient d'&ecirc;tre envoy&eacute;";
+			}
 		 }
 	}
 }

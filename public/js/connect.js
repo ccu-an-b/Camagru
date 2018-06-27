@@ -30,3 +30,10 @@ for(var i = 0; i < inputs.length; i++) {
            }
     })
 }
+
+var password = document.getElementById("password")
+if (password){
+    password.addEventListener('input', function(){
+        document.getElementById("pass_security").style.display = "block"
+    })
+}
