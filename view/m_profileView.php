@@ -49,7 +49,7 @@
 		if (files[0])
 		{
 			formData.append('fileToUpload', files[0], files[0].name);
-			ajax_file("account", formData, "model/upload.php?page=account"); 
+			ajax_form("account", formData, "model/upload.php?page=account"); 
 		}
 	}
 

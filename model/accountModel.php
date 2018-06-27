@@ -14,30 +14,6 @@ function get_picture($login)
 	return $req;
 }
 
-function ft_mod_profile($login,$new_item,$item)
-{
-	$db = db_connect();
-	$sql = $db->prepare("UPDATE user SET ".$item."=:new_item WHERE login=:login");
-	$sql->bindParam("login", $login, PDO::PARAM_STR);
-	$sql->bindParam("new_item", $new_item, PDO::PARAM_STR);
-	$sql->execute();
-	$db = null;
-	return true;
-}
-
-function ft_mod_pass($login, $new_pass)
-{
-	$db = db_connect();
-	$passwd = ft_hash($login, $new_pass);
-	$sql = $db->prepare("UPDATE user SET pass=:new WHERE login=:login");
-	$sql->bindParam(":new", $passwd, PDO::PARAM_STR);
-	$sql->bindParam(":login", $login, PDO::PARAM_STR);
-	$sql->execute();
-	$db = null;
-	$_SESSION['error'] = "Mot de passe modifi&eacute;";
-	return true;
-}
-
 function ft_mod_notif($login, $profile, $notif, $form)
 {
 	$notif = "notif_".$notif;

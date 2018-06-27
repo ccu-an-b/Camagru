@@ -39,7 +39,7 @@ function ft_user_new($login, $pass, $mail)
 {
 	$pass = ft_hash($login, $pass); 
 	$db = db_connect();
-	$activation_key = md5(microtime(TRUE)*100000);
+
 	$sql = $db->prepare("INSERT INTO user (login, mail, pass, admin, activation_key) VALUES (:login, :mail, :pass, '0', '".$activation_key."')");
 	$sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
@@ -67,7 +67,7 @@ function ft_activation_mail($login, $mail, $key)
 	$link .='activation.php?log='.urlencode($login).'&key='.urlencode($key);
 
 	$message = "Bienvenue sur Camagru,"."\n\n";
-	$message .="Pour activer votre compte, veuillez cliquer sur le lien ci dessous."."\n\n";
+	$message .="Pour activer votre compte veuillez cliquer sur le lien ci dessous."."\n\n";
 	$message .= $link;
 	$message .="\n\n"."---------------"."\n";
 	$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
@@ -75,6 +75,54 @@ function ft_activation_mail($login, $mail, $key)
 	{
 		$_SESSION['error'] = "Une erreur s&#39;est produite lors de l&#39;envoi du mail de confirmation.<br/> Veuillez recommencer la proc&eacute;dure";
 	}
+}
+
+function ft_mod_pass($login, $new_pass)
+{
+	$db = db_connect();
+	$passwd = ft_hash($login, $new_pass);
+	$sql = $db->prepare("UPDATE user SET pass=:new WHERE login=:login");
+	$sql->bindParam(":new", $passwd, PDO::PARAM_STR);
+	$sql->bindParam(":login", $login, PDO::PARAM_STR);
+	$sql->execute();
+	$db = null;
+	$_SESSION['error'] = "Mot de passe modifi&eacute;";
+	return true;
+}
+
+function ft_retrieve_mail($mail)
+{
+	$db = db_connect();
+	$sql = $db->prepare( "SELECT * FROM user WHERE mail=:mail");
+	$sql->bindParam(":mail", $mail, PDO::PARAM_STR);
+	$sql->execute();
+	$profile = $sql->fetch();
+	$db = null;
+
+	$link = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+	$link = str_replace("model/connect.php", "", $link);
+	$link .= "forgotten_pass.php?log=".urlencode($profile['login'])."&key=".urlencode($profile['activation_key']);
+
+	$header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
+	$subjet = "Camagru : Récupération de mot de passe\n";
+
+	$message = "Pour modifier votre mot de passe veuillez cliquer sur le lien ci dessous."."\n\n";
+	$message .= $link;
+	$message .="\n"."---------------"."\n";
+	$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
+
+	mail($profile['mail'], $subjet, $message, $header);
+}
+
+function ft_mod_profile($login,$new_item,$item)
+{
+	$db = db_connect();
+	$sql = $db->prepare("UPDATE user SET ".$item."=:new_item WHERE login=:login");
+	$sql->bindParam("login", $login, PDO::PARAM_STR);
+	$sql->bindParam("new_item", $new_item, PDO::PARAM_STR);
+	$sql->execute();
+	$db = null;
+	return true;
 }
 
 ?>

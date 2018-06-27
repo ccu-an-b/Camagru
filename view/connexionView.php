@@ -23,7 +23,7 @@
 						<td><br/><hr></td>				
 					</tr>
 					<tr>
-						<td><p><a href=##>Mot de passe oubli&eacute; ?</a></p></td>
+						<td><p><a href="forgotten_pass.php">Mot de passe oubli&eacute; ?</a></p></td>
 					</tr>
 				</table>
 			</form>

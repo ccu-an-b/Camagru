@@ -35,5 +35,8 @@ function ft_activate_account($login)
 	$sql->bindParam('login', $login, PDO::PARAM_STR);
 	$sql->execute();
 	$db = null;
+
+	$key = md5(microtime(TRUE)*100000);
+	ft_mod_profile($login, $key, 'activation_key');
 }
 ?>

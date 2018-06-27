@@ -46,7 +46,7 @@ function callback_webcam(data)
     var form = document.getElementById("picture_take")
     var data = new FormData(form)
 
-    ajax_file("webcam", data, "model/addWebcam.php");
+    ajax_form("webcam", data, "model/addWebcam.php");
   }
 
   startbutton.addEventListener('click', function(ev){
@@ -62,14 +62,8 @@ function callback_webcam(data)
       layer_id.src = tmp[0]+"_1.png";
       Array.prototype.forEach.call(layersCont, function (el) {
         el.style.border = 'none'
-        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
       })
-      var width = 320 ; 
-      var height=  240;
-      canvas.getContext('2d').drawImage(e, 0, 0, width, height)
       e.style.border = 'solid 1px #EF626C'
-      startbutton.disabled = false
-      uploadbutton.disabled = false
     })
   })
 

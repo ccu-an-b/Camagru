@@ -27,10 +27,10 @@ function ajax(url, callback) {
                 case "account":
                     callback_account(data);
                     break;
-                case "webcam":
-                    callback_account(webcam);
+                case "connect":
+                    callback_connect(data);
                     break;
-            }
+                }
         }
         else
             this.readyState == 4 && this.status == 200 ;
@@ -39,7 +39,7 @@ function ajax(url, callback) {
     xmlhttp.send();
 }
 
-function ajax_file(callback, form, url) {
+function ajax_form(callback, form, url) {
     
         if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari

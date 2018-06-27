@@ -12,7 +12,6 @@ if(empty($_SESSION['login']))
 $profile = get_profile($_SESSION['login']);
 $picture = get_picture($_SESSION['login']);
 
-
 $error = ft_error();
 
 $field= ft_error_f();

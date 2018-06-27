@@ -772,7 +772,7 @@ td.dropdown {
 #camera #div_stickers{
 	background-color: rgba(232,233,243, 0.7);
 	width: 25%;
-	height: 444px;
+	max-height: 444px;
 	margin-top: 30px;
 	float: right;
 	overflow-y: auto;
