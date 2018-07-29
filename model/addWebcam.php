@@ -39,11 +39,11 @@ function resizePic($src, $item)
         {
             $r = 1;
         }
-        $centreX = round($Width / $r);
-        $centreY = round($Height / $r);
+        $centreX = round($Width / 2);
+        $centreY = round($Height / 2);
     
-        $cropWidthHalf  = round($Width / $r);
-        $cropHeightHalf = round($Height / $r);
+        $cropWidthHalf  = round($Width / 2);
+        $cropHeightHalf = round($Height / 2);
     
         $x1 = max(0, $centreX - $cropWidthHalf);
         $y1 = max(0, $centreY - $cropHeightHalf);
