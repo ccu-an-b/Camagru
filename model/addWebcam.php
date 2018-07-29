@@ -5,11 +5,13 @@ include ("../config/database.php");
 
 function resizePic($src, $item)
 {
+    $Width = 640;
+    $Height = 480;
     if ($item == "sticker")
     {
         $img = imagecreatefrompng($src);
-        $Width = 640;
-        $Height = 480;
+        $x1 = 0;
+        $y1 = 0;
     }
     else {
         $ext = strstr($src, ".png");
@@ -18,18 +20,41 @@ function resizePic($src, $item)
         else
         {
             $img = imagecreatefromjpeg($src);
-            $Width = 320;
-            $Height = 240;
-        } 
+        }
+        $initSize = getimagesize($src);
+        $Width = $initSize[0];
+        $Height = $initSize[1];
+        if ($Width> 320)
+        {
+           if ($Width > $Height ){
+                 $r = $Width / 320;
+                 round($r , 0, PHP_ROUND_HALF_DOWN);
+            }
+            else{
+                $r = $Height / 320;
+                round($r , 0, PHP_ROUND_HALF_DOWN);
+           }
+        }
+        else 
+        {
+            $r = 1;
+        }
+        $centreX = round($Width / $r);
+        $centreY = round($Height / $r);
+    
+        $cropWidthHalf  = round($Width / $r);
+        $cropHeightHalf = round($Height / $r);
+    
+        $x1 = max(0, $centreX - $cropWidthHalf);
+        $y1 = max(0, $centreY - $cropHeightHalf);
     }
-    $initSize = getimagesize($src);
     
 
     $newimg = imagecreatetruecolor($Width, $Height);
     imagesavealpha($newimg, true);
     $trans_color = imagecolorallocatealpha($newimg, 0, 0, 0, 127);
     imagefill($newimg, 0, 0, $trans_color);
-    imagecopy($newimg, $img, 0, 0, 0, 0, $Width, $Height);
+    imagecopy($newimg, $img, 0, 0, $x1, $y1, $Width, $Height);
     imagesavealpha($newimg, true);
     imagedestroy($img);
     return $newimg;
