@@ -89,21 +89,22 @@ function ft_error()
 function password_secure($password)
 {
 
+	$error = "";
 	if( strlen($password) < 8 ) 
-		$_SESSION['error'] .= " trop court ";
+		$error.= " trop court ";
 		
 	if( !preg_match("#[0-9]+#", $password) )
-		$_SESSION['error'] .= "ne contenant pas de chiffre ";
+		$error.= "ne contenant pas de chiffre ";
 		
 	if( !preg_match("#[a-z]+#", $password) ) 
-		$_SESSION['error'] .= "sans minuscule ";
+		$error.= "sans minuscule ";
 		
 	if( !preg_match("#[A-Z]+#", $password) ) 
-		$_SESSION['error'] .= "sans majuscule ";
+		$error.= "sans majuscule ";
 	
-	if (!empty($_SESSION['error']))
+	if (!empty($error))
 	{
-		$_SESSION['error'] = "Mot de passe ".$_SESSION['error'];
+		$_SESSION['error'] = "Mot de passe ".$error;
 		return false;
 	}
 

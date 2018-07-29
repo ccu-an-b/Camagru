@@ -23,7 +23,10 @@ function callback_webcam(data)
       video.src = vendorURL.createObjectURL(stream)
       video.play()
     }).catch(err => {
-    console.log("Erreur: " + err);
+      document.querySelector('#overlay_msg').style.display="block"
+      document.querySelector('#picture_take').style.display="none"
+      document.querySelector('#picture_up').style.display="flex"
+      console.log("Erreur: " + err);
   }) 
                         
 

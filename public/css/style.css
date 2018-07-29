@@ -751,18 +751,34 @@ td.dropdown {
 
 #camera #div_video {
 	margin-top: 30px;
-	margin-bottom: 15px;
 	background-color: rgba(232,233,243, 0.7);
 	padding: 10px;
 	width: 70%;
 	float:left;
 	position : relative;
+	height: 42vw;
+	max-height: 420px;
+	min-width: 315px;
+	min-height:236px;
 }
 
 #camera #overlay {
 	position:absolute;
 	width:96%;
 	height: 95%;
+}
+
+#camera #overlay #overlay_msg {
+	height: 30px;
+	width:250px;
+	text-align: center;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	display: none;
 }
 
 #camera #overlay img {
@@ -790,15 +806,23 @@ td.dropdown {
 	z-index:0;
 }
 
+#camera form{
+	height: 50px;
+	width: 70%;
+	float:left;
+	display: flex;
+	justify-content: space-around; 
+    flex-wrap: wrap;
+	padding: 10px;
+	min-width: 200px;
+}
+
 #camera #take_btn {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	background-color:  rgba(232,233,243, 0.7);
 	border: 3px solid #EF626C;
-	margin-right: 35%;
-	margin-left: 37%;
-	margin-top: 0px;
 }
 
 #camera #startbutton:hover {
@@ -842,4 +866,40 @@ td.dropdown {
 
 #camera #photo img {
 	object-fit: contain;
+}
+
+#camera #picture_up {
+	display: none;
+}
+
+#camera #picture_up label {
+	color: #EF626C ;
+	background-color: rgba(232,233,243, 0.7);
+	width: 150px; 
+	height: 25px;
+	text-align: center;
+	padding-top: 5px;
+	border-radius: 5px;
+	border: solid 2px #EF626C;
+	cursor: pointer;
+	font-size: 18px;
+	margin-bottom: 15px
+} 
+
+#camera #picture_up label:hover {
+	background-color: #EF626C;
+	color: white;
+}
+
+#camera #picture_up input[type=submit]{
+	background-color: #EF626C;
+	color: white;
+	padding-top:5px;
+	height:35px;
+} 
+
+#camera #picture_up input[type=submit]:hover{
+	color: #EF626C ;
+	background-color: rgba(232,233,243, 0.7);
+	border: solid 2px #EF626C;
 }
