@@ -9,6 +9,7 @@
                 <img id='id_sticker' style="width:100%;" src="" />
             </div>
             <video id='video'></video>
+            <img id='camera_img'/>
         </div>
         <div id='div_stickers'>
             <?php
@@ -28,16 +29,15 @@
         </form>
         <form method="POST" enctype="multipart/form-data" id="picture_up">
             <label for="fileToUpload" >Choisir une photo</label>
-            <input style="display: none" type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
-			<input type="text" name="webcam" value="" style="display: none" >
-            <input type="text" name="sticker_id" value="" id="sticker_id" style="display: none">
-            <input type="submit" value="Valider" id="uploadbutton" name="submit" disabled>
+            <input style="display: none" type="file" name="fileToUpload" id="fileToUpload" accept="image/*" onchange="loadFile(event)">
+			<input type="text" name="sticker" value="" id="sticker_id" style="display: none">
+            <input type="text" name="src" value="coucou" style="display: none;">
+            <input type="submit" value="Valider" id="uploadbutton" name="submit" >
         </form>
-       
         </br>
         <canvas id="canvas"></canvas>
         <div id='camera_gallery'>
-            <img style="display:none" src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+            <img style="display:none" id="photo" alt="photo">
         </div>
     </div>
  
@@ -45,6 +45,13 @@
 <script src="./public/js/camera.js"></script>
 
 <script>
+    var loadFile = function(event) {
+    var output = document.getElementById('camera_img');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    document.querySelector('#overlay_msg').style.display="none";
+    document.querySelector('#video').style.display="none";
+    output.style.display="block";
+  };
 </script>
 <?php $content = ob_get_clean(); ?>
 <?php require('view/template.php'); ?>

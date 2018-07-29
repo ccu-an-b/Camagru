@@ -13,17 +13,27 @@ function resizePic($src, $item)
     }
     else {
         $ext = strstr($src, ".png");
-        if ($ext != "")
+        if (strstr($src, ".png") != "")
             $img = imagecreatefrompng($src);
         else
         {
             $img = imagecreatefromjpeg($src);
-            $Width = 320;
-            $Height = 240;
+            $Width = 640;
+            $Height = 480;
         } 
+        $initSize = getimagesize($src);
+        $width = $initSize[0];
+        $height = $initSize[1];
+        $r = $width / $height;
+        if ($width > $height) {
+            $width = ceil($width-($width*abs($r-640/480)));
+        } 
+        else {
+            $height = ceil($height-($height*abs($r-640/480)));
+        }
+        $Width = 640;
+        $Height = 480;
     }
-    $initSize = getimagesize($src);
-    
 
     $newimg = imagecreatetruecolor($Width, $Height);
     imagesavealpha($newimg, true);

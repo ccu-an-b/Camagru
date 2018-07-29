@@ -806,6 +806,17 @@ td.dropdown {
 	z-index:0;
 }
 
+#camera #div_video #camera_img {
+	width:100%;
+	z-index:0;
+	object-fit: cover;
+	display:none;
+	height:inherit;
+	max-height: 420px;
+	min-width: 315px;
+    min-height: 236px;
+}
+
 #camera form{
 	height: 50px;
 	width: 70%;

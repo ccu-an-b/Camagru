@@ -18,7 +18,6 @@ if ($_GET['page'] == "account"){
         unlink("../".$profile['profile']);
 }
 
-
 $target_file = $target_dir.basename($_FILES["fileToUpload"]["name"]);
 $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
  

@@ -12,6 +12,7 @@ function callback_webcam(data)
 
   var streaming = false,
       video        = document.querySelector('#video'),
+      upload       = document.querySelector('#camera_img'),
       cover        = document.querySelector('#cover'),
       canvas       = document.querySelector('#canvas'),
       photo        = document.querySelector('#photo'),
@@ -55,6 +56,24 @@ function callback_webcam(data)
   startbutton.addEventListener('click', function(ev){
       takepicture();
     ev.preventDefault();
+  }, false);
+
+  function uploadpicture() {
+
+    var layer_id = document.getElementById('id_sticker')
+    document.getElementsByName("sticker")[1].value = layer_id.src
+
+    var form = document.getElementById('picture_up');
+    var files = document.getElementById('fileToUpload').files;
+    var data = new FormData(form);
+    data.append('fileToUpload', files[0], files[0].name);
+
+		ajax_form("webcam", data, "model/addWebcam.php");
+  }
+
+  uploadbutton.addEventListener('click', function(ev){
+    uploadpicture();
+  ev.preventDefault();
   }, false);
 
   var layersCont = document.getElementById('div_stickers').getElementsByTagName('img');
