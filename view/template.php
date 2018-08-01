@@ -25,7 +25,7 @@
 				</td>
 				<td style="width:15px"><h1>|</h1>
 				</td>
-				<td style="width:110px">
+				<td id="logo" style="width:110px">
 					<h1>CAMAGRU</h1>
 				</td>
 				<td id='logout'>

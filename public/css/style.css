@@ -50,6 +50,11 @@ header {
 	width:100%;
 }
 
+@media screen and (max-width: 400px)
+{
+	.header #logo {display: none}	
+}
+
 footer {
 	max-width: 1000px;
 	margin-right: auto;
@@ -105,6 +110,11 @@ input[type="button"] {
 	margin-top: 35px;
 
 }
+
+@media screen and (max-width: 1000px) {
+	#main {width:100%}
+}
+
 
 #hr_title{
 	width: 70%;
@@ -611,6 +621,7 @@ td.dropdown {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
+	min-width: 290px;
 	
 }
 
@@ -619,6 +630,7 @@ td.dropdown {
 	width:30%;
 	font-size:20px;
 	border-collapse: collapse;	
+	min-width: 160x;
 }
 
 #category td {
@@ -724,6 +736,7 @@ td.dropdown {
 	padding-left: 15px;
 	border-left: 1px solid #4B4453;
 	padding-bottom: 30px;
+
 }
 
 #content input[type="image"] {
@@ -735,6 +748,25 @@ td.dropdown {
 	border: 3px solid rgba(255, 255, 255, 0);
 }
 
+@media screen and (max-width: 1000px) {
+	#content {width:67%}
+	#account {width:85%}
+}
+
+@media screen and (max-width: 670px){
+	#account {width: 90%}
+	#content table{padding-left:0}
+}
+
+@media screen and (max-width: 600px) {
+	#content {padding-left: 0}
+	#category{width: 32%}
+}
+
+@media screen and (max-width: 525px){
+	#category {width: 100%;}
+	#content {border: none; width: 100%}
+}
 /*--------------Camera-------------*/
 
 #camera {
