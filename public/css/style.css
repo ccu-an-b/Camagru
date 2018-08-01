@@ -531,6 +531,7 @@ td.dropdown {
 	margin-right: auto;
 	margin-left: auto;
 	padding: 1px;
+	min-width: 300px
 }
 
 #connexion table {
@@ -568,6 +569,17 @@ td.dropdown {
 	font-weight: bold;
 }
 
+#connexion #submit_form.pass {
+	width: auto;
+}
+@media screen and (max-width: 650px) {
+	#connexion div {width:80%}	
+	#connexion input {font-size:20px}
+}
+
+@media screen and (max-width: 400px) {
+	#connexion div {width:90%}	
+}
 /*--------------Profil.php--------------*/
 #profile {
 	margin-right: auto;

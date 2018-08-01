@@ -19,7 +19,7 @@
 						<td><input class="input" type="text" name="mail" placeholder="Adresse e-mail"></td>
 					</tr>
 					<tr>
-						<td><input onclick="retrieve_pass()" id="submit_form" type="submit" name="submit" value="R&eacute;initialiser votre mot de passe"</td>
+						<td><input onclick="retrieve_pass()" id="submit_form" class="pass" type="submit" name="submit" value="R&eacute;initialiser votre mot de passe"</td>
 					</tr>
 				</table>
 			<br/>
