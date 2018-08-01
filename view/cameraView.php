@@ -6,7 +6,7 @@
         <div id='div_video'>
             <div id='overlay'>
                 <p id="overlay_msg">T&eacute;l&eacute;chargez une photo &agrave; traiter</p>
-                <img id='id_sticker' style="width:100%;" src="" />
+                <img id='id_sticker' style="width:100%"  />
             </div>
             <video id='video'></video>
             <img id='camera_img'/>

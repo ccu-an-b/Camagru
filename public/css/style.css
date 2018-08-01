@@ -166,19 +166,46 @@ a {
 	cursor : pointer;
 }
 /*--------Scrollbar-------*/
-::-webkit-scrollbar {
+#dropdown-content::-webkit-scrollbar {
     width: 8px;
 }
-::-webkit-scrollbar-track {
+#dropdown-content::-webkit-scrollbar-track {
     background: rgba(255,255,255,0.7);
 }
-::-webkit-scrollbar-thumb {
+#dropdown-content::-webkit-scrollbar-thumb {
     background: rgba(232,233,243, 0.5);
 }
-::-webkit-scrollbar-thumb:hover {
+#dropdown-content::-webkit-scrollbar-thumb:hover {
     background: #4B4453;
 }
 
+#div_stickers::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+#div_stickers::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.7);
+}
+#div_stickers::-webkit-scrollbar-thumb {
+	background: rgba(232,233,243, 1);
+}
+#div_stickers::-webkit-scrollbar-thumb:hover {
+    background: #4B4453;
+}
+
+#camera_gallery::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+#camera_gallery::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.7);
+}
+#camera_gallery::-webkit-scrollbar-thumb {
+	background: rgba(232,233,243, 0.5);
+}
+#camera_gallery::-webkit-scrollbar-thumb:hover {
+    background: #4B4453;
+}
 /*--------Animation-------*/
 @keyframes fadeIn{
     from{opacity:0} to{opacity:1}
@@ -835,7 +862,7 @@ td.dropdown {
 	position : relative;
 	height: 42vw;
 	max-height: 420px;
-	min-width: 315px;
+	min-width: 285px;
 	min-height:236px;
 }
 
@@ -934,22 +961,21 @@ td.dropdown {
 	font-weight: bold;
 }
 
-
-
 #camera #camera_gallery {
 	margin-top: 20px;
-	padding: 10px 10px 0px 10px;
+	padding: 10px 0px 0px 10px;
 	border: 3px solid rgba(232,233,243, 0.7);
 	overflow-y:hidden;
 	overflow-x:auto;
 	width: 97%;
 	white-space: nowrap;
-	height: 150px;
+	min-height: 120px;
 }
 
 #camera #camera_gallery #photo {
 	width: 20%;
 	padding: 2px;	
+	min-width: 150px
 }
 
 #camera #photo img {
@@ -990,4 +1016,21 @@ td.dropdown {
 	color: #EF626C ;
 	background-color: rgba(232,233,243, 0.7);
 	border: solid 2px #EF626C;
+}
+
+#camera #id_sticker {
+	display: none;
+}
+
+@media screen and (max-width: 660px) {
+	#camera #div_stickers {width: 100%;height:auto;float: none; min-height: 70px;overflow-y: hidden;
+		overflow-x: auto;white-space: nowrap; float:none}
+	#camera #div_video {margin-bottom:20px; width: 94%; height: inherit; margin-right: auto; margin-left:auto; float:none}
+	#camera #div_stickers img {width:20%;}
+	#camera form {width: 100%; padding: 0}
+	#camera {width: 100%}
+	#camera #camera_gallery {width: 95%; margin-right: auto; margin-left:auto}
+	#camera #id_sticker {height: 95%; width: auto}
+	#camera #take_btn {margin-bottom: 20px;}
+
 }

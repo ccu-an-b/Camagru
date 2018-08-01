@@ -38,19 +38,27 @@ function callback_webcam(data)
   }, false);
 
   function takepicture() {
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-    var data = canvas.toDataURL('image/png')
     var layer_id = document.getElementById('id_sticker')
-    photo.setAttribute('src', data)
-    document.getElementsByName("sticker")[0].value = layer_id.src
-    document.getElementsByName("src")[0].value = data
-
-    var form = document.getElementById("picture_take")
-    var data = new FormData(form)
-
-    ajax_form("webcam", data, "model/addWebcam.php");
+    if (layer_id.src === "" )
+    {
+      alert("Veuillez sélectionner un sticker a superposer")
+    }
+    else 
+    {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+      var data = canvas.toDataURL('image/png')
+      photo.setAttribute('src', data)
+      document.getElementsByName("sticker")[0].value = layer_id.src
+      document.getElementsByName("src")[0].value = data
+  
+      var form = document.getElementById("picture_take")
+      var data = new FormData(form)
+  
+      ajax_form("webcam", data, "model/addWebcam.php");
+      
+    }
   }
 
   startbutton.addEventListener('click', function(ev){
@@ -59,16 +67,22 @@ function callback_webcam(data)
   }, false);
 
   function uploadpicture() {
-
     var layer_id = document.getElementById('id_sticker')
-    document.getElementsByName("sticker")[1].value = layer_id.src
+    if (layer_id.src === "" )
+    {
+      alert("Veuillez sélectionner un sticker a superposer")
+    }
+    else
+    {
+      document.getElementsByName("sticker")[1].value = layer_id.src
 
-    var form = document.getElementById('picture_up');
-    var files = document.getElementById('fileToUpload').files;
-    var data = new FormData(form);
-    data.append('fileToUpload', files[0], files[0].name);
+      var form = document.getElementById('picture_up');
+      var files = document.getElementById('fileToUpload').files;
+      var data = new FormData(form);
+      data.append('fileToUpload', files[0], files[0].name);
 
-		ajax_form("webcam", data, "model/addWebcam.php");
+      ajax_form("webcam", data, "model/addWebcam.php");
+    }
   }
 
   uploadbutton.addEventListener('click', function(ev){
@@ -80,6 +94,7 @@ function callback_webcam(data)
   Array.prototype.forEach.call(layersCont, function (e) {
     e.addEventListener('click', function () {
       var layer_id = document.getElementById('id_sticker')
+      layer_id.style.display = "block";
       var tmp = e.src.split(".png");
       layer_id.src = tmp[0]+"_1.png";
       Array.prototype.forEach.call(layersCont, function (el) {
