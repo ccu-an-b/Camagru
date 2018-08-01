@@ -53,7 +53,13 @@
 					</tr>
 					<input type="text" name="login" value=<?= $_GET['log']?> hidden>
 					<tr>
-						<td><input class="input" type="password" name="pass" placeholder="Mot de passe"></td>
+						<td><input id="password" class="input" type="password" name="pass" placeholder="Mot de passe"></td>
+					</tr>
+					<tr>
+						<td id="pass_security" style="display:none; text-align:left; padding-left:10%;">Votre mot de passe doit contenir :<br/>
+						- au minimum 8 caract&egrave;res<br/>
+						- un chiffre<br/>
+						- une majuscule et une minuscule</td>
 					</tr>
 					<tr>
 						<td><input class="input" type="password" name="pass_2" placeholder="Confirmation de mot de passe"></td>
@@ -72,6 +78,14 @@
 	<br />
 
 <script src="./public/js/connect.js"></script>
+<script>
+	var password = document.getElementById("password")
+if (password){
+    password.addEventListener('input', function(){
+        document.getElementById("pass_security").style.display = "block"
+    })
+}
+</script>
 <?php $retrieve = ob_get_clean(); ?>
 
 <?php 

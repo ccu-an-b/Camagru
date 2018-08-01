@@ -38,7 +38,7 @@ if ($_GET['page'] == 'new_password')
             $_SESSION['error'] = "Les mots de passe ne sont pas identiques";
             $page = "reload";
         }
-        else
+        else if (password_secure($_GET['new_pass']))
         {
             ft_mod_pass($_GET['login'], $_GET['new_pass']);
             $key = md5(microtime(TRUE)*100000);
@@ -46,6 +46,8 @@ if ($_GET['page'] == 'new_password')
             $_SESSION['error'] = "Mot de passe modifi&eacute;";
             $page = "connexion.php";
         }
+        else
+            $page = "reload";
     }
 }
 

@@ -61,10 +61,10 @@ if ($_GET['page'] == '2')
 
     else if (ft_user_check($_SESSION['login'], $_GET['old_pass']))
     {
-        if ($_GET['new_pass'] == $_GET['new_pass_2'])
-            ft_mod_pass($_SESSION['login'], $_GET['new_pass']);
-        else
+        if ($_GET['new_pass'] != $_GET['new_pass_2'])
             $_SESSION['error'] = "Les mots de passe ne sont pas identiques";
+        else if (password_secure($_GET['new_pass']))
+            ft_mod_pass($_SESSION['login'], $_GET['new_pass']);
     }
     $data = 2;
 }
