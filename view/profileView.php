@@ -8,17 +8,21 @@
 			<td><input id="modify_profile" onclick="window.location.href='./modify_profile.php?page=1'" type="button" value="Modifier le profil"></td>
 		</tr>
 		<tr>
-			<td id="count_picture" style="width:20%" ></td>
-			<td id="count_like" style="width:20%; margin-left: 10px"></td>
-			<td id="count_com" style="width:20%"></td>
+			<td id="count_picture"  ></td>
+			<td id="count_like" ></td>
+			<td id="count_com" ></td>
 		</tr>
 		<tr>
 			<td id="profile_bio" colspan="3"></td>
 		</tr>
+		<tr>
+		<td></td>
+		<td colspan="2"><input id="modify_profile_2" onclick="window.location.href='./modify_profile.php?page=1'" type="button" value="Modifier le profil"></td>
+		</tr>
 	</table>
 
 	<br/>
-	<hr id="hr_title"/>
+	<hr id="hr_title" class="profile"/>
 	<br/>
 
 	<div id="gallery">
@@ -32,7 +36,15 @@
 		else 
 	 		echo 0; ?>';
 	if (get == 0)
+	{
 		document.getElementById('modify_profile').style.visibility = "visible";
+		document.getElementById('modify_profile_2').style.visibility = "visible";
+	}
+	else
+	{
+		document.getElementById('modify_profile').style.display = "none";
+		document.getElementById('modify_profile_2').style.display = "none";
+	}
 	ajax("model/getGallery.php?user="+"<?php echo $login;?>", "gallery"); 
 </script>
 
