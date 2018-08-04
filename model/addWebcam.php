@@ -14,12 +14,16 @@ function resizePic($src, $item)
         $y1 = 0;
     }
     else {
-        $ext = strstr($src, ".png");
-        if ($ext != "")
+        $fileType = strtolower(pathinfo($src,PATHINFO_EXTENSION));
+        if (strcmp($item, "png") == 0)
             $img = imagecreatefrompng($src);
-        else
+        else if (strcmp($item, "jpg") == 0)
         {
             $img = imagecreatefromjpeg($src);
+        }
+        else if (strcmp($item, "gif") == 0)
+        {
+            $img = imagecreatefromgif($src);
         }
         $initSize = getimagesize($src);
         $Width = $initSize[0];
@@ -88,15 +92,24 @@ if (file_exists($target_dir.$new_name.".png")) {
     $i = 1;
     while(file_exists($target_dir.$new_name."(".$i.").png"))
         $i++;
-    $new_name = $new_name."(".$i.").png";
+    $new_name = $new_name."(".$i.")";
 }
 else
-    $new_name = $new_name.".png";
+    $new_name = $new_name;
 
 if (empty($_FILES['fileToUpload']))
+{
     $new = imagecreatefrompng($_POST['src']);
+    $fileType = "png";
+}
 else
-    $new = resizePic($_FILES["fileToUpload"]["tmp_name"], "pic");
+{
+    $target_file = $target_dir.basename($_FILES["fileToUpload"]["name"]);
+    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $new = resizePic($_FILES["fileToUpload"]["tmp_name"], $fileType);
+}
+
+$new_name = $new_name.".".$fileType;
 
 if ($new === false)
     die("<p>Une erreur est survenue.</p>");
