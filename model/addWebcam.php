@@ -14,7 +14,6 @@ function resizePic($src, $item)
         $y1 = 0;
     }
     else {
-        $fileType = strtolower(pathinfo($src,PATHINFO_EXTENSION));
         if (strcmp($item, "png") == 0)
             $img = imagecreatefrompng($src);
         else if (strcmp($item, "jpg") == 0)
@@ -28,21 +27,7 @@ function resizePic($src, $item)
         $initSize = getimagesize($src);
         $Width = $initSize[0];
         $Height = $initSize[1];
-        if ($Width> 320)
-        {
-           if ($Width > $Height ){
-                 $r = $Width / 320;
-                 round($r , 0, PHP_ROUND_HALF_DOWN);
-            }
-            else{
-                $r = $Height / 320;
-                round($r , 0, PHP_ROUND_HALF_DOWN);
-           }
-        }
-        else 
-        {
-            $r = 1;
-        }
+      
         $centreX = round($Width / 2);
         $centreY = round($Height / 2);
     
@@ -88,15 +73,6 @@ $new_name = $_SESSION['login'];
  
 $_POST['sticker'] = resizePic($_POST['sticker'], "sticker");
 
-if (file_exists($target_dir.$new_name.".png")) {
-    $i = 1;
-    while(file_exists($target_dir.$new_name."(".$i.").png"))
-        $i++;
-    $new_name = $new_name."(".$i.")";
-}
-else
-    $new_name = $new_name;
-
 if (empty($_FILES['fileToUpload']))
 {
     $new = imagecreatefrompng($_POST['src']);
@@ -109,14 +85,27 @@ else
     $new = resizePic($_FILES["fileToUpload"]["tmp_name"], $fileType);
 }
 
-$new_name = $new_name.".".$fileType;
+if (file_exists($target_dir.$new_name.".".$fileType)) {
+    $i = 1;
+    while(file_exists($target_dir.$new_name."(".$i.").".$fileType))
+        $i++;
+    $new_name = $new_name."(".$i.").".$fileType;
+}
+else
+    $new_name = $new_name.".".$fileType;
 
 if ($new === false)
     die("<p>Une erreur est survenue.</p>");
 
 imagecopy($new, $_POST['sticker'], 0, 0, 0, 0, imagesx($_POST['sticker']), imagesy($_POST['sticker']));
 $new_path = $target_dir.$new_name;
-imagepng($new, $new_path);
+if ($fileType == "png")
+    imagepng($new, $new_path);
+else if ($fileType == "jpg")
+    imagejpeg($new, $new_path);
+else if ($fileType == "gif")
+    imagegif($new, $new_path);
+
 imagedestroy($new);
 add_picture($_SESSION['login'], $new_name);
 
