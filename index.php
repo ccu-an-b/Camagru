@@ -5,18 +5,29 @@ include ("model/CamagruModel.php");
 include ("config/database.php");
 include ("model/indexModel.php");
 
-$page = get_page();
+if (!db_connect())
+{
+?>
+	<br/>
+	<p>Pour configurer la base de donn&eacute;es <a href="config/setup.php">cliquez ici</a><p>
+<?php
+}
 
-$limit = 9;
+else
+{
+	$page = get_page();
 
-$gallery = get_gallery($page, $limit);
+	$limit = 9;
 
-$page_count = get_page_number($limit);
+	$gallery = get_gallery($page, $limit);
 
-if (isset($_SESSION['login']))
+	$page_count = get_page_number($limit);
+
+	if (isset($_SESSION['login']))
     $profile = get_profile($_SESSION['login']);
 
-//$page_count = 200;
+	//$page_count = 200;
 
-require ('view/indexView.php');
+	require ('view/indexView.php');
+}
 
