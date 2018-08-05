@@ -1,4 +1,4 @@
-function ajax(url, callback) {
+function ajax(url, callback, cb = undefined) {
 
 	if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -31,6 +31,9 @@ function ajax(url, callback) {
                     callback_connect(data);
                     break;
                 }
+            if (cb) {
+                cb()
+            }
         }
         else
             this.readyState == 4 && this.status == 200 ;

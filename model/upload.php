@@ -33,9 +33,7 @@ if (file_exists("../".$target_file)) {
 if ($_FILES["fileToUpload"]["size"] > 500000) {
     $_SESSION['error'] = "Le fichier t&eacute;l&eacute;charg&eacute; est trop grand.";
 }
-if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" ) {
-    $_SESSION['error'] = "Seuls les fichiers JPG, JPEG, PNG & GIF sont accept&eacutes;.";
-}
+
 if (empty($_SESSION['error'])) {
     if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../".$target_file)) {
         $_SESSION['error'] = "Votre image n&#39;a pas pu &ecirc;tre t&eacute;l&eacute;charg&eacute;e.";
