@@ -5,45 +5,48 @@ include ("../config/database.php");
 
 function resizePic($src, $item)
 {
-    $Width = 640;
-    $Height = 480;
-    if ($item == "sticker")
-    {
-        $img = imagecreatefrompng($src);
-        $x1 = 0;
-        $y1 = 0;
-    }
-    else {
-        if (strcmp($item, "png") == 0)
-            $img = imagecreatefrompng($src);
-        else if (strcmp($item, "jpg") == 0)
-        {
-            $img = imagecreatefromjpeg($src);
-        }
-        else if (strcmp($item, "gif") == 0)
-        {
-            $img = imagecreatefromgif($src);
-        }
-        $initSize = getimagesize($src);
-        $Width = $initSize[0];
-        $Height = $initSize[1];
-      
-        $centreX = round($Width / 2);
-        $centreY = round($Height / 2);
-    
-        $cropWidthHalf  = round($Width / 2);
-        $cropHeightHalf = round($Height / 2);
-    
-        $x1 = max(0, $centreX - $cropWidthHalf);
-        $y1 = max(0, $centreY - $cropHeightHalf);
-    }
-    
+    $width = 640;
+    $height = 480;
+    $x = 0;
+    $y = 0;
 
-    $newimg = imagecreatetruecolor($Width, $Height);
+    switch($item) {
+        case "png" :
+            $img = imagecreatefrompng($src);
+            break;
+        case "jpg" :
+            $img = imagecreatefromjpeg($src);
+            break;    
+        case "gif" :
+            $img = imagecreatefromgif($src);
+            break;
+        case "sticker":
+            $img = imagecreatefrompng($src);
+            break;
+    }
+
+    $dimensions = getimagesize($src);
+
+    if($dimensions[0] > ($width / $height) * $dimensions[1]){
+        $dimY = $height;
+        $dimX = round($height * $dimensions[0] / $dimensions[1]);
+        $x = ($dimX - $width) / 2;
+    }
+    if($dimensions[0] < ($width / $height) * $dimensions[1]){
+        $dimX = $width;
+        $dimY = round($width * $dimensions[1] / $dimensions[0]);
+        $y = ($dimY - $height) / 2;
+    }
+    if($dimensions[0] == ($width / $height) * $dimensions[1]){
+        $dimX = $width;
+        $dimY = $height;
+    }
+    
+    $newimg = imagecreatetruecolor($width, $height);
     imagesavealpha($newimg, true);
     $trans_color = imagecolorallocatealpha($newimg, 0, 0, 0, 127);
     imagefill($newimg, 0, 0, $trans_color);
-    imagecopy($newimg, $img, 0, 0, $x1, $y1, $Width, $Height);
+    imagecopyresampled($newimg, $img,0, 0, $x, $y, $dimX, $dimY, $dimensions[0], $dimensions[1]);
     imagesavealpha($newimg, true);
     imagedestroy($img);
     return $newimg;
