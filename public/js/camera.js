@@ -68,19 +68,20 @@ function callback_webcam(data)
 
   function uploadpicture() {
     var layer_id = document.getElementById('id_sticker')
-    if (layer_id.src === "" )
-    {
+    var files = document.getElementById('fileToUpload').files;
+
+    if (files[0] == null)
+      alert("Veuillez télécharger une image")
+    else if (layer_id.src === "" )
       alert("Veuillez sélectionner un sticker a superposer")
-    }
     else
     {
       document.getElementsByName("sticker")[1].value = layer_id.src
 
       var form = document.getElementById('picture_up');
-      var files = document.getElementById('fileToUpload').files;
       var data = new FormData(form);
-      data.append('fileToUpload', files[0], files[0].name);
 
+      data.append('fileToUpload', files[0], files[0].name);
       ajax_form("webcam", data, "model/addWebcam.php");
     }
   }
