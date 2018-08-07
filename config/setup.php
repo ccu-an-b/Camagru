@@ -1,7 +1,7 @@
 <?php
 require("database.php");
 
-$db = new PDO("mysql:host=localhost", $DB_USER, $DB_PASSWORD);
+$db = new PDO("mysql:host=127.0.0.1", $DB_USER, $DB_PASSWORD);
 
 $sql = file_get_contents('db_camagru.sql');
 

@@ -11,13 +11,14 @@ function get_count_like($id_img)
 	$sql= "SELECT COUNT(*) FROM likes WHERE id_img = '".$id_img."'";
 	$req = $db->query($sql);
 	$req = $req->fetch();
+	$req = $req[0];
 	return $req;
 }
 
 function get_modal_img($id)
 {
 	$db = db_connect();
-	$sql = "SELECT * FROM picture JOIN user WHERE picture.id_img ='".$id."' AND user.id = picture.id_user";
+	$sql = "SELECT date, img, login, profile, id_img FROM picture JOIN user WHERE picture.id_img ='".$id."' AND user.id = picture.id_user";
 	$req = $db->query($sql);
 	$db = NULL; 
 	return $req;
