@@ -21,7 +21,8 @@ function add_comment($login, $comment, $id_img)
 	if ($profile_id['id'] == $user_id)
 		$active = '0';
 	$sql = $db->prepare("INSERT INTO comments (id_user, id_profile, id_img, text, active) VALUES ('".$user_id."', '".$profile_id['id']."','".$id_img."', :text,'".$active."')");
-	$sql->bindParam("text", $comment, PDO::PARAM_STR);
+	//$sql->bindParam("text", $comment, PDO::PARAM_STR);
+	$sql->execute(array( ':text' => $comment));
 	$sql->closeCursor();
 	ft_notification($id_img, $login, $comment, "commentaire");
 }

@@ -40,6 +40,10 @@ function ft_user_new($login, $pass, $mail)
 	$pass = ft_hash($login, $pass); 
 	$db = db_connect();
 	
+	$login = htmlspecialchars($login);
+	$pass = htmlspecialchars($pass);
+	$mail = htmlspecialchars($mail);
+	
 	$activation_key = md5(microtime(TRUE)*100000);
 	$sql = $db->prepare("INSERT INTO user (login, mail, pass, admin, activation_key) VALUES (:login, :mail, :pass, '0', '".$activation_key."')");
 	$sql->bindParam("login", $login, PDO::PARAM_STR);
@@ -118,6 +122,10 @@ function ft_retrieve_mail($mail)
 function ft_mod_profile($login,$new_item,$item)
 {
 	$db = db_connect();
+
+	$login = htmlspecialchars($login);
+	$new_item = htmlspecialchars($new_item);
+
 	$sql = $db->prepare("UPDATE user SET ".$item."=:new_item WHERE login=:login");
 	$sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->bindParam("new_item", $new_item, PDO::PARAM_STR);
