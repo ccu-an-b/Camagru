@@ -15,15 +15,14 @@ function add_comment($login, $comment, $id_img)
 	$db = db_connect();
 	$data = get_profile($login);
 	$user_id = $data['id'];
-
 	$profile_id = get_profile_img($id_img);
 	$active = '1';
+	$comment = htmlspecialchars($comment);
 	if ($profile_id['id'] == $user_id)
 		$active = '0';
 	$sql = $db->prepare("INSERT INTO comments (id_user, id_profile, id_img, text, active) VALUES ('".$user_id."', '".$profile_id['id']."','".$id_img."', :text,'".$active."')");
 	$sql->bindParam("text", $comment, PDO::PARAM_STR);
-	$sql->execute();
-	$db = null;
+	$sql->closeCursor();
 	ft_notification($id_img, $login, $comment, "commentaire");
 }
 
