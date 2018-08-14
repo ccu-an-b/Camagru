@@ -30,6 +30,7 @@ if ($_GET['page'] == '1')
                 $error = '1';
             else 
             {
+                $_GET['login'] = strip_tags($_GET['login']);
                 ft_mod_profile($profile['login'], $_GET['login'], 'login');
      	    	$_SESSION['error'] = "Nom d'utilisateur modifié.";
                 $_SESSION['login'] = $_GET['login'];
@@ -38,13 +39,19 @@ if ($_GET['page'] == '1')
      	}
      	if ($_GET['mail'] != $profile['mail'] && $error == '0')
      	{
+            $_GET['mail'] = strip_tags($_GET['mail']);
             if (ft_mail_exist($_GET['mail']))
             {
-                ft_mod_profile($profile['login'], $_GET['mail'], 'mail');
-     		    if (isset($_SESSION['error']))
-     			    $_SESSION['error'] = "Nom d'utilisateur et adresse mail modifiés.";
-     		    else
-                     $_SESSION['error'] = "Adresse mail modifiée.";
+                if (preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_GET['mail']) == false)
+                    $_SESSION['error'] = "Adresse e-mail non valide";
+                else 
+                {
+                    ft_mod_profile($profile['login'], $_GET['mail'], 'mail');
+                    if (isset($_SESSION['error']))
+                        $_SESSION['error'] = "Nom d'utilisateur et adresse mail modifiés.";
+                    else
+                        $_SESSION['error'] = "Adresse mail modifiée.";
+                }
             }
      	}
     }
