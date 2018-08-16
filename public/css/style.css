@@ -1,29 +1,29 @@
 /*--------font-------*/
 
-/* @font-face {
+@font-face {
 	font-family: 'Advent Pro';
-	src: local('☺'), url('AdventPro-Regular.ttf') format('truetype');
+	src: local('☺'), url('../fonts/AdventPro-Regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Happy Monkey';
-	src: local('☺'), url('HappyMonkey-Regular.ttf') format('truetype');
+	src: local('☺'), url('../fonts/HappyMonkey-Regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Amatic SC';
-	src: local('☺'), url('AmaticSC-Regular.ttf') format('truetype');
+	src: local('☺'), url('../fonts/AmaticSC-Regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Pompiere';
-	src: local('☺'), url('Pompiere-Regular.ttf') format('truetype');
+	src: local('☺'), url('../fonts/Pompiere-Regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Lekton';
-	src: local('☺'), url('Lekton-Regular.ttf') format('truetype');
-} */
+	src: local('☺'), url('../fonts/Lekton-Regular.ttf') format('truetype');
+} 
 
 /*--------general-------*/
 
