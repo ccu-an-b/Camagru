@@ -31,10 +31,18 @@ if ($_GET['page'] == '1')
             else 
             {
                 $_GET['login'] = strip_tags($_GET['login']);
-                ft_mod_profile($profile['login'], $_GET['login'], 'login');
-     	    	$_SESSION['error'] = "Nom d'utilisateur modifié.";
-                $_SESSION['login'] = $_GET['login'];
-                $profile = get_profile($_SESSION['login']);
+                if (empty($_GET['login']))
+                {
+                    $error = '1';
+                    $_SESSION['error'] = "Nom d'utilisateur invalide.";
+                }
+                else 
+                {
+                    ft_mod_profile($profile['login'], $_GET['login'], 'login');
+                    $_SESSION['error'] = "Nom d'utilisateur modifié.";
+                    $_SESSION['login'] = $_GET['login'];
+                    $profile = get_profile($_SESSION['login']);
+                }
             } 
      	}
      	if ($_GET['mail'] != $profile['mail'] && $error == '0')

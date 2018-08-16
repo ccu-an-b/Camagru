@@ -37,7 +37,6 @@ function ft_mail_exist($mail)
 
 function ft_user_new($login, $pass, $mail)
 {
-	$pass = ft_hash($login, $pass); 
 	$db = db_connect();
 	
 	$login = htmlspecialchars($login);
@@ -45,12 +44,12 @@ function ft_user_new($login, $pass, $mail)
 	$mail = htmlspecialchars($mail);
 	
 	$activation_key = md5(microtime(TRUE)*100000);
-	$sql = $db->prepare("INSERT INTO user (login, mail, pass, admin, activation_key) VALUES (:login, :mail, :pass, '0', '".$activation_key."')");
+	$sql = $db->prepare("INSERT INTO user (login, mail, pass, admin, activation_key) VALUES (:login, :mail, '1', '0', '".$activation_key."')");
 	$sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
-	$sql->bindParam("pass", $pass, PDO::PARAM_STR);
 	$sql->execute();
 	$db = null;
+	ft_mod_pass($login, $pass);
 	ft_activation_mail($login, $mail, $activation_key);
 }
 
@@ -85,7 +84,8 @@ function ft_activation_mail($login, $mail, $key)
 function ft_mod_pass($login, $new_pass)
 {
 	$db = db_connect();
-	$passwd = ft_hash($login, $new_pass);
+	$profile = get_profile($login);
+	$passwd = ft_hash($profile['id'], $new_pass);
 	$sql = $db->prepare("UPDATE user SET pass=:new WHERE login=:login");
 	$sql->bindParam(":new", $passwd, PDO::PARAM_STR);
 	$sql->bindParam(":login", $login, PDO::PARAM_STR);
