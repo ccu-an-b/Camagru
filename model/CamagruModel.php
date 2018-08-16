@@ -39,14 +39,15 @@ function get_count($id, $item, $table)
 	return ($req[0]);
 }
 
-function ft_hash($login, $passwd)
+function ft_hash($id, $passwd)
 {
-	return hash('sha256', $login).hash('whirlpool', $passwd);
+	return hash('sha256', $id).hash('whirlpool', $passwd);
 }
 
 function ft_user_check($login, $passwd)
 {
-	$passwd = ft_hash($login, $passwd);
+	$profile = get_profile($login);
+	$passwd = ft_hash($profile['id'], $passwd);
 	$db = db_connect();
 
 	$sql = $db->prepare ("SELECT * FROM user WHERE login=:login AND pass=:passwd");
