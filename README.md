@@ -14,10 +14,10 @@ Create a profile, take new photo-montages, share it on the public gallery.
 ## Get the requirement
 
 ### Prerequisites
-You need to have installed [PHP](http://www.php.net/), [MySQL](https://www.mysql.com/fr/) and a local web server of your choice ([Apache](https://httpd.apache.org/), [nginx](https://www.nginx.com/))
+You need to have installed [PHP](http://www.php.net/), [MySQL](https://www.mysql.com/fr/) and a local web server of your choice ([Apache](https://httpd.apache.org/), [nginx](https://www.nginx.com/), etc)
 
 ### Modify the config file
-*config/database.php* contains all the information needed by [MySQL](https://www.mysql.com/fr/) to connect Matcha to its database. Modify it so it matches your MySQL config.
+*config/database.php* contains all the information needed by [MySQL](https://www.mysql.com/fr/) to connect Camagru to its database. Modify it so it matches your MySQL config.
 ```
 $DB_DSN = 'mysql:host=localhost; dbname=db_camagru';
 $DB_USER = 'yourMysqlUsername';
