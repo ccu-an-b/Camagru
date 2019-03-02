@@ -19,10 +19,12 @@ function callback_webcam(data)
       startbutton  = document.querySelector('#take_btn');
       uploadbutton  = document.querySelector('#uploadbutton');
 
-  navigator.mediaDevices.getUserMedia({ audio:false, video: {width: 640, height: 480}   }).then(stream => {
+  navigator.mediaDevices.getUserMedia({ audio:false, video: {width: 640, height: 480}}).then(mediaStream => {
       var vendorURL = window.URL || window.webkitURL
-      video.src = vendorURL.createObjectURL(stream)
-      video.play()
+      video.srcObject = mediaStream
+      video.onloadedmetadata = function(e) {
+	    video.play();
+	  };
     }).catch(err => {
       document.querySelector('#overlay_msg').style.display="block"
       document.querySelector('#picture_take').style.display="none"
