@@ -39,4 +39,4 @@ You can now create a new profile or sign in with one of the profile below:
 ![alt text](public/model_readme.png?raw=true "Title")
 
 ## Author
-* **Chloe** - *Front/Back* - [check her profile](https://github.com/ccu-an-b)
+* **Chloe** - *Front/Back* - [ccu-an-b](https://github.com/ccu-an-b)
